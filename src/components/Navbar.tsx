@@ -6,14 +6,13 @@ const Navbar = () => {
     <>
       <nav className="bg-black text-white p-4 shadow-lg fixed top-0 left-0 w-full z-50">
         <div className="container mx-auto flex justify-between items-center">
-          {/* שם האתר בצבעי גרדיאנט */}
-          <div className="text-2xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-pink-400 to-cyan-400">
-            INFINITY
+          <div  className="text-2xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-pink-400 to-cyan-400">
+           <div href="/"> INFINITY</div>
           </div>
 
           {/* קישורים */}
-          <div className="hidden md:flex gap-6 text-sm font-light">
-            <a href="/" className="hover:text-red-500 transition">ראשי</a>
+          <div className="hidden md:flex gap-6 text-sm font-light ">
+            <a href="/" className="hover:text-red-500 transition ">ראשי</a>
             <a href="/Team" className="hover:text-red-500 transition">הצוות שלנו</a>
             <a href="/FAQs" className="hover:text-red-500 transition">שאלות נפוצות </a>
             <a href="/about" className="hover:text-red-500 transition">אודות</a>

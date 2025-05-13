@@ -3,10 +3,9 @@ import Navbar from './Navbar';
 
 const FAOs = () => {
   return (
-    <>
-    <Navbar />
-            {/* שאלות נפוצות */}
-        <section className="text-center mt-16">
+    <section className="bg-black text-white p-6 rounded-lg shadow-lg mb-8">
+      {/* שאלות נפוצות */}
+      <Navbar />
           <h2 className="text-4xl text-green-500 font-bold mb-6">שאלות נפוצות</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
@@ -23,10 +22,8 @@ const FAOs = () => {
               </div>
             ))}
           </div>
-        </section>
-        <Footer />
-    </>
-
+          <Footer />
+     </section>
   )
 }
 

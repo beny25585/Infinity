@@ -8,6 +8,7 @@ import Videos from './components/Videos';
 import About from './components/About';
 import Contact from './components/Contact';
 import Team from './components/Team';
+import FAOs from './components/FAOs';
 
 
 createRoot(document.getElementById('root')!).render(
@@ -20,6 +21,7 @@ createRoot(document.getElementById('root')!).render(
        <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/team" element={<Team />} />
+      <Route path="/FAQs" element={<FAOs />} />
     </Routes>
   </BrowserRouter>
 );
