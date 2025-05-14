@@ -9,19 +9,22 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Team from './components/Team';
 import FAOs from './components/FAOs';
+import NavBar from './components/Navbar';
+import Footer from './components/Footer';
 
 
 createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
+  <NavBar/>
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/gallery" element={<Gallery />} />
       <Route path="/videos" element={<Videos />} />
       <Route path="/contact" element={<Contact />} />
-       <Route path="/about" element={<About />} />
-      <Route path="/contact" element={<Contact />} />
+      <Route path="/about" element={<About />} />
       <Route path="/team" element={<Team />} />
       <Route path="/FAQs" element={<FAOs />} />
     </Routes>
+    <Footer/>
   </BrowserRouter>
 );

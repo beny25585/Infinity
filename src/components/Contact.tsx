@@ -18,10 +18,9 @@ const Contact = () => {
 
   return (
     <>
-    <Navbar />
-    {/* צור קשר */}
+    
         <section className="bg-gray-800 text-white p-8 rounded-xl shadow-lg mt-16">
-          <h2 className="text-3xl text-green-600 text-center mb-6">צור קשר</h2>
+          <h2 className="text-3xl text-green-600 text-center mb-6">השאירו פרטים </h2>
           <form onSubmit={submitForm} className="text-center space-y-4 max-w-lg mx-auto">
             <input
               type="text"
@@ -51,7 +50,6 @@ const Contact = () => {
             </button>
           </form>
         </section>
-        <Footer />
       </>
   );
 };

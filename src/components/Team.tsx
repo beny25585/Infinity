@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 const Team = () => {
   return (
     <section className="bg-black text-white p-6 rounded-lg shadow-lg mb-8">
-      <Navbar />
+
       <h2 className="text-3xl font-bold mb-4">הצוות שלנו</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div className="bg-gray-800 p-4 rounded-lg shadow-md">
@@ -41,7 +41,7 @@ const Team = () => {
           </p>
         </div>
       </div>
-      <Footer />
+   
     </section>
   );
 };

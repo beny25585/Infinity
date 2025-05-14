@@ -1,57 +1,102 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import { FiMenu, FiX } from 'react-icons/fi'; 
 
-const Navbar = () => {
+function CustomNavbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
-    <>
-      <nav className="bg-black text-white p-4 shadow-lg fixed top-0 left-0 w-full z-50">
-        <div className="container mx-auto flex justify-between items-center">
-          <div  className="text-2xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-pink-400 to-cyan-400">
-           <div href="/"> INFINITY</div>
+    <Navbar collapseOnSelect expand="lg" className="shadow-lg fixed top-0 left-0 w-full z-50 bg-black">
+      <Container fluid>
+        {/* שם האתר */}
+        <Link to="/">
+          <div className="text-3xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-pink-400 to-cyan-400">
+            INFINITY
           </div>
+        </Link>
 
-          {/* קישורים */}
-          <div className="hidden md:flex gap-6 text-sm font-light ">
-            <a href="/" className="hover:text-red-500 transition ">ראשי</a>
-            <a href="/Team" className="hover:text-red-500 transition">הצוות שלנו</a>
-            <a href="/FAQs" className="hover:text-red-500 transition">שאלות נפוצות </a>
-            <a href="/about" className="hover:text-red-500 transition">אודות</a>
-            <a href="/contact" className="hover:text-red-500 transition">צור קשר</a>
-          </div>
+        
+        <Navbar.Toggle
+          aria-controls="offcanvasNavbar"
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className={`  focus:outline-none lg:hidden ${
+            isMenuOpen ? 'text-black' : 'text-white'
+          }`}
+        >
+          {isMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+        </Navbar.Toggle>
 
-          {/* כפתור הרשמה */}
-          <a
-            href="/Contact"
-            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md transition"
-          >
-          השאירו פרטים  
-         </a>
-
-        </div>
-      </nav>
-
-      {/* מרווח מתחת לניווט */}
-      <div className="h-20"></div>
-
-      {/* תפריט קטן לנייד - כפתור המבורגר + תפריט צד */}
-      <div className="md:hidden fixed top-4 right-4 z-50 group">
-        <div className="w-12 h-12 bg-gradient-to-r from-red-400 to-cyan-400 text-white rounded-full shadow-lg flex items-center justify-center cursor-pointer">
-          <FontAwesomeIcon icon={faBars} className="text-xl" />
-        </div>
-
-        <div className="absolute top-16 right-0 bg-white rounded-lg shadow-xl p-4 w-64 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300">
-          <ul className="space-y-3 text-right">
-            <li><a href="/" className="text-gray-800 hover:text-cyan-500 transition">ראשי</a></li>
-            <li><a href="/trainers" className="text-gray-800 hover:text-cyan-500 transition">מאמנים</a></li>
-            <li><a href="/programs" className="text-gray-800 hover:text-cyan-500 transition">אימונים</a></li>
-            <li><a href="/about" className="text-gray-800 hover:text-cyan-500 transition">אודות</a></li>
-            <li><a href="/contact" className="text-gray-800 hover:text-cyan-500 transition">צור קשר</a></li>
-            <li><a href="/signup" className="block mt-4 bg-red-500 hover:bg-red-600 text-white text-center py-2 rounded-md transition">הרשמה לאימון</a></li>
-          </ul>
-        </div>
-      </div>
-    </>
+        {/* Offcanvas */}
+        <Navbar.Offcanvas
+          id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel"
+          placement="end"
+          show={isMenuOpen}
+          onHide={() => setIsMenuOpen(false)}
+          className={`transition-all duration-300 ${
+            isMenuOpen ? 'bg-gray-900' : 'bg-black'
+          }`}
+        >
+          <Offcanvas.Header closeButton className='bg-black' closeVariant="white"/>
+            
+          <Offcanvas.Body className="bg-black relative">
+            {/* קישורים */}
+            <Nav
+              className={`flex flex-col lg:flex-row gap-4 text-lg ${
+                isMenuOpen ? '' : 'mr-20'
+              }`}
+            >
+              <Link
+                to="/"
+                className={`px-3  transition-all duration-300 text-center ${
+                  isMenuOpen ? 'py-2' : ''
+                }`}
+              >
+                ראשי
+              </Link>
+              <Link
+                to="/Team"
+                className={`px-3  transition-all duration-300 text-center ${
+                  isMenuOpen ? 'py-2' : ''
+                }`}
+              >
+                הצוות שלנו
+              </Link>
+              <Link
+                to="/FAQs"
+                className={`px-3   transition-all duration-300 text-center ${
+                  isMenuOpen ? 'py-2' : ''
+                }`}
+              >
+                שאלות נפוצות
+              </Link>
+              <Link
+                to="/about"
+                className={`px-3   transition-all duration-300 text-center ${
+                  isMenuOpen ? 'py-2' : ''
+                }`}
+              >
+                אודות
+              </Link>
+              <Link
+                to="/Contact"
+                className={`  transition-all duration-300 text-center ${
+                  isMenuOpen ? 'py-2' : ''
+                }`}
+              >
+                השאירו פרטים
+              </Link>
+            </Nav>
+          </Offcanvas.Body>
+        </Navbar.Offcanvas>
+      </Container>
+    </Navbar>
   );
-};
+}
 
-export default Navbar;
+export default CustomNavbar;

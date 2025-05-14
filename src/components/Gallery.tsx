@@ -10,7 +10,6 @@ const Gallery = () => {
 
   return (
     <div className="bg-white min-h-screen font-hebrew direction-rtl">
-      <Navbar />
       <main className="p-8 mt-8 max-w-4xl mx-auto">
         <h1 className="text-4xl text-center text-green-600 font-bold mb-8">גלריה</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -25,7 +24,7 @@ const Gallery = () => {
           ))}
         </div>
       </main>
-      <Footer />
+
     </div>
   );
 };
