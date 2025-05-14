@@ -1,7 +1,5 @@
 
 import './index.css';
-import Footer from './components/Footer';
-import Navbar from './components/Navbar';
 import Team from './components/Team';
 import Recommendations from './components/Recommendations';
 import FAQs from './components/FAOs';
