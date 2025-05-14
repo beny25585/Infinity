@@ -3,7 +3,7 @@ import { faInstagram, faFacebook, faWhatsapp, faYoutube, faTiktok } from '@forta
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white text-center py-8 rounded-t-xl mh-16 mt-8 shadow-lg">
+    <footer className="bg-gray-900 text-white text-center py-8  mh-16 shadow-lg">
       <div className="flex justify-center gap-6 mb-4 text-2xl">
         <a href="https://www.instagram.com/yourprofile" target="_blank" rel="noreferrer" style={{ color: '#E4405F' }}>
           <FontAwesomeIcon icon={faInstagram} />

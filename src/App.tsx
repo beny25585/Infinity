@@ -1,25 +1,21 @@
-
-import './index.css';
-import Team from './components/Team';
-import Recommendations from './components/Recommendations';
-import FAQs from './components/FAOs';
-import Contact from './components/Contact';
-import About from './components/About';
-import MotivationVideo from './components/MotivtionVideo';
+import "./index.css";
+import Team from "./components/Team";
+import Recommendations from "./components/Recommendations";
+import FAQs from "./components/FAOs";
+import Contact from "./components/Contact";
+import About from "./components/About";
+import MotivationVideo from "./components/MotivtionVideo";
 
 function App() {
   return (
-    
-    
-    <div className="bg-black text-white min-h-screen font-hebrew direction-rtl">
-
-      <main className="p-4 sm:p-6 md:p-8  mx-auto max-w-screen-lg">
+    <div className="bg-black text-white min-h-screen font-hebrew direction-rtl ">
+      <main className="p-4 sm:p-6 md:p-8  mx-auto max-w-screen-lg mt-24 ">
         {/* סרטון מוטיבציה  */}
         <section className="bg-gray-900 p-6 sm:p-8 rounded-lg shadow-lg mb-8">
           <MotivationVideo />
         </section>
 
-       {/* הצוות שלנו */}
+        {/* הצוות שלנו */}
         <section className="bg-black p-6 sm:p-8 rounded-lg shadow-lg mb-8">
           <Team />
         </section>
