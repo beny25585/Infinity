@@ -1,6 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { FiHome, FiUsers, FiImage, FiInfo, FiMail,FiVideo } from "react-icons/fi";
+import {
+  FiHome,
+  FiUsers,
+  FiImage,
+  FiInfo,
+  FiMail,
+  FiVideo,
+} from "react-icons/fi";
 import { Sling as Hamburger } from "hamburger-react";
 
 function CustomNavbar() {
@@ -20,32 +27,34 @@ function CustomNavbar() {
     };
   }, []);
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-black shadow-lg text-white transition-all duration-300 ">
+    <nav className="fixed top-0 left-0 w-full z-50 bg-black shadow-lg text-white transition-all duration-300">
       <div className="flex items-center justify-between p-4 max-w-7xl mx-auto">
-        {/* לוגו */}
-        <Link to="/">
-          <div className="text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400">
-            INFINITY
-          </div>
-        </Link>
+        {/* כפתור המבורגר - צד שמאל */}
+        <div className="order-3 lg:hidden">
+          <Hamburger
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            toggled={isMenuOpen}
+            toggle={setIsMenuOpen}
+          />
+        </div>
 
-        {/* כפתור תפריט */}
-
-        <Hamburger
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          toggled={isMenuOpen}
-          toggle={setIsMenuOpen}
-        />
-
-        {/* תפריט רגיל במסכים גדולים */}
-        <div className="hidden lg:flex gap-8 items-center text-lg">
+        {/* תפריט רגיל במסכים גדולים - מרכז */}
+        <div className="hidden lg:flex gap-8 items-center text-lg order-2 ml-50">
           <NavLink icon={<FiHome />} to="/" label="ראשי" />
-          <NavLink icon={<FiUsers />} to="/Team" label="הצוות שלנו" />
           <NavLink icon={<FiImage />} to="/Gallery" label="תמונות" />
           <NavLink icon={<FiVideo />} to="/Videos" label="סרטונים" />
           <NavLink icon={<FiInfo />} to="/about" label="אודות" />
           <NavLink icon={<FiMail />} to="/Contact" label="השאירו פרטים" />
         </div>
+
+        {/* לוגו - צד ימין */}
+        <Link to="/" className="order-1">
+          <img
+            src="/logos/IMG-20250516-WA0003.jpg"
+            alt="Infinity Logo"
+            className="h-24 w-auto object-contain hover:opacity-90 transition-opacity duration-300"
+          />
+        </Link>
       </div>
 
       {/* תפריט צד מרחף במסכים קטנים */}
@@ -75,7 +84,7 @@ function CustomNavbar() {
           label="תמונות"
           onClick={() => setIsMenuOpen(false)}
         />
-          <NavLink
+        <NavLink
           icon={<FiVideo />}
           to="/Videos"
           label="סירטונים"

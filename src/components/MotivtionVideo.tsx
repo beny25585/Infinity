@@ -4,7 +4,7 @@ const MotivationVideo = () => {
       {/* וידאו מוטיבציה */}
       <div className="video-container ">
         <iframe
-          className="w-full h-64 sm:h-96 rounded-xl shadow-lg"
+          className="w-full h-90 rounded-xl shadow-lg"
           src="https://www.youtube.com/embed/-keL1hpquU0"
           title="סרטון מוטיבציה"
           allowFullScreen
