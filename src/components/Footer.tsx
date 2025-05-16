@@ -8,16 +8,16 @@ const Footer = () => {
         <a href="https://www.instagram.com/yourprofile" target="_blank" rel="noreferrer" style={{ color: '#E4405F' }}>
           <FontAwesomeIcon icon={faInstagram} />
         </a>
-        <a href="https://www.facebook.com/yourprofile" target="_blank" rel="noreferrer" style={{ color: '#1877F2' }}>
+        <a href="https://www.facebook.com/share/15Q4Ue6CT8/?mibextid=wwXIfr" target="_blank" rel="noreferrer" style={{ color: '#1877F2' }}>
           <FontAwesomeIcon icon={faFacebook} />
         </a>
         <a href="https://wa.me/972xxxxxxxxx" target="_blank" rel="noreferrer" style={{ color: '#25D366' }}>
           <FontAwesomeIcon icon={faWhatsapp} />
         </a>
-        <a href="https://youtube.com/yourchannel" target="_blank" rel="noreferrer" style={{ color: '#FF0000' }}>
+        <a href="https://www.youtube.com/@InFinityKosherKravi" target="_blank" rel="noreferrer" style={{ color: '#FF0000' }}>
           <FontAwesomeIcon icon={faYoutube} />
         </a>
-        <a href="https://www.tiktok.com/@yourprofile" target="_blank" rel="noreferrer" style={{ color: '#69C9D0' }}>
+        <a href="https://www.tiktok.com/@infinitykosherkravi?_t=ZN-8wOaMspnRLi&_r=1" target="_blank" rel="noreferrer" style={{ color: '#69C9D0' }}>
           <FontAwesomeIcon icon={faTiktok} />
         </a>
       </div>

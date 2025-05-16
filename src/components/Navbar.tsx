@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { FiHome, FiUsers, FiHelpCircle, FiInfo, FiMail } from "react-icons/fi";
+import { FiHome, FiUsers, FiImage, FiInfo, FiMail,FiVideo } from "react-icons/fi";
 import { Sling as Hamburger } from "hamburger-react";
 
 function CustomNavbar() {
@@ -41,7 +41,8 @@ function CustomNavbar() {
         <div className="hidden lg:flex gap-8 items-center text-lg">
           <NavLink icon={<FiHome />} to="/" label="ראשי" />
           <NavLink icon={<FiUsers />} to="/Team" label="הצוות שלנו" />
-          <NavLink icon={<FiHelpCircle />} to="/FAQs" label="שאלות נפוצות" />
+          <NavLink icon={<FiImage />} to="/Gallery" label="תמונות" />
+          <NavLink icon={<FiVideo />} to="/Videos" label="סרטונים" />
           <NavLink icon={<FiInfo />} to="/about" label="אודות" />
           <NavLink icon={<FiMail />} to="/Contact" label="השאירו פרטים" />
         </div>
@@ -69,9 +70,15 @@ function CustomNavbar() {
           onClick={() => setIsMenuOpen(false)}
         />
         <NavLink
-          icon={<FiHelpCircle />}
-          to="/FAQs"
-          label="שאלות נפוצות"
+          icon={<FiImage />}
+          to="/Gallery"
+          label="תמונות"
+          onClick={() => setIsMenuOpen(false)}
+        />
+          <NavLink
+          icon={<FiVideo />}
+          to="/Videos"
+          label="סירטונים"
           onClick={() => setIsMenuOpen(false)}
         />
         <NavLink
