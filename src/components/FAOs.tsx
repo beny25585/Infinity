@@ -1,21 +1,25 @@
 const FAOs = () => {
-  return (
-    <section className="bg-gray-900 text-white p-6  shadow-lg">
-      {/* שאלות נפוצות */}
+  const faqs = [
+    { q: "איך מצטרפים?", a: "ניתן להירשם דרך טופס צור קשר או להתקשר." },
+    { q: "האם מתאים גם למתחילים?", a: "כן, התכנית מותאמת לרמות שונות." },
+    { q: "האם יש ליווי אישי?", a: "בוודאי. כל משתתף מקבל מלווה אישי." },
+  ];
 
-      <h2 className="text-center text-3xl font-bold text-[#2563EB] mb-4">שאלות נפוצות</h2>
-      <div className="bg-gray-800 p-4 rounded-lg shadow-md hover:bg-[#1E3A8A] hover:scale-100 transition duration-300">
-        {[
-          { q: "איך מצטרפים?", a: "ניתן להירשם דרך טופס צור קשר או להתקשר." },
-          { q: "האם מתאים גם למתחילים?", a: "כן, התכנית מותאמת לרמות שונות." },
-          { q: "האם יש ליווי אישי?", a: "בוודאי. כל משתתף מקבל מלווה אישי." },
-        ].map((item, index) => (
+  return (
+    <section className="bg-[var(--bg-dark)] text-white py-20 px-6">
+      <h2 className="text-center text-4xl font-extrabold text-[var(--primary)] mb-12 gradient-text">
+        שאלות נפוצות
+      </h2>
+      <div className="max-w-4xl mx-auto space-y-6">
+        {faqs.map((item, index) => (
           <div
             key={index}
-            className="bg-gray-800 text-white p-6 rounded-lg shadow-md transition hover:scale-105 hover:bg-[#1D4ED8] hover:shadow-xl"
+            className="bg-gray-800 rounded-xl p-6 shadow-lg hover:bg-[var(--primary-dark)] hover:shadow-[0_10px_30px_rgb(37,99,235,0.7)] transition-all duration-300 cursor-pointer"
           >
-            <h3 className="text-lg font-bold text-[#2563EB]">{item.q}</h3>
-            <p className="text-gray-400">{item.a}</p>
+            <h3 className="text-xl font-semibold text-[var(--primary)] mb-2">
+              {item.q}
+            </h3>
+            <p className="text-gray-300 leading-relaxed">{item.a}</p>
           </div>
         ))}
       </div>

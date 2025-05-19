@@ -5,40 +5,59 @@ import FAQs from "./components/FAOs";
 import Contact from "./components/Contact";
 import About from "./components/About";
 import MotivationVideo from "./components/MotivtionVideo";
+import Home from "./components/Home";
 
 function App() {
   return (
-    <div className="bg-black text-white font-hebrew direction-rtl">
-      <main className="max-w-7xl mx-auto px-4 py-8 space-y-12">
-        {/* סרטון מוטיבציה */}
-        <section className="bg-gray-900 rounded-xl shadow-lg p-6 sm:p-8 lg:p-10">
-          <MotivationVideo />
-        </section>
+    <div className="  min-h-screen flex flex-col  text-white font-hebrew direction-rtl ">
+      <main className=" mx-auto flex-grow  ">
+        <div className="container-fluid ">
+          {/* logo/home */}
+          <section className="  shadow-lg p-4 sm:p-6 lg:p-10">
+            <Home />
+          </section>
+        </div>
+        <div className="container-fluid ">
+          {/* סרטון מוטיבציה */}
+          <section className="  shadow-lg p-4 sm:p-6 lg:p-10">
+            <MotivationVideo />
+          </section>
+        </div>
 
-        {/* הצוות שלנו */}
-        <section className="bg-black rounded-xl shadow-lg p-6 sm:p-8 lg:p-10">
-          <Team />
-        </section>
+        <div className="container-fluid ">
+          {/* הצוות שלנו */}
+          <section className="  shadow-lg p-6 sm:p-8 lg:p-10">
+            <Team />
+          </section>
+        </div>
 
-        {/* המלצות */}
-        <section className="bg-gray-900 rounded-xl shadow-lg p-6 sm:p-8 lg:p-10">
-          <Recommendations />
-        </section>
+        <div className="container-fluid ">
+          {/* המלצות */}
+          <section className="  shadow-lg p-6 sm:p-8 lg:p-10">
+            <Recommendations />
+          </section>
+        </div>
 
-        {/* שאלות נפוצות */}
-        <section className="bg-black rounded-xl shadow-lg p-6 sm:p-8 lg:p-10">
-          <FAQs />
-        </section>
+        <div className="container-fluid ">
+          {/* שאלות נפוצות */}
+          <section className=" shadow-lg p-6 sm:p-8 lg:p-10">
+            <FAQs />
+          </section>
+        </div>
 
-        {/* אודות */}
-        <section className="bg-gray-900 rounded-xl shadow-lg p-6 sm:p-8 lg:p-10">
-          <About />
-        </section>
+        <div className="container-fluid ">
+          {/* אודות */}
+          <section className=" shadow-lg p-6 sm:p-8 lg:p-10">
+            <About />
+          </section>
+        </div>
 
-        {/* צור קשר */}
-        <section className="bg-black rounded-xl shadow-lg p-6 sm:p-8 lg:p-10">
-          <Contact />
-        </section>
+        <div className="container-fluid ">
+          {/* צור קשר */}
+          <section className="  shadow-lg p-6 sm:p-8 lg:p-10">
+            <Contact />
+          </section>
+        </div>
       </main>
     </div>
   );

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   FiHome,
   FiUsers,
@@ -13,56 +13,106 @@ import { Sling as Hamburger } from "hamburger-react";
 function CustomNavbar() {
   const menuRef = useRef<HTMLDivElement>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [show, setShow] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setShow(false);
+      } else {
+        setShow(true);
+      }
+      setLastScrollY(currentScrollY);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setIsMenuOpen(false); // סגירת התפריט
+        setIsMenuOpen(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  // סגור תפריט כשהדף משתנה
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location]);
+
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-black shadow-lg text-white transition-all duration-300">
-      <div className="flex items-center justify-between p-4 max-w-7xl mx-auto">
-        {/* כפתור המבורגר - צד שמאל */}
+    <nav
+      className={`fixed top-0 w-full z-50 transition-transform duration-300 bg-gradient-to-r from-gray-900 via-black to-gray-900 shadow-lg ${
+        show ? "translate-y-0" : "-translate-y-full"
+      }`}
+      style={{ height: 80 }}
+    >
+      <div className="flex items-center justify-between max-w-7xl mx-auto h-full px-6 lg:px-12">
+        {/* כפתור המבורגר */}
         <div className="order-3 lg:hidden">
           <Hamburger
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             toggled={isMenuOpen}
             toggle={setIsMenuOpen}
+            size={28}
+            color="#3b82f6"
           />
         </div>
 
-        {/* תפריט רגיל במסכים גדולים - מרכז */}
-        <div className="hidden lg:flex gap-8 items-center text-lg order-2 ml-50">
-          <NavLink icon={<FiHome />} to="/" label="ראשי" />
-          <NavLink icon={<FiImage />} to="/Gallery" label="תמונות" />
-          <NavLink icon={<FiVideo />} to="/Videos" label="סרטונים" />
-          <NavLink icon={<FiInfo />} to="/about" label="אודות" />
-          <NavLink icon={<FiMail />} to="/Contact" label="השאירו פרטים" />
-        </div>
-
-        {/* לוגו - צד ימין */}
-        <Link to="/" className="order-1">
-          <img
-            src="/logos/IMG-20250516-WA0003.jpg"
-            alt="Infinity Logo"
-            className="h-24 w-auto object-contain hover:opacity-90 transition-opacity duration-300"
+        {/* תפריט רגיל למסכים גדולים */}
+        <div className="hidden lg:flex gap-12 items-center order-2">
+          <NavLink
+            icon={<FiHome />}
+            to="/"
+            label="ראשי"
+            active={location.pathname === "/"}
           />
-        </Link>
+          <NavLink
+            icon={<FiUsers />}
+            to="/Team"
+            label="הצוות שלנו"
+            active={location.pathname === "/Team"}
+          />
+          <NavLink
+            icon={<FiImage />}
+            to="/Gallery"
+            label="תמונות"
+            active={location.pathname === "/Gallery"}
+          />
+          <NavLink
+            icon={<FiVideo />}
+            to="/Videos"
+            label="סרטונים"
+            active={location.pathname === "/Videos"}
+          />
+          <NavLink
+            icon={<FiInfo />}
+            to="/about"
+            label="אודות"
+            active={location.pathname === "/about"}
+          />
+          <NavLink
+            icon={<FiMail />}
+            to="/Contact"
+            label="השאירו פרטים"
+            active={location.pathname === "/Contact"}
+          />
+        </div>
       </div>
 
       {/* תפריט צד מרחף במסכים קטנים */}
       <div
         ref={menuRef}
-        className={`fixed top-16 right-4 w-64 bg-gray-900/90 backdrop-blur-lg shadow-xl rounded-xl p-6 space-y-4 text-white z-50 transform transition-all duration-300 ${
+        className={`fixed top-20 right-6 w-64 bg-gray-900/95 backdrop-blur-md shadow-xl rounded-2xl p-6 space-y-6 text-white z-50 transform transition-all duration-300 ${
           isMenuOpen
-            ? "translate-x-0 opacity-100 mt-4"
+            ? "translate-x-0 opacity-100 pointer-events-auto"
             : "translate-x-full opacity-0 pointer-events-none"
         }`}
       >
@@ -71,51 +121,61 @@ function CustomNavbar() {
           to="/"
           label="ראשי"
           onClick={() => setIsMenuOpen(false)}
+          active={location.pathname === "/"}
         />
         <NavLink
           icon={<FiUsers />}
           to="/Team"
           label="הצוות שלנו"
           onClick={() => setIsMenuOpen(false)}
+          active={location.pathname === "/Team"}
         />
         <NavLink
           icon={<FiImage />}
           to="/Gallery"
           label="תמונות"
           onClick={() => setIsMenuOpen(false)}
+          active={location.pathname === "/Gallery"}
         />
         <NavLink
           icon={<FiVideo />}
           to="/Videos"
-          label="סירטונים"
+          label="סרטונים"
           onClick={() => setIsMenuOpen(false)}
+          active={location.pathname === "/Videos"}
         />
         <NavLink
           icon={<FiInfo />}
           to="/about"
           label="אודות"
           onClick={() => setIsMenuOpen(false)}
+          active={location.pathname === "/about"}
         />
         <NavLink
           icon={<FiMail />}
           to="/Contact"
           label="השאירו פרטים"
           onClick={() => setIsMenuOpen(false)}
+          active={location.pathname === "/Contact"}
         />
       </div>
     </nav>
   );
 }
 
-// קומפוננטת קישור עם אייקון
-function NavLink({ to, label, icon, onClick }: any) {
+function NavLink({ to, label, icon, onClick, active }: any) {
   return (
     <Link
       to={to}
       onClick={onClick}
-      className="flex items-center gap-3 text-lg hover:text-blue-400 transition"
+      className={`flex items-center gap-2 text-lg font-medium transition-colors ${
+        active
+          ? "text-blue-400 font-bold underline decoration-2 decoration-blue-400"
+          : "text-white hover:text-blue-400"
+      }`}
+      aria-current={active ? "page" : undefined}
     >
-      {icon}
+      <span className="text-xl">{icon}</span>
       {label}
     </Link>
   );

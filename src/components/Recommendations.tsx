@@ -1,48 +1,48 @@
 const Recommendations = () => {
-  // מערך של המלצות עם שם, תמונה ותיאור
   const recommendations = [
     {
       name: "יוסי כהן",
       image:
-        "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fHwy",
+        "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=500&auto=format&fit=crop&q=60",
       description: "חוויה מדהימה שעזרה לי לעבור את הגיבוש!",
     },
     {
       name: "דני לוי",
       image:
-        "https://images.unsplash.com/photo-1552058544-f2b08422138a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cGVyc29ufGVufDB8fDB8fHwy",
+        "https://images.unsplash.com/photo-1552058544-f2b08422138a?w=500&auto=format&fit=crop&q=60",
       description: "תודה רבה על התמיכה וההכנה המצוינת!",
     },
     {
       name: "נועם ישראלי",
       image:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cGVyc29ufGVufDB8fDB8fHwy",
-      description: '"הצוות היה מקצועי ועזר לי להגיע ליחידה שרציתי!"',
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop&q=60",
+      description: "הצוות היה מקצועי ועזר לי להגיע ליחידה שרציתי!",
     },
   ];
 
   return (
-    <section className="bg-gray-900 text-white p-6 rounded-lg shadow-lg mb-8">
-      <h2 className="text-3xl font-bold mb-4 text-center">המלצות</h2>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {recommendations.map((recommendation, index) => (
-          <div
-            key={index}
-            className="bg-gray-800 p-6 rounded-lg shadow-lg text-white transition duration-300 hover:scale-105 hover:bg-green-700 hover:shadow-xl"
-          >
-            <img
-              src={recommendation.image}
-              className="w-60 mx-auto mb-4"
-              alt={`בוגר ${recommendation.name}`}
-            />
-            <h3 className="text-lg font-semibold text-center mb-2">
-              {recommendation.name}
-            </h3>
-            <p className="text-sm text-gray-300 text-center">
-              {recommendation.description}
-            </p>
-          </div>
-        ))}
+    <section className="py-20 bg-[var(--bg-dark)] text-white">
+      <div className="container mx-auto px-6">
+        <h2 className="text-4xl font-extrabold mb-12 text-center gradient-text">
+          המלצות
+        </h2>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          {recommendations.map((rec, index) => (
+            <div
+              key={index}
+              className="bg-gray-900 rounded-xl shadow-lg p-8 flex flex-col items-center text-center 
+                         hover:scale-105 hover:shadow-[0_10px_30px_rgb(59,130,246,0.7)] transition-transform duration-300"
+            >
+              <img
+                src={rec.image}
+                alt={`בוגר ${rec.name}`}
+                className="w-32 h-32 rounded-full mb-6 border-4 border-[var(--primary)] object-cover"
+              />
+              <h3 className="text-2xl font-semibold mb-2">{rec.name}</h3>
+              <p className="text-gray-300 text-lg leading-relaxed">{rec.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

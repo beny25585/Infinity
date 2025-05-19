@@ -2,7 +2,7 @@ const MotivationVideo = () => {
   return (
     <>
       {/* וידאו מוטיבציה */}
-      <div className="video-container ">
+      <div className="embed-responsive embed-responsive-21by9 relative w-full overflow-hidden ">
         <iframe
           className="w-full h-90 rounded-xl shadow-lg"
           src="https://www.youtube.com/embed/-keL1hpquU0"
