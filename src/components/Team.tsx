@@ -1,6 +1,6 @@
 const Team = () => {
   return (
-    <section className="py-20 bg-[var(--bg-dark)] text-white">
+    <section className=" bg-[var(--bg-dark)] text-white">
       <div className="container mx-auto px-6">
         <h2 className="text-4xl font-extrabold mb-12 text-center gradient-text">
           הצוות שלנו
@@ -13,9 +13,12 @@ const Team = () => {
               alt="דניאל חסון"
               className="rounded-full w-48 h-48 object-cover mb-6 border-4 border-[var(--primary)]"
             />
-            <h3 className="text-2xl font-semibold mb-2 text-center">דניאל חסון</h3>
+            <h3 className="text-2xl font-semibold mb-2 text-center">
+              דניאל חסון
+            </h3>
             <p className="text-gray-400 text-center mb-4 leading-relaxed">
-              מאמן ותיק בתחום הכושר הקרבי, מנהל מרכזים להכנה לגיבושים ויוצא יחידה קרבית.
+              מאמן ותיק בתחום הכושר הקרבי, מנהל מרכזים להכנה לגיבושים ויוצא
+              יחידה קרבית.
             </p>
             <a
               href="#"
@@ -30,11 +33,14 @@ const Team = () => {
             <img
               src="https://images.unsplash.com/photo-1667890786327-d28da55b0e57?w=500&auto=format&fit=crop&q=60"
               alt="יובל עילם"
-              className="rounded-full w-48 h-48 object-cover mb-6 border-4 border-[var(--primary)]"
+              className="rounded-full w-48 h-48 object-cover object-top mb-6 border-4 border-[var(--primary)]"
             />
-            <h3 className="text-2xl font-semibold mb-2 text-center">יובל עילם</h3>
+            <h3 className="text-2xl font-semibold mb-2 text-center">
+              יובל עילם
+            </h3>
             <p className="text-gray-400 text-center mb-4 leading-relaxed">
-              מראשוני התחום בארץ, הכין מאות צעירים ליחידות עילית, עם גישה מנטלית ופיזית ייחודית.
+              מראשוני התחום בארץ, הכין מאות צעירים ליחידות עילית, עם גישה מנטלית
+              ופיזית ייחודית.
             </p>
           </div>
 
@@ -45,9 +51,13 @@ const Team = () => {
               alt="נועה דביר"
               className="rounded-full w-48 h-48 object-cover mb-6 border-4 border-[var(--primary)]"
             />
-            <h3 className="text-2xl font-semibold mb-2 text-center">נועה דביר</h3>
+            <h3 className="text-2xl font-semibold mb-2 text-center">
+              נועה דביר
+            </h3>
             <p className="text-gray-400 text-center mb-4 leading-relaxed">
-              מאמנת כושר קרבי עם ניסיון של מעל 8 שנים בהכנה לגיבושים ויחידות מיוחדות. בוגרת יחידת חי"ר לוחמת, מוסמכת באימון פונקציונלי ואימון מנטלי ללחץ.
+              מאמנת כושר קרבי עם ניסיון של מעל 8 שנים בהכנה לגיבושים ויחידות
+              מיוחדות. בוגרת יחידת חי"ר לוחמת, מוסמכת באימון פונקציונלי ואימון
+              מנטלי ללחץ.
             </p>
           </div>
         </div>

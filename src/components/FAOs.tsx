@@ -6,7 +6,7 @@ const FAOs = () => {
   ];
 
   return (
-    <section className="bg-[var(--bg-dark)] text-white py-20 px-6">
+    <section className="bg-[var(--bg-dark)] text-white px-6">
       <h2 className="text-center text-4xl font-extrabold text-[var(--primary)] mb-12 gradient-text">
         שאלות נפוצות
       </h2>

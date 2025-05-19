@@ -14,7 +14,7 @@ const Contact = () => {
   };
 
   return (
-    <section className="bg-[var(--bg-dark)] text-white py-20 px-6">
+    <section className="bg-[var(--bg-dark)] text-white px-6">
       <h2 className="text-4xl font-extrabold text-center mb-12 gradient-text">
         השאירו פרטים
       </h2>
@@ -48,7 +48,26 @@ const Contact = () => {
         ></textarea>
         <button
           type="submit"
-          className="w-full py-4 bg-blue-600 hover:bg-blue-700 rounded-xl text-white font-bold text-lg transition-shadow shadow-lg hover:shadow-[0_0_15px_#3b82f6]"
+          className="
+    w-full
+    py-4
+    bg-gradient-to-r from-purple-600 via-pink-500 to-red-500
+    rounded-3xl
+    text-white
+    font-extrabold
+    text-lg
+    shadow-lg
+    hover:shadow-2xl
+    hover:scale-105
+    transform
+    transition
+    duration-300
+    ease-in-out
+    focus:outline-none
+    focus:ring-4
+    focus:ring-pink-400
+    focus:ring-opacity-50
+  "
         >
           שלח
         </button>

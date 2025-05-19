@@ -21,7 +21,7 @@ const Recommendations = () => {
   ];
 
   return (
-    <section className="py-20 bg-[var(--bg-dark)] text-white">
+    <section className=" bg-[var(--bg-dark)] text-white">
       <div className="container mx-auto px-6">
         <h2 className="text-4xl font-extrabold mb-12 text-center gradient-text">
           המלצות
@@ -39,7 +39,9 @@ const Recommendations = () => {
                 className="w-32 h-32 rounded-full mb-6 border-4 border-[var(--primary)] object-cover"
               />
               <h3 className="text-2xl font-semibold mb-2">{rec.name}</h3>
-              <p className="text-gray-300 text-lg leading-relaxed">{rec.description}</p>
+              <p className="text-gray-300 text-lg leading-relaxed">
+                {rec.description}
+              </p>
             </div>
           ))}
         </div>

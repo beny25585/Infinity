@@ -3,15 +3,13 @@ import { Link, useLocation } from "react-router-dom";
 import {
   FiHome,
   FiUsers,
-  FiImage,
   FiInfo,
   FiMail,
-  FiVideo,
 } from "react-icons/fi";
 import { Sling as Hamburger } from "hamburger-react";
 
 function CustomNavbar() {
-  const menuRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -20,9 +18,9 @@ function CustomNavbar() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
         setShow(false);
+        setIsMenuOpen(false);
       } else {
         setShow(true);
       }
@@ -34,7 +32,10 @@ function CustomNavbar() {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+      if (
+        wrapperRef.current &&
+        !wrapperRef.current.contains(event.target as Node)
+      ) {
         setIsMenuOpen(false);
       }
     };
@@ -42,7 +43,6 @@ function CustomNavbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // סגור תפריט כשהדף משתנה
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location]);
@@ -55,17 +55,6 @@ function CustomNavbar() {
       style={{ height: 80 }}
     >
       <div className="flex items-center justify-between max-w-7xl mx-auto h-full px-6 lg:px-12">
-        {/* כפתור המבורגר */}
-        <div className="order-3 lg:hidden">
-          <Hamburger
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-            toggled={isMenuOpen}
-            toggle={setIsMenuOpen}
-            size={28}
-            color="#3b82f6"
-          />
-        </div>
-
         {/* תפריט רגיל למסכים גדולים */}
         <div className="hidden lg:flex gap-12 items-center order-2">
           <NavLink
@@ -80,18 +69,7 @@ function CustomNavbar() {
             label="הצוות שלנו"
             active={location.pathname === "/Team"}
           />
-          <NavLink
-            icon={<FiImage />}
-            to="/Gallery"
-            label="תמונות"
-            active={location.pathname === "/Gallery"}
-          />
-          <NavLink
-            icon={<FiVideo />}
-            to="/Videos"
-            label="סרטונים"
-            active={location.pathname === "/Videos"}
-          />
+
           <NavLink
             icon={<FiInfo />}
             to="/about"
@@ -105,59 +83,55 @@ function CustomNavbar() {
             active={location.pathname === "/Contact"}
           />
         </div>
-      </div>
 
-      {/* תפריט צד מרחף במסכים קטנים */}
-      <div
-        ref={menuRef}
-        className={`fixed top-20 right-6 w-64 bg-gray-900/95 backdrop-blur-md shadow-xl rounded-2xl p-6 space-y-6 text-white z-50 transform transition-all duration-300 ${
-          isMenuOpen
-            ? "translate-x-0 opacity-100 pointer-events-auto"
-            : "translate-x-full opacity-0 pointer-events-none"
-        }`}
-      >
-        <NavLink
-          icon={<FiHome />}
-          to="/"
-          label="ראשי"
-          onClick={() => setIsMenuOpen(false)}
-          active={location.pathname === "/"}
-        />
-        <NavLink
-          icon={<FiUsers />}
-          to="/Team"
-          label="הצוות שלנו"
-          onClick={() => setIsMenuOpen(false)}
-          active={location.pathname === "/Team"}
-        />
-        <NavLink
-          icon={<FiImage />}
-          to="/Gallery"
-          label="תמונות"
-          onClick={() => setIsMenuOpen(false)}
-          active={location.pathname === "/Gallery"}
-        />
-        <NavLink
-          icon={<FiVideo />}
-          to="/Videos"
-          label="סרטונים"
-          onClick={() => setIsMenuOpen(false)}
-          active={location.pathname === "/Videos"}
-        />
-        <NavLink
-          icon={<FiInfo />}
-          to="/about"
-          label="אודות"
-          onClick={() => setIsMenuOpen(false)}
-          active={location.pathname === "/about"}
-        />
-        <NavLink
-          icon={<FiMail />}
-          to="/Contact"
-          label="השאירו פרטים"
-          onClick={() => setIsMenuOpen(false)}
-          active={location.pathname === "/Contact"}
-        />
+        {/* תפריט צד וכפתור המבורגר למסכים קטנים */}
+        <div ref={wrapperRef} className="lg:hidden order-3 relative">
+          <Hamburger
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            toggled={isMenuOpen}
+            toggle={setIsMenuOpen}
+            size={28}
+            color="#3b82f6"
+          />
+
+          <div
+            className={`fixed top-20 right-6 w-64 bg-gray-900/95 backdrop-blur-md shadow-xl rounded-2xl p-6 space-y-6 text-white z-50 transform transition-all duration-300 ${
+              isMenuOpen
+                ? "translate-x-0 opacity-100 pointer-events-auto"
+                : "translate-x-full opacity-0 pointer-events-none"
+            }`}
+          >
+            <NavLink
+              icon={<FiHome />}
+              to="/"
+              label="ראשי"
+              active={location.pathname === "/"}
+              onClick={() => setIsMenuOpen(false)}
+            />
+            <NavLink
+              icon={<FiUsers />}
+              to="/Team"
+              label="הצוות שלנו"
+              active={location.pathname === "/Team"}
+              onClick={() => setIsMenuOpen(false)}
+            />
+
+            <NavLink
+              icon={<FiInfo />}
+              to="/about"
+              label="אודות"
+              active={location.pathname === "/about"}
+              onClick={() => setIsMenuOpen(false)}
+            />
+            <NavLink
+              icon={<FiMail />}
+              to="/Contact"
+              label="השאירו פרטים"
+              active={location.pathname === "/Contact"}
+              onClick={() => setIsMenuOpen(false)}
+            />
+          </div>
+        </div>
       </div>
     </nav>
   );
