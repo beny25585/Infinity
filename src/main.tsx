@@ -27,6 +27,7 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/about" element={<About />} />
         <Route path="/team" element={<Team />} />
         <Route path="/FAQs" element={<FAOs />} />
+
       </Routes>
     </Layout>
     <Footer />

@@ -1,12 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import {
-  FiHome,
-  FiUsers,
-  FiInfo,
-  FiMail,
-} from "react-icons/fi";
+import { FiHome, FiUsers, FiInfo, FiMail } from "react-icons/fi";
 import { Sling as Hamburger } from "hamburger-react";
+import { HiOutlinePhotograph } from "react-icons/hi";
+import GalleryMobile from "../pages/Gallery";
 
 function CustomNavbar() {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -37,6 +34,7 @@ function CustomNavbar() {
         !wrapperRef.current.contains(event.target as Node)
       ) {
         setIsMenuOpen(false);
+        setShow(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -68,6 +66,12 @@ function CustomNavbar() {
             to="/Team"
             label="הצוות שלנו"
             active={location.pathname === "/Team"}
+          />
+          <NavLink
+            icon={<HiOutlinePhotograph />}
+            to="/gallery"
+            label="גלריה"
+            active={location.pathname === "/gallery"}
           />
 
           <NavLink
@@ -113,6 +117,13 @@ function CustomNavbar() {
               to="/Team"
               label="הצוות שלנו"
               active={location.pathname === "/Team"}
+              onClick={() => setIsMenuOpen(false)}
+            />
+            <NavLink
+              icon={<HiOutlinePhotograph />}
+              to="/gallery"
+              label="גלריה"
+              active={location.pathname === "/gallery"}
               onClick={() => setIsMenuOpen(false)}
             />
 

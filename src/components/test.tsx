@@ -1,32 +1,58 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-
-function CollapsibleExample() {
+import { useState } from "react";
+const ContactForm = () => {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    phoneNumber: "",
+    email: "",
+    message: "",
+  });
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+  };
   return (
-    <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary ">
-      <Container>
-        <Navbar.Brand href="/"
-         className='text-2xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-pink-400 to-cyan-400'>
-        INFINITY
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto ">
-            <Nav.Link href="/"> ראשי</Nav.Link>
-            <Nav.Link href="/Team">הצוות שלנו</Nav.Link>
-            <Nav.Link href="/about">אודות</Nav.Link>
-            <Nav.Link href="/contact">צור קשר</Nav.Link>
-            <Nav.Link href="/FAQs">שאלות נפוצות</Nav.Link>
-           
-          </Nav>
-          <Nav>
-            <Nav.Link href="/Contact" className="btn btn-danger">השאירו פרטים</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <div className="contact-form">
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="fullName"
+          placeholder="Full Name"
+          value={formData.fullName}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="tel"
+          name="phoneNumber"
+          placeholder="Phone Number"
+          value={formData.phoneNumber}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+        <textarea
+          name="message"
+          placeholder="Message"
+          value={formData.message}
+          onChange={handleChange}
+          required
+        />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
-}
-
-export default CollapsibleExample;
+};
+export default ContactForm;
