@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import { FiHome, FiUsers, FiInfo, FiMail } from "react-icons/fi";
 import { Sling as Hamburger } from "hamburger-react";
 import { HiOutlinePhotograph } from "react-icons/hi";
-import GalleryMobile from "../pages/Gallery";
 
 function CustomNavbar() {
   const wrapperRef = useRef<HTMLDivElement>(null);
