@@ -7,7 +7,7 @@ const Team = () => {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {/* מאמן 1 */}
-          <div className="bg-gray-900 rounded-xl shadow-lg hover:shadow-[0_8px_30px_rgb(0,0,0,0.7)] transition-shadow duration-300 p-6 flex flex-col items-center">
+          <div className="bg-green-900 rounded-xl shadow-lg hover:shadow-[0_8px_30px_rgb(0,0,0,0.7)] transition-shadow duration-300 p-6 flex flex-col items-center">
             <img
               src="https://images.unsplash.com/photo-1628935291759-bbaf33a66dc6?w=500&auto=format&fit=crop&q=60"
               alt="דניאל חסון"
@@ -29,7 +29,7 @@ const Team = () => {
           </div>
 
           {/* מאמן 2 */}
-          <div className="bg-gray-900 rounded-xl shadow-lg hover:shadow-[0_8px_30px_rgb(0,0,0,0.7)] transition-shadow duration-300 p-6 flex flex-col items-center">
+          <div className="bg-green-900 rounded-xl shadow-lg hover:shadow-[0_8px_30px_rgb(0,0,0,0.7)] transition-shadow duration-300 p-6 flex flex-col items-center">
             <img
               src="https://images.unsplash.com/photo-1667890786327-d28da55b0e57?w=500&auto=format&fit=crop&q=60"
               alt="יובל עילם"
@@ -45,7 +45,7 @@ const Team = () => {
           </div>
 
           {/* מאמן 3 */}
-          <div className="bg-gray-900 rounded-xl shadow-lg hover:shadow-[0_8px_30px_rgb(0,0,0,0.7)] transition-shadow duration-300 p-6 flex flex-col items-center">
+          <div className="bg-green-900 rounded-xl shadow-lg hover:shadow-[0_8px_30px_rgb(0,0,0,0.7)] transition-shadow duration-300 p-6 flex flex-col items-center">
             <img
               src="https://images.unsplash.com/photo-1518609571773-39b7d303a87b?w=500&auto=format&fit=crop&q=60"
               alt="נועה דביר"

@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <section className="relative py-5  bg-gradient-to-br from-gray-900 via-black to-gray-800 overflow-hidden text-white">
+    <section className="relative py-5 bg-gradient-to-br from-blue-50 via-white to-blue-100 overflow-hidden text-gray-800">
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 pointer-events-none"></div>
 
       <div className="relative container mx-auto px-6 max-w-7xl z-10">
@@ -14,8 +14,8 @@ export default function About() {
               />
             </div>
 
-            <div className="hidden md:flex absolute -bottom-14 -right-14 w-56 h-56 bg-gradient-to-tr from-purple-600 to-pink-500 rounded-3xl shadow-lg items-center justify-center animate-pulse">
-              <div className="bg-black bg-opacity-70 rounded-3xl w-52 h-52 flex flex-col items-center justify-center text-center text-white">
+            <div className="hidden md:flex absolute -bottom-14 -right-14 w-56 h-56 bg-gradient-to-tr from-blue-400 to-blue-600 rounded-3xl shadow-lg items-center justify-center animate-pulse">
+              <div className="bg-white bg-opacity-90 rounded-3xl w-52 h-52 flex flex-col items-center justify-center text-center text-blue-800">
                 <span className="text-6xl font-extrabold tracking-tight drop-shadow-lg">
                   10+
                 </span>
@@ -26,18 +26,18 @@ export default function About() {
 
           <div className="md:w-1/2 space-y-10">
             <h2 className="text-5xl font-extrabold leading-tight tracking-wide select-none">
-              <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent animate-gradient-x">
+              <span className="bg-gradient-to-r from-blue-600 via-sky-500 to-teal-400 bg-clip-text text-transparent animate-gradient-x">
                 אינפיניטי פיטנס
               </span>{" "}
               - מי אנחנו?
             </h2>
 
-            <p className="text-gray-300 text-lg leading-relaxed max-w-xl drop-shadow-md">
+            <p className="text-gray-700 text-lg leading-relaxed max-w-xl drop-shadow-sm">
               אנחנו מאמינים שכל אחד יכול להגיע לרמות ביצוע גבוהות יותר ממה שהוא
               חושב שהוא מסוגל. בכושר קרבי Infinity, אנחנו שמים דגש על פיתוח
               מנטלי לצד פיתוח פיזי.
             </p>
-            <p className="text-gray-300 text-lg leading-relaxed max-w-xl drop-shadow-md">
+            <p className="text-gray-700 text-lg leading-relaxed max-w-xl drop-shadow-sm">
               האימונים שלנו נבנו על ידי יוצאי יחידות מובחרות ומשלבים שיטות
               מתקדמות שמטרתן לדחוף אתכם הרחק מאזור הנוחות. כל אחד מתאמן בקצב
               שלו, אבל אף אחד לא נשאר במקום.
@@ -68,15 +68,15 @@ export default function About() {
               ].map(({ id, title, desc }) => (
                 <div
                   key={id}
-                  className="flex flex-col p-6 bg-gradient-to-br from-black/70 to-black/50 rounded-3xl shadow-xl hover:shadow-2xl transition-shadow duration-500 cursor-default group"
+                  className="flex flex-col p-6 bg-white bg-opacity-90 rounded-3xl shadow-xl hover:shadow-2xl transition-shadow duration-500 cursor-default group"
                 >
-                  <h3 className="flex items-center gap-4 text-2xl font-bold text-white mb-3 select-none">
-                    <span className="flex items-center justify-center w-12 h-12 rounded-full bg-pink-500 text-white font-extrabold text-xl drop-shadow-lg group-hover:scale-110 transform transition-transform duration-300">
+                  <h3 className="flex items-center gap-4 text-2xl font-bold text-blue-800 mb-3 select-none">
+                    <span className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500 text-white font-extrabold text-xl drop-shadow-lg group-hover:scale-110 transform transition-transform duration-300">
                       {id}
                     </span>
                     {title}
                   </h3>
-                  <p className="text-gray-300 text-base leading-relaxed drop-shadow-sm">
+                  <p className="text-gray-600 text-base leading-relaxed drop-shadow-sm">
                     {desc}
                   </p>
                 </div>

@@ -8,7 +8,7 @@ import Videos from "./pages/Videos";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Team from "./components/Team";
-import FAOs from "./components/FAOs";
+import FAOs from "./components/FAQs";
 import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Layout from "./components/Layout";
@@ -17,6 +17,7 @@ import Home from "./components/Home";
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
     <NavBar />
+
     <Layout>
       <Routes>
         <Route path="/" element={<App />} />
@@ -27,7 +28,6 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/about" element={<About />} />
         <Route path="/team" element={<Team />} />
         <Route path="/FAQs" element={<FAOs />} />
-
       </Routes>
     </Layout>
     <Footer />

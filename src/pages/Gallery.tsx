@@ -14,13 +14,13 @@ const GalleryMobile = () => {
   const [selected, setSelected] = useState<string | null>(null);
 
   return (
-    <div className="min-h-screen p-4 font-hebrew direction-rtl">
+    <div className="bg-green-100 min-h-screen p-4 font-hebrew direction-rtl">
       {/* כותרת מונפשת עם אייקון */}
       <motion.div
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ type: "spring", stiffness: 100, damping: 10 }}
-        className="flex items-center justify-center gap-3 text-primary -translate-y-10 mb-6"
+        className="flex items-center justify-center gap-3 text-primary  mb-6"
       >
         <div className="top-0 blue-100 ">
           <HiOutlinePhotograph className="w-10 h-10 text-blue-600 animate-pulse" />

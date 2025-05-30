@@ -7,7 +7,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white text-center py-8 shadow-lg ">
+    <footer className="bg-green-400 text-white text-center py-8 shadow-lg ">
       <div className="flex justify-center gap-6 mb-4 text-2xl">
         <a
           href="https://www.facebook.com/share/15Q4Ue6CT8/?mibextid=wwXIfr"
@@ -30,7 +30,7 @@ const Footer = () => {
           href="https://www.tiktok.com/@infinitykosherkravi?_t=ZN-8wOaMspnRLi&_r=1"
           target="_blank"
           rel="noreferrer"
-          style={{ color: "#69C9D0" }}
+          className="text-transparent bg-clip-text bg-gradient-to-r from-[#FE2C55] via-[#25F4EE] to-[#000000] font-bold"
         >
           <FontAwesomeIcon icon={faTiktok} />
         </a>

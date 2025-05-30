@@ -28,17 +28,20 @@ function CustomNavbar() {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+      if (!isMenuOpen) return;
       if (
         wrapperRef.current &&
         !wrapperRef.current.contains(event.target as Node)
       ) {
+        console.log(wrapperRef.current);
+        console.log(!wrapperRef.current.contains(event.target as Node));
         setIsMenuOpen(false);
         setShow(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  }, [isMenuOpen]);
 
   useEffect(() => {
     setIsMenuOpen(false);
@@ -46,7 +49,7 @@ function CustomNavbar() {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-transform duration-300 bg-gradient-to-r from-gray-900 via-black to-gray-900 shadow-lg ${
+      className={`fixed top-0 w-full z-50 transition-transform duration-300 bg-blue-300  shadow-lg ${
         show ? "translate-y-0" : "-translate-y-full"
       }`}
       style={{ height: 80 }}
