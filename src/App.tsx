@@ -11,25 +11,21 @@ import PromoBanner from "./components/PromoBanner";
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col bg-white text-black font-hebrew direction-rtl">
+    <div className="min-h-screen flex flex-col text-black font-hebrew direction-rtl">
       <main className="mx-auto flex-grow">
         <div className="container-fluid">
           {/* logo/home */}
-          <section className="bg-green-100 shadow-lg p-4 sm:p-6 lg:p-10">
+          <section className=" p-4 sm:p-6 lg:p-10 ">
             <Home />
           </section>
         </div>
 
         <PromoBanner />
 
-        <div className="container-fluid">
-          {/* סרטון מוטיבציה */}
-          <section className="bg-green-100 shadow-lg p-4 sm:p-6 lg:p-10">
-            <MotivationVideo />
-          </section>
-        </div>
+        {/* סרטון מוטיבציה */}
+        <MotivationVideo />
 
-        <section className="bg-green-100 shadow-lg p-6 sm:p-8 lg:p-10">
+        <section className="pt-8 shadow-lg p-6 sm:p-8 lg:p-10">
           <Products />
         </section>
 

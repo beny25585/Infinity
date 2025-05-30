@@ -7,7 +7,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-green-400 text-white text-center py-8 shadow-lg ">
+    <footer className="bg-black text-white text-center py-8 shadow-lg ">
       <div className="flex justify-center gap-6 mb-4 text-2xl">
         <a
           href="https://www.facebook.com/share/15Q4Ue6CT8/?mibextid=wwXIfr"

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FiHome, FiUsers, FiInfo, FiMail } from "react-icons/fi";
 import { Sling as Hamburger } from "hamburger-react";
@@ -33,8 +33,6 @@ function CustomNavbar() {
         wrapperRef.current &&
         !wrapperRef.current.contains(event.target as Node)
       ) {
-        console.log(wrapperRef.current);
-        console.log(!wrapperRef.current.contains(event.target as Node));
         setIsMenuOpen(false);
         setShow(false);
       }
@@ -49,14 +47,14 @@ function CustomNavbar() {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-transform duration-300 bg-blue-300  shadow-lg ${
+      className={`fixed top-0 w-full z-50 transition-transform duration-300 bg-gray-900 shadow-lg ${
         show ? "translate-y-0" : "-translate-y-full"
       }`}
       style={{ height: 80 }}
     >
       <div className="flex items-center justify-between max-w-7xl mx-auto h-full px-6 lg:px-12">
         {/* תפריט רגיל למסכים גדולים */}
-        <div className="hidden lg:flex gap-12 items-center order-2">
+        <div className="hidden lg:flex gap-12 items-center">
           <NavLink
             icon={<FiHome />}
             to="/"
@@ -75,7 +73,6 @@ function CustomNavbar() {
             label="גלריה"
             active={location.pathname === "/gallery"}
           />
-
           <NavLink
             icon={<FiInfo />}
             to="/about"
@@ -91,17 +88,16 @@ function CustomNavbar() {
         </div>
 
         {/* תפריט צד וכפתור המבורגר למסכים קטנים */}
-        <div ref={wrapperRef} className="lg:hidden order-3 relative">
+        <div ref={wrapperRef} className="text-white lg:hidden">
           <Hamburger
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             toggled={isMenuOpen}
             toggle={setIsMenuOpen}
             size={28}
-            color="#3b82f6"
           />
 
           <div
-            className={`fixed top-20 right-6 w-64 bg-gray-900/95 backdrop-blur-md shadow-xl rounded-2xl p-6 space-y-6 text-white z-50 transform transition-all duration-300 ${
+            className={`fixed top-20 right-6 w-64 bg-gray-800 text-white shadow-xl rounded-2xl p-6 space-y-6 z-50 transition-all duration-300 ${
               isMenuOpen
                 ? "translate-x-0 opacity-100 pointer-events-auto"
                 : "translate-x-full opacity-0 pointer-events-none"
@@ -128,7 +124,6 @@ function CustomNavbar() {
               active={location.pathname === "/gallery"}
               onClick={() => setIsMenuOpen(false)}
             />
-
             <NavLink
               icon={<FiInfo />}
               to="/about"
@@ -150,17 +145,28 @@ function CustomNavbar() {
   );
 }
 
-function NavLink({ to, label, icon, onClick, active }: any) {
+function NavLink({
+  to,
+  label,
+  icon,
+  onClick,
+  active,
+}: {
+  to: string;
+  label: string;
+  icon: React.ReactElement;
+  onClick?: () => void;
+  active: boolean;
+}) {
   return (
     <Link
       to={to}
       onClick={onClick}
-      className={`flex items-center gap-2 text-lg font-medium transition-colors ${
+      className={`flex items-center gap-2 text-lg transition-colors font-semibold ${
         active
-          ? "text-blue-400 font-bold underline decoration-2 decoration-blue-400"
-          : "text-white hover:text-blue-400"
+          ? "text-blue-400 underline underline-offset-4 decoration-blue-400"
+          : "text-gray-200 hover:text-blue-300"
       }`}
-      aria-current={active ? "page" : undefined}
     >
       <span className="text-xl">{icon}</span>
       {label}

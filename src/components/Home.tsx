@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <section>
-      <div className="relative container mx-auto max-w-7xl ">
-        {/* לוגו למעלה */}
-        <div className="flex justify-center ">
+    <section className="bg-gradient-to-br from-green-900 via-green-800 to-green-700  pt-8 pb-12  text-white">
+      <div className="container  max-w-7xl px-6 lg:px-12">
+        {/* לוגו בראש העמוד */}
+        <div className="flex justify-center mb-12">
           <Link to="/">
             <img
               src="/logos/IMG-20250516-WA0004.jpg"
@@ -16,24 +16,24 @@ const Home = () => {
         </div>
 
         {/* כותרת פתיחה */}
-        <div className="text-center space-y-6">
-          <h1 className="text-5xl font-extrabold tracking-wide leading-tight">
-            <span className=" bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-sky-500 to-teal-400">
-            INFINITY KOSHER KRAVI MENTALI
-            אינפיניטי כושר קרבי מנטלי
+        <div className="text-center space-y-6 border-b border-green-600 max-w-xl mx-auto">
+          <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight drop-shadow-md">
+            <span className="block text-blue-400">
+              INFINITY KOSHER KRAVI MENTALI
             </span>
+            <span className="block text-white">אינפיניטי כושר קרבי מנטלי</span>
           </h1>
-          <p className="text-xl text-black max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-100 max-w-2xl mx-auto leading-relaxed">
             כאן תוכלו למצוא את כל המידע על האימונים שלנו, המאמנים, והפעילויות
             המיוחדות. זה המקום להתחיל בו את השינוי שלכם.
           </p>
         </div>
 
-        {/* בלוק קריאה לפעולה */}
+        {/* כפתור קריאה לפעולה */}
         <div className="mt-12 flex justify-center">
           <Link
             to="/Contact"
-            className="px-10 py-4 bg-gradient-to-r from-blue-600 via-sky-500 to-green-400 rounded-full text-white font-bold text-lg shadow-lg hover:scale-105 hover:shadow-2xl transform transition-all duration-300"
+            className="px-8 py-4 bg-black text-center text-white font-semibold rounded-lg shadow-lg hover:bg-gray-800 hover:scale-105 transition-transform duration-300"
           >
             התחילו את המסע שלכם
           </Link>

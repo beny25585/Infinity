@@ -70,8 +70,8 @@ const Products = () => {
   ];
 
   return (
-    <section className="py-12 px-4 bg-gradient-to-br from-blue-50 to-white">
-  <h2 className="text-4xl font-bold text-center text-blue-800 mb-12">
+    <section className=" py-12 px-4 -white">
+  <h2 className="text-4xl font-bold text-center text-white mb-12">
     המוצרים שלנו
   </h2>
 
@@ -79,7 +79,7 @@ const Products = () => {
     {items.map((item, index) => (
       <div
         key={index}
-        className="bg-white rounded-3xl shadow-xl p-8 text-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 border border-gray-100"
+        className="bg-stone-900 rounded-3xl shadow-xl p-8 text-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 border border-gray-100"
       >
         <div className="flex justify-center mb-6">
           <FontAwesomeIcon
@@ -87,10 +87,10 @@ const Products = () => {
             className="text-blue-600 text-6xl drop-shadow-sm"
           />
         </div>
-        <h3 className="text-2xl font-semibold text-gray-800 mb-3">
+        <h3 className="text-2xl font-semibold text-white mb-3">
           {item.title}
         </h3>
-        <p className="text-gray-600 leading-relaxed">{item.description}</p>
+        <p className="text-white leading-relaxed">{item.description}</p>
       </div>
     ))}
   </div>

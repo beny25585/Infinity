@@ -1,13 +1,18 @@
-const MotivationVideo = () => {
+import React from "react";
+
+const MotivationVideo: React.FC = () => {
   return (
-    <div className="relative w-full pt-[56.25%] rounded-xl shadow-lg overflow-hidden">
-      <iframe
-        className="absolute top-0 left-0 w-full h-full rounded-xl"
-        title="סרטון מוטיבציה"
-        allowFullScreen
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      ></iframe>
-    </div>
+    <section className="relative w-full overflow-hidden">
+      <div className="relative aspect-video w-full">
+        <iframe
+          className="absolute top-0 left-0 w-full h-full"
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&loop=1&playlist=dQw4w9WgXcQ&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1"
+          allow="autoplay; fullscreen"
+          allowFullScreen
+          title="Motivation Video"
+        />
+      </div>
+    </section>
   );
 };
 
