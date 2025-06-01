@@ -1,10 +1,59 @@
-import { useState } from "react";
-import { FaUser, FaPhone, FaComments } from "react-icons/fa";
+import React, { useState } from "react";
+import { Mail, User, MessageSquare, Send, Phone } from "lucide-react";
 
-const Contact = () => {
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [message, setMessage] = useState("");
+interface FormData {
+  name: string;
+  phone: string;
+  email: string;
+  message: string;
+}
+
+interface FormErrors {
+  name?: string;
+  phone?: string;
+  email?: string;
+  message?: string;
+}
+
+const Contact: React.FC = () => {
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {};
+
+    if (!formData.name.trim()) {
+      newErrors.name = "שם הוא שדה חובה";
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = "אימייל הוא שדה חובה";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "אנא הכנס כתובת אימייל תקינה";
+    }
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = "מספר טלפון הוא שדה חובה";
+    } else if (
+      !/^[\+]?[\d\s\-\(\)]{10,}$/.test(formData.phone.replace(/\s/g, ""))
+    ) {
+      newErrors.phone = "אנא הכנס מספר טלפון תקין";
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = "הודעה היא שדה חובה";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const formatPhone = (e: string) => {
     let cleaned = e.replace(/\D/g, "");
@@ -16,12 +65,35 @@ const Contact = () => {
     return cleaned;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    // Clear error when user starts typing
+    if (errors[name as keyof FormErrors]) {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: undefined,
+      }));
+    }
+  };
+
+  const handleSubmit = async () => {
+    if (!validateForm()) return;
+
+    setIsSubmitting(true);
+
     try {
       const body = JSON.stringify({
-        name: name,
-        phone: formatPhone(phone),
+        name: formData.name,
+        phone: formatPhone(formData.phone),
+        email: formData.email,
+        message: formData.message,
         message_type: "submission_success",
         api_key: "0548898564",
       });
@@ -31,79 +103,188 @@ const Contact = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        
         body: body,
       });
 
       const result = await res.json();
 
       if (res.ok) {
-        alert("הטופס נשלח בהצלחה!");
-        setName("");
-        setPhone("");
-        setMessage("");
+        setIsSubmitted(true);
+        setIsSubmitting(false);
+
+        // Auto-reset form after success message
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setFormData({ name: "", email: "", phone: "", message: "" });
+        }, 3000);
       } else {
         alert("אירעה שגיאה בשליחת הטופס: " + JSON.stringify(result));
+        setIsSubmitting(false);
       }
     } catch (error) {
       alert("שגיאה ברשת, אנא נסה שוב.");
       console.error(error);
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <section className="flex flex-col items-center justify-center py-12 mx-auto px-6 max-w-7xl z-10">
+    <section
+      className="flex flex-col items-center justify-center py-12 mx-auto  max-w-7xl z-10"
+      dir="rtl"
+    >
       <h2 className="text-4xl font-extrabold mb-12 text-center gradient-text text-black">
         צרו קשר
       </h2>
 
-      <form
-        onSubmit={handleSubmit}
-        className="w-full max-w-2xl flex flex-col gap-6"
-      >
-        <div className="flex items-center gap-3  rounded-xl border border-black-900 p-4">
-          <FaUser className="text-black text-xl" />
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="שם מלא"
-            required
-            className="w-full  text-black placeholder-black-400 outline-none"
-          />
+      {isSubmitted ? (
+        <div className="text-center py-8 w-full max-w-2xl">
+          <div className="w-16 h-16  rounded-full flex items-center justify-center mx-auto mb-4">
+            <Send className="w-8 h-8 text-green-600 px-6" />
+          </div>
+          <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            ההודעה נשלחה!
+          </h3>
+          <p className="text-gray-600">תודה רבה! נחזור אליכם בהקדם.</p>
         </div>
+      ) : (
+        <div className="w-full max-w-2xl flex flex-col gap-6">
+          {/* Name Field */}
+          <div>
+            <label
+              htmlFor="name"
+              className="block text-sm text-black font-medium text-gray-700 mb-2 text-right"
+            >
+              <User className="w-4 h-4 inline ml-2" />
+              שם מלא
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+              className={`w-full px-4 py-3 bg-white border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-right ${
+                errors.name ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
+              placeholder="הכנס את שמך המלא"
+            />
+            {errors.name && (
+              <p className="mt-1 text-sm text-red-600 text-right">
+                {errors.name}
+              </p>
+            )}
+          </div>
 
-        <div className="flex items-center gap-3 rounded-xl border border-black-900 p-4  direction-rtl">
-          <FaPhone className="text-black text-xl" />
-          <input
-            type="tel"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            placeholder="מספר טלפון"
-            required
-            className="w-full text-black placeholder-black-400 outline-none text-right"
-          />
+          {/* Email Field */}
+          <div>
+            <label
+              htmlFor="email"
+              className="block text-sm text-black font-medium text-gray-700 mb-2 text-right"
+            >
+              <Mail className="w-4 h-4 inline ml-2" />
+              אימייל
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              className={`w-full px-4 py-3 bg-white border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-right ${
+                errors.email ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
+              placeholder="מה האימייל שלך?"
+            />
+            {errors.email && (
+              <p className="mt-1 text-sm text-red-600 text-right">
+                {errors.email}
+              </p>
+            )}
+          </div>
+
+          {/* Phone Field */}
+          <div>
+            <label
+              htmlFor="phone"
+              className="block text-sm font-medium text-black mb-2 text-right"
+            >
+              <Phone className="w-4 h-4 inline ml-2" />
+              טלפון
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              value={formData.phone}
+              onChange={handleInputChange}
+              className={`w-full px-4 py-3 bg-white border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-right ${
+                errors.phone ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
+              placeholder="הכנס את מספר הטלפון שלך"
+            />
+            {errors.phone && (
+              <p className="mt-1 text-sm text-red-600 text-right">
+                {errors.phone}
+              </p>
+            )}
+          </div>
+
+          {/* Message Field */}
+          <div>
+            <label
+              htmlFor="message"
+              className="block text-sm font-medium  mb-2 text-right"
+            >
+              <MessageSquare className="w-4 h-4 inline ml-2" />
+              הודעה
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleInputChange}
+              rows={5}
+              className={`w-full px-4 py-3 border rounded-xl bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none text-right text-black ${
+                errors.message ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
+              placeholder="איך נוכל לעזור לכם?"
+            />
+            {errors.message && (
+              <p className="mt-1 text-sm text-red-600 text-right">
+                {errors.message}
+              </p>
+            )}
+          </div>
+
+          {/* Info Text */}
+          <div className="bg-green-50 border border-green-200 rounded-xl p-4">
+            <p className="text-sm text-green-700 text-right">
+              <Phone className="w-4 h-4 inline ml-2" />
+              מתחייבים לחזור אליכם עד 24 שעות!
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={handleSubmit}
+            disabled={isSubmitting}
+            className="flex items-center justify-center w-full px-4 py-3 text-sm font-semibold text-white bg-blue-500 hover:bg-blue-600 rounded-xl transition duration-300 ease-in-out"
+          >
+            {isSubmitting ? (
+              <>
+                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                <span>שולח...</span>
+              </>
+            ) : (
+              <>
+                <Send className="w-4 h-4" />
+                <span>שלח</span>
+              </>
+            )}
+          </button>
         </div>
-
-        <div className="flex items-start gap-3 bg-white rounded-xl border border-gray-600 p-4">
-          <FaComments className="text-black text-xl mt-2" />
-          <textarea
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder="הודעה"
-            required
-            rows={5}
-            className="w-full bg-transparent text-black placeholder-gray-400 outline-none resize-none"
-          ></textarea>
-        </div>
-
-        <button
-          type="submit"
-          className="w-full py-4 bg-gradient-to-r from-blue-500 via-sky-400 to-green-500 rounded-3xl text-white font-extrabold text-lg shadow-[0_0_20px_rgba(255,105,180,0.5)] hover:shadow-[0_0_40px_rgba(255,105,180,0.9)] hover:scale-105 transform transition duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-pink-400 focus:ring-opacity-50"
-        >
-          שלח
-        </button>
-      </form>
+      )}
     </section>
   );
 };

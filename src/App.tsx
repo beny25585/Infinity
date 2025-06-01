@@ -22,6 +22,7 @@ function App() {
 
         <PromoBanner />
 
+
         {/* סרטון מוטיבציה */}
         <MotivationVideo />
 
@@ -31,35 +32,35 @@ function App() {
 
         <div className="container-fluid">
           {/* הצוות שלנו */}
-          <section className="bg-white shadow-lg p-6 sm:p-8 lg:p-10">
+          <section className=" p-6 sm:p-8 lg:p-10">
             <Team />
           </section>
         </div>
 
         <div className="container-fluid">
           {/* המלצות */}
-          <section className="bg-green-100 shadow-lg p-6 sm:p-8 lg:p-10">
+          <section className="bg-green-800 p-6 sm:p-8 lg:p-10">
             <Recommendations />
           </section>
         </div>
 
         <div className="container-fluid">
           {/* שאלות נפוצות */}
-          <section className="bg-white shadow-lg p-6 sm:p-8 lg:p-10">
+          <section className="bg-gray-800 p-6 sm:p-8 lg:p-10">
             <FAQs />
           </section>
         </div>
 
         <div className="container-fluid">
           {/* אודות */}
-          <section className="bg-green-50 shadow-lg p-6 sm:p-8 lg:p-10">
+          <section className=" p-6 sm:p-8 lg:p-10">
             <About />
           </section>
         </div>
 
         <div className="container-fluid">
           {/* צור קשר */}
-          <section className="bg-green shadow-lg p-6 sm:p-8 lg:p-10">
+          <section className="bg-green-900 p-6 sm:p-8 lg:p-10">
             <Contact />
           </section>
         </div>

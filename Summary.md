@@ -121,3 +121,4 @@ npm install --save-dev @types/react @types/react-dom
 
 **עודכן לאחרונה**: מאי 2025  
 **סטטוס פרויקט**: בפיתוח פעיל
+

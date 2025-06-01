@@ -95,13 +95,13 @@ const AccessibilityPlugin: React.FC = () => {
   visible;
 
   return (
-    <div className="fixed bottom-4 left-4 z-50">
+    <div className="fixed z-60">
       <button
         onClick={toggleVisibility}
-        className="bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700"
+        className="bg-blue-600  text-white px-4 py-2 rounded shadow hover:bg-blue-700"
         aria-label="תפריט נגישות"
       >
-        <FontAwesomeIcon className="text-lg" icon={faUniversalAccess} /> נגישות
+        <FontAwesomeIcon className=" text-lg" icon={faUniversalAccess} /> 
       </button>
 
       {visible && (

@@ -1,6 +1,11 @@
 import { FaWhatsapp } from "react-icons/fa";
+interface FloatingWhatsAppProps {
+  isHidden?: boolean;
+}
 
-const FloatingWhatsApp = () => {
+const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({ isHidden }) => {
+  if (isHidden) return null;
+
   return (
     <a
       href="https://wa.me/972559696929" // החלף למספר שלך
