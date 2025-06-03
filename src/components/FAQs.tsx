@@ -1,4 +1,5 @@
-import { useState, useRef,  } from "react";
+import { useState, useRef } from "react";
+import { ChevronDown } from "lucide-react";
 
 const faqs = [
   {
@@ -12,6 +13,10 @@ const faqs = [
   {
     q: "מאיזה גיל אפשר להצטרף?",
     a: "מגיל 14 עד 18.",
+  },
+  {
+    q: "מדריכים מוכשרים?",
+    a: "כן. כלל המדריכים באינפיניטי הם בעלי תעודת מאמן כושר מוסמך מטעם מכון וינגייט, ולוחמים לשעבר ביחידות מובחרות בצה״ל. כיום הם ממשיכים לתרום כמדריכים מקצועיים וכמילואימניקים פעילים.",
   },
   {
     q: "האם יש קבוצות בכל הארץ?",
@@ -33,20 +38,27 @@ const faqs = [
     q: "אפשר להצטרף לקהילה בלי להירשם?",
     a: "כן. יש תקופת ניסיון של שבועיים להכיר את המקום והאנשים.",
   },
-]
-
+];
 
 const FAQs = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const toggle = (index: number) => {
-    setOpenIndex(prev => (prev === index ? null : index));
+    setOpenIndex((prev) => (prev === index ? null : index));
   };
 
   return (
-    <section>
-      <h2 className="text-3xl font-bold text-center mb-6">שאלות נפוצות</h2>
+    <section className="max-w-4xl mx-auto  bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen" dir="rtl">
+      {/* Header */}
+      <div className="text-center mb-12">
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 mt-4">
+          שאלות נפוצות
+        </h2>
+        <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-green-800 mx-auto rounded-full"></div>
+      </div>
+
+      {/* FAQ Items */}
       <div className="space-y-4">
         {faqs.map((faq, index) => {
           const isOpen = index === openIndex;
@@ -54,41 +66,79 @@ const FAQs = () => {
           return (
             <div
               key={index}
-              className="border border-green-300 rounded-xl p-4 bg-green-50 text-black transition-shadow"
+              className={`
+                relative overflow-hidden rounded-2xl transition-all duration-300 ease-out
+                ${isOpen 
+                  ? 'bg-white shadow-xl shadow-green-900/10 border-2 border-green-600' 
+                  : 'bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl border border-gray-200'
+                }
+              `}
             >
+              {/* Question Button */}
               <button
                 onClick={() => toggle(index)}
-                className="w-full text-right font-bold text-base sm:text-lg p-3 rounded-md bg-white border border-green-400 text-green-800 shadow-sm active:bg-green-100 transition"
+                className={`
+                  w-full text-right p-6 font-semibold text-lg transition-all duration-300
+                  flex items-center justify-start group
+                  ${isOpen 
+                    ? 'text-green-800 bg-gradient-to-r from-green-50 to-transparent' 
+                    : 'text-gray-800 hover:text-green-700 hover:bg-gray-50'
+                  }
+                `}
                 aria-expanded={isOpen}
                 aria-controls={`faq-${index}`}
               >
-                {faq.q}
+                <ChevronDown 
+                  className={`
+                    w-6 h-6 transition-transform duration-300 flex-shrink-0 ml-4
+                    ${isOpen ? 'rotate-180 text-green-600' : 'text-gray-400 group-hover:text-green-500'}
+                  `}
+                />
+                <span className="leading-relaxed flex-1 text-right">{faq.q}</span>
               </button>
 
-            <div
+              {/* Answer Content */}
+              <div
                 ref={(el) => {
                   contentRefs.current[index] = el;
-                  // לא מחזירים ערך כדי למנוע שגיאת טיפוס
                 }}
                 id={`faq-${index}`}
-                className="transition-all duration-500 overflow-hidden"
+                className="transition-all duration-500 ease-in-out overflow-hidden"
                 style={{
                   maxHeight: isOpen
                     ? `${contentRefs.current[index]?.scrollHeight}px`
                     : "0px",
                 }}
               >
-                <div className="p-3 text-sm leading-relaxed text-black">
-                  {faq.a}
+                <div className="px-6 pb-6">
+                  <div className="w-full h-px bg-gradient-to-r from-transparent via-green-200 to-transparent mb-4"></div>
+                  <div className="text-gray-700 leading-relaxed text-base bg-gradient-to-br from-green-50/50 to-transparent p-4 rounded-xl border border-green-100">
+                    {faq.a}
+                  </div>
                 </div>
               </div>
+
+              {/* Decorative Elements */}
+              {isOpen && (
+                <div className="absolute top-0 left-0 w-32 h-32 opacity-5">
+                  <div className="w-full h-full bg-gradient-to-br from-green-600 to-green-800 rounded-full transform -translate-x-16 -translate-y-16"></div>
+                </div>
+              )}
             </div>
           );
         })}
+      </div>
+
+      {/* Bottom Decoration */}
+      <div className="mt-12 text-center">
+        <div className="inline-flex items-center space-x-2 text-gray-500">
+          <div className="w-2 h-2 bg-green-600 rounded-full animate-pulse"></div>
+          <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse delay-100"></div>
+          <div className="w-2 h-2 bg-green-600 rounded-full animate-pulse delay-200"></div>
+        </div>
       </div>
     </section>
   );
 };
 
 export default FAQs;
-

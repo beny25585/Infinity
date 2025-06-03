@@ -13,12 +13,10 @@ import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Layout from "./components/Layout";
 import Home from "./components/Home";
-import PopupForm from "./components/popupForm";
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
     <NavBar />
-    <PopupForm />
     <Layout>
       <Routes>
         <Route path="/" element={<App />} />

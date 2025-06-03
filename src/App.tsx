@@ -46,7 +46,7 @@ function App() {
 
         <div className="container-fluid">
           {/* שאלות נפוצות */}
-          <section className="bg-gray-800 p-6 sm:p-8 lg:p-10">
+          <section className=" mt-2 sm:p-8 lg:p-10">
             <FAQs />
           </section>
         </div>

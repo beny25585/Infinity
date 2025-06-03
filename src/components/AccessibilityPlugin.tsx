@@ -34,17 +34,17 @@ const AccessibilityPlugin: React.FC = () => {
       document.documentElement.style.fontSize = textOptions[newIndex];
     }
   };
-//להחזיר לגודל ברירת מחדל
+  //להחזיר לגודל ברירת מחדל
   const resetFontSize = () => {
     setFontSizeIndex(0);
     document.documentElement.style.fontSize = originalFontSize;
   };
-//ניגודיות
+  //ניגודיות
   const toggleContrast = () => {
     setHighContrast(!highContrast);
     document.getElementById("site-wrapper")?.classList.toggle("high-contrast");
   };
-//ביטול אנימציות
+  //ביטול אנימציות
   const toggleAnimations = () => {
     if (!noAnimations) {
       setNoAnimations(true);
@@ -53,11 +53,11 @@ const AccessibilityPlugin: React.FC = () => {
     }
     document.body.classList.toggle("no-animations");
   };
-//הפעלה של הקורא מסך 
+  //הפעלה של הקורא מסך
   const toggleScreenReader = () => {
     setScreenReader(!screenReader);
   };
-//קורא מסך
+  //קורא מסך
   const speak = (text: string) => {
     const speech = new SpeechSynthesisUtterance(text);
     speech.lang = "he-IL";
@@ -95,13 +95,13 @@ const AccessibilityPlugin: React.FC = () => {
   visible;
 
   return (
-    <div className="fixed z-60">
+    <div className="fixed bottom-4 left-4 z-60">
       <button
         onClick={toggleVisibility}
         className="bg-blue-600  text-white px-4 py-2 rounded shadow hover:bg-blue-700"
         aria-label="תפריט נגישות"
       >
-        <FontAwesomeIcon className=" text-lg" icon={faUniversalAccess} /> 
+        <FontAwesomeIcon className=" text-lg" icon={faUniversalAccess} />
       </button>
 
       {visible && (
@@ -140,7 +140,7 @@ const AccessibilityPlugin: React.FC = () => {
                 : "bg-gray-100 hover:bg-gray-200 "
             }`}
           >
-            {noAnimations ? "כיבוי אנימציות" : "הפעלת אנימציות"}
+            {noAnimations ? "הפעלת אנימציות" : "כיבוי אנימציות"}
           </button>
           <button
             onClick={toggleScreenReader}

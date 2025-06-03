@@ -1,76 +1,61 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPersonRunning,
-  faShieldHalved,
-  faDumbbell,
-  faMicrophone,
-  faUserTie,
-  faLightbulb,
-  faUsers,
-  faPeopleGroup,
-  faMedal,
-} from "@fortawesome/free-solid-svg-icons";
+
 
 const Products = () => {
   const items = [
     {
-      title: "שיעורי היאבקות",
+      title: "אימוני חוף",
       description: "פיתוח כישורים פיזיים וביטחון עצמי דרך היאבקות מקצועית.",
-      image: "/images/wrestling.jpg",
-      icon: faPersonRunning,
-    },
-    {
-      title: "קרב מגע",
-      description: "לימוד טכניקות הגנה עצמית מתקדמות.",
-      image: "/images/kravmaga.jpg",
-      icon: faShieldHalved,
+      image: "/images/אימוני חוף.jpg",
+      style: "w-full h-40 object-cover object-center rounded-3xl",
     },
     {
       title: "איגרוף",
       description: "אימוני קואורדינציה, קצב, וכוח מנטלי.",
-      image: "/images/boxing.jpg",
-      icon: faDumbbell,
+      image: "/images/קרב מגע.jpg",
+      style: "w-full h-40 object-cover object-center rounded-3xl",
     },
     {
       title: "דיבור בפני קהל",
       description: "איך לעמוד בביטחון מול קהל ולרתק אנשים.",
-      image: "/images/public_speaking.jpg",
-      icon: faMicrophone,
+      image: "/images/דיבור מול קהל 2.jpg",
+      style: "w-full h-40 object-cover object-[30%_30%] rounded-3xl",
     },
     {
       title: "שפת גוף והכנה לראיונות",
       description: "הכנה לראיונות ושפת גוף מנצחת.",
-      image: "/images/body_language.jpg",
-      icon: faUserTie,
+      image: "/images/דיבור מול קהל.jpg",
+      style: "w-full h-40 object-cover object-top rounded-3xl",
+    },
+    {
+      title: "ערבי גיבוש",
+      description: "חוויות קבוצתיות שמגבשות ובונות אופי.",
+      image: "/images/ערבי גיבוש.jpg",
+      style: "w-full h-40 object-cover object-center  rounded-3xl",
+    },
+    {
+      title: "קרב מגע",
+      description: "לימוד טכניקות הגנה עצמית מתקדמות.",
+      image: "",
     },
     {
       title: "טיפים למנהיגות והשפעה",
       description: "איך להפוך לאדם שהסביבה מקשיבה לו ורוצה ללכת אחריו.",
       image: "/images/leadership.jpg",
-      icon: faLightbulb,
     },
     {
       title: "ניסיון בהדרכה והובלה אישית",
       description: "ליווי אישי ממדריכים מנוסים – בלי דיסטנס.",
       image: "/images/support.jpg",
-      icon: faUsers,
-    },
-    {
-      title: "ערבי גיבוש",
-      description: "חוויות קבוצתיות שמגבשות ובונות אופי.",
-      image: "/images/group.jpg",
-      icon: faPeopleGroup,
     },
     {
       title: "הכנה ליחידות מיוחדות",
       description: "סיוע והכנה ליחידות: טיס, שייטת, סיירות ועוד.",
       image: "/images/special_units.jpg",
-      icon: faMedal,
     },
   ];
 
   return (
-    <section className=" py-12 px-4 -white">
+    <section>
   <h2 className="text-4xl font-bold text-center text-white mb-12">
     המוצרים שלנו
   </h2>
@@ -79,13 +64,14 @@ const Products = () => {
     {items.map((item, index) => (
       <div
         key={index}
-        className="bg-stone-900 rounded-3xl shadow-xl p-8 text-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 border border-gray-100"
+        className="bg-stone-900 rounded-3xl shadow-xl  text-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 border border-gray-100"
       >
-        <div className="flex justify-center mb-6">
-          <FontAwesomeIcon
-            icon={item.icon}
-            className="text-blue-600 text-6xl drop-shadow-sm"
+        <div className="flex justify-center mb-6 ">
+           <img
+            src={item.image} 
+            className={item.style || "w-1/2"}           
           />
+            
         </div>
         <h3 className="text-2xl font-semibold text-white mb-3">
           {item.title}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Mail, User, MessageSquare, Send, Phone, X } from "lucide-react";
+import { Mail, User, MessageSquare, Send, Phone, X, MapPin } from "lucide-react";
 
 interface PopupFormProps {
   onPopupOpen: () => void;
@@ -9,14 +9,14 @@ interface PopupFormProps {
 interface FormData {
   name: string;
   phone: string;
-  email: string;
+  city: string;
   message: string;
 }
 
 interface FormErrors {
   name?: string;
   phone?: string;
-  email?: string;
+  city?: string;
   message?: string;
 }
 
@@ -25,7 +25,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     phone: "",
-    email: "",
+    city: "",
     message: "",
   });
   const [errors, setErrors] = useState<FormErrors>({});
@@ -50,10 +50,8 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
       newErrors.name = "שם הוא שדה חובה";
     }
 
-    if (!formData.email.trim()) {
-      newErrors.email = "אימייל הוא שדה חובה";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "אנא הכנס כתובת אימייל תקינה";
+    if (!formData.city.trim()) {
+      newErrors.city = "עיר הוא שדה חובה";
     }
 
     if (!formData.phone.trim()) {
@@ -106,7 +104,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
       setIsOpen(false);
       setIsSubmitted(false);
       setSeenPopup(false);
-      setFormData({ name: "", email: "", phone: "", message: "" });
+      setFormData({ name: "", city: "", phone: "", message: "" });
     }, 3000);
   };
 
@@ -116,7 +114,6 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
     setErrors({});
     setIsSubmitted(false);
     setSeenPopup(true);
-    sessionStorage.setItem("popupShown", "true");
   };
 
   if (!isOpen) return null;
@@ -134,7 +131,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
               <Mail className="w-5 h-5 text-blue-600" />
             </div>
             <div>
-              <h2 className="text-lg font-semibold text-black">צור קשר</h2>
+              <h5 className=" font-semibold text-black">אינפיניטי מחכה לך!</h5>
               <p className="text-sm text-gray-500">נשמח לשמוע מכם</p>
             </div>
           </div>
@@ -177,7 +174,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className={`w-full px-3 py-2 text-sm border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-right ${
+                  className={`w-full px-3 py-2 text-sm border rounded-md  focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-right text-black ${
                     errors.name ? "border-red-300 bg-red-50" : "border-gray-300"
                   }`}
                   placeholder="הכנס את שמך המלא"
@@ -189,31 +186,31 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
                 )}
               </div>
 
-              {/* Email Field */}
+              {/* City Field */}
               <div>
                 <label
-                  htmlFor="email"
+                  htmlFor="city"
                   className="block text-sm font-medium text-gray-700 mb-2 text-right"
                 >
-                  <Mail className="w-4 h-4 inline ml-1" />
-                  אימייל
+                  <MapPin className="w-4 h-4 inline ml-1" />
+                  עיר
                 </label>
                 <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
+                  type="text"
+                  id="city"
+                  name="city"
+                  value={formData.city}
                   onChange={handleInputChange}
-                  className={`w-full px-3 py-2 text-sm border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-right ${
-                    errors.email
+                  className={`w-full px-3 py-2 text-sm  text-black border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-right ${
+                    errors.city
                       ? "border-red-300 bg-red-50"
                       : "border-gray-300"
                   }`}
-                  placeholder="מה האימייל שלך?"
+                  placeholder="מאיפה אתה?"
                 />
-                {errors.email && (
+                {errors.city && (
                   <p className="mt-1 text-xs text-red-600 text-right">
-                    {errors.email}
+                    {errors.city}
                   </p>
                 )}
               </div>
@@ -233,7 +230,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  className={`w-full px-3 py-2 text-sm border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-right ${
+                  className={`w-full px-3 py-2 text-sm  text-black border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-right ${
                     errors.phone
                       ? "border-red-300 bg-red-50"
                       : "border-gray-300"
@@ -262,7 +259,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
                   value={formData.message}
                   onChange={handleInputChange}
                   rows={3}
-                  className={`w-full px-3 py-2 text-sm border text-black rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none text-right ${
+                  className={`w-full px-3 py-2 text-sm   border text-black rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none text-right ${
                     errors.message
                       ? "border-red-300 bg-red-50"
                       : "border-gray-300"
@@ -278,9 +275,9 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
 
               {/* Info Text */}
               <div className="bg-green-50 border border-green-200 rounded-md p-3">
-                <p className="text-sm text-green-700 text-right">
-                  <Phone className="w-4 h-4 inline ml-1" />
-                  מתחייבים לחזור אליכם עד 24 שעות!
+                <p className="text-sm text-green-700 text-center">
+                  הירשם לאימון ניסיון בחינם לגמרי לעיר המתאימה לך ויקיר רכז
+                  הקבוצות יחזור אליך בהקדם
                 </p>
               </div>
 

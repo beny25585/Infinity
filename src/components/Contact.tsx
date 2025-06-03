@@ -1,17 +1,18 @@
 import React, { useState } from "react";
-import { Mail, User, MessageSquare, Send, Phone } from "lucide-react";
+import { MapPin, User, MessageSquare, Send, Phone,ChevronsDown } from "lucide-react";
+
 
 interface FormData {
   name: string;
   phone: string;
-  email: string;
+  city: string;
   message: string;
 }
 
 interface FormErrors {
   name?: string;
   phone?: string;
-  email?: string;
+  city?: string;
   message?: string;
 }
 
@@ -19,7 +20,7 @@ const Contact: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     phone: "",
-    email: "",
+    city: "",
     message: "",
   });
   const [errors, setErrors] = useState<FormErrors>({});
@@ -33,10 +34,8 @@ const Contact: React.FC = () => {
       newErrors.name = "שם הוא שדה חובה";
     }
 
-    if (!formData.email.trim()) {
-      newErrors.email = "אימייל הוא שדה חובה";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "אנא הכנס כתובת אימייל תקינה";
+    if (!formData.city.trim()) {
+      newErrors.city = "עיר הוא שדה חובה";
     }
 
     if (!formData.phone.trim()) {
@@ -92,7 +91,7 @@ const Contact: React.FC = () => {
       const body = JSON.stringify({
         name: formData.name,
         phone: formatPhone(formData.phone),
-        email: formData.email,
+        city: formData.city,
         message: formData.message,
         message_type: "submission_success",
         api_key: "0548898564",
@@ -115,7 +114,7 @@ const Contact: React.FC = () => {
         // Auto-reset form after success message
         setTimeout(() => {
           setIsSubmitted(false);
-          setFormData({ name: "", email: "", phone: "", message: "" });
+          setFormData({ name: "", city: "", phone: "", message: "" });
         }, 3000);
       } else {
         alert("אירעה שגיאה בשליחת הטופס: " + JSON.stringify(result));
@@ -133,9 +132,10 @@ const Contact: React.FC = () => {
       className="flex flex-col items-center justify-center py-12 mx-auto  max-w-7xl z-10"
       dir="rtl"
     >
-      <h2 className="text-4xl font-extrabold mb-12 text-center gradient-text text-black">
+      <h2 className="text-4xl font-extrabold  text-center gradient-text text-black">
         צרו קשר
       </h2>
+      <ChevronsDown className="animate-bounce w-8 h-8 mt-8 text-[var(--primary)]"/>
 
       {isSubmitted ? (
         <div className="text-center py-8 w-full max-w-2xl">
@@ -164,7 +164,7 @@ const Contact: React.FC = () => {
               name="name"
               value={formData.name}
               onChange={handleInputChange}
-              className={`w-full px-4 py-3 bg-white border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-right ${
+              className={`w-full px-4 py-3 bg-white border text-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-right ${
                 errors.name ? "border-red-300 bg-red-50" : "border-gray-300"
               }`}
               placeholder="הכנס את שמך המלא"
@@ -175,30 +175,29 @@ const Contact: React.FC = () => {
               </p>
             )}
           </div>
-
-          {/* Email Field */}
+          {/* City Field */}
           <div>
             <label
-              htmlFor="email"
+              htmlFor="city"
               className="block text-sm text-black font-medium text-gray-700 mb-2 text-right"
             >
-              <Mail className="w-4 h-4 inline ml-2" />
-              אימייל
+              <MapPin className="w-4 h-4 inline ml-2" />
+              עיר
             </label>
             <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
+              type="text"
+              id="city"
+              name="city"
+              value={formData.city}
               onChange={handleInputChange}
-              className={`w-full px-4 py-3 bg-white border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-right ${
-                errors.email ? "border-red-300 bg-red-50" : "border-gray-300"
+              className={`w-full px-4 py-3 bg-white border text-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-right ${
+                errors.name ? "border-red-300 bg-red-50" : "border-gray-300"
               }`}
-              placeholder="מה האימייל שלך?"
+              placeholder="מאיפה אתה?"
             />
-            {errors.email && (
-              <p className="mt-1 text-sm text-red-600 text-right">
-                {errors.email}
+            {errors.city && (
+              <p className="mt-1 text-xs text-red-600 text-right">
+                {errors.city}
               </p>
             )}
           </div>
@@ -218,7 +217,7 @@ const Contact: React.FC = () => {
               name="phone"
               value={formData.phone}
               onChange={handleInputChange}
-              className={`w-full px-4 py-3 bg-white border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-right ${
+              className={`w-full px-4 py-3 bg-white border text-black rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-right ${
                 errors.phone ? "border-red-300 bg-red-50" : "border-gray-300"
               }`}
               placeholder="הכנס את מספר הטלפון שלך"

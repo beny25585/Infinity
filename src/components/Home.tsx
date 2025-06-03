@@ -21,7 +21,10 @@ const Home = () => {
             <span className="block text-blue-400">
               INFINITY KOSHER KRAVI MENTALI
             </span>
-            <span className="block text-white">אינפיניטי כושר קרבי מנטלי</span>
+            <span className="block ">אינפיניטי כושר קרבי מנטלי</span>
+            <span className="block text-xl">
+              אינפיניטי ! לא רק כושר קרבי גם הכנה לחיים
+            </span>
           </h1>
           <p className="text-lg sm:text-xl text-gray-100 max-w-2xl mx-auto leading-relaxed">
             כאן תוכלו למצוא את כל המידע על האימונים שלנו, המאמנים, והפעילויות
@@ -35,7 +38,7 @@ const Home = () => {
             to="/Contact"
             className="px-8 py-4 bg-black text-center text-white font-semibold rounded-lg shadow-lg hover:bg-gray-800 hover:scale-105 transition-transform duration-300"
           >
-            התחילו את המסע שלכם
+            להצטרפות למשפחת אינפיניטי{" "}
           </Link>
         </div>
       </div>

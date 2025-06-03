@@ -6,7 +6,7 @@ const PromoBanner: React.FC = () => {
       bg-gradient-to-r from-green-700 to-green-800
       text-white
       text-center
-      mt-8 mb-8 py-8 px-6
+      py-8 px-6
       rounded-lg
       shadow-lg
     ">
