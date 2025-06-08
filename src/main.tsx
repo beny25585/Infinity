@@ -13,6 +13,7 @@ import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Layout from "./components/Layout";
 import Home from "./components/Home";
+import Products from "./components/Products";
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
@@ -22,6 +23,7 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/" element={<App />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/products" element={<Products />} />
         <Route path="/videos" element={<Videos />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />

@@ -49,10 +49,10 @@ const FAQs = () => {
   };
 
   return (
-    <section className="max-w-4xl mx-auto  bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen" dir="rtl">
+    <section className="max-w-4xl mx-auto  min-h-screen" dir="rtl">
       {/* Header */}
       <div className="text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 mt-4">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 mt-4">
           שאלות נפוצות
         </h2>
         <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-green-800 mx-auto rounded-full"></div>

@@ -63,10 +63,11 @@ function CustomNavbar() {
           />
           <NavLink
             icon={<FiUsers />}
-            to="/Team"
-            label="הצוות שלנו"
-            active={location.pathname === "/Team"}
+            to="/Product"
+            label="מוצרים "
+            active={location.pathname === "/Product"}
           />
+
           <NavLink
             icon={<HiOutlinePhotograph />}
             to="/gallery"
@@ -111,12 +112,12 @@ function CustomNavbar() {
               onClick={() => setIsMenuOpen(false)}
             />
             <NavLink
-              icon={<FiUsers />}
-              to="/Team"
-              label="הצוות שלנו"
-              active={location.pathname === "/Team"}
-              onClick={() => setIsMenuOpen(false)}
-            />
+            icon={<FiUsers />}
+            to="/Product"
+            label="מוצרים "
+            active={location.pathname === "/Product"}
+          />
+
             <NavLink
               icon={<HiOutlinePhotograph />}
               to="/gallery"

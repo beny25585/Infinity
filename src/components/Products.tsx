@@ -56,7 +56,7 @@ const Products = () => {
 
   return (
     <section>
-  <h2 className="text-4xl font-bold text-center text-white mb-12">
+  <h2 className="text-4xl font-bold text-center text-black mb-12">
     המוצרים שלנו
   </h2>
 
@@ -64,7 +64,7 @@ const Products = () => {
     {items.map((item, index) => (
       <div
         key={index}
-        className="bg-stone-900 rounded-3xl shadow-xl  text-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 border border-gray-100"
+        className=" rounded-3xl  text-center shadow-xl bg-black transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 border border-gray-100"
       >
         <div className="flex justify-center mb-6 ">
            <img

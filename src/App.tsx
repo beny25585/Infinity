@@ -1,5 +1,4 @@
 import "./index.css";
-import Team from "./components/Team";
 import Recommendations from "./components/Recommendations";
 import FAQs from "./components/FAQs";
 import Contact from "./components/Contact";
@@ -13,6 +12,7 @@ function App() {
   return (
     <div className="min-h-screen flex flex-col text-black font-hebrew direction-rtl">
       <main className="mx-auto flex-grow">
+        <MotivationVideo />
         <div className="container-fluid">
           {/* logo/home */}
           <section className=" p-4 sm:p-6 lg:p-10 ">
@@ -24,22 +24,15 @@ function App() {
 
 
         {/* סרטון מוטיבציה */}
-        <MotivationVideo />
 
         <section className="pt-8 shadow-lg p-6 sm:p-8 lg:p-10">
           <Products />
         </section>
 
-        <div className="container-fluid">
-          {/* הצוות שלנו */}
-          <section className=" p-6 sm:p-8 lg:p-10">
-            <Team />
-          </section>
-        </div>
 
         <div className="container-fluid">
           {/* המלצות */}
-          <section className="bg-green-800 p-6 sm:p-8 lg:p-10">
+          <section className=" p-6 sm:p-8 lg:p-10">
             <Recommendations />
           </section>
         </div>

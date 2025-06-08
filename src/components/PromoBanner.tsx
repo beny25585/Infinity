@@ -9,18 +9,9 @@ const PromoBanner: React.FC = () => {
       py-8 px-6
       rounded-lg
       shadow-lg
+      mb-2
     ">
-      {/* Badge */}
-      <div className="mb-4">
-        <span className="
-          bg-white text-orange-600
-          px-3 py-1 rounded-full
-          text-sm font-semibold
-          inline-block
-        ">
-          מבצע מיוחד 🔥
-        </span>
-      </div>
+     
 
       {/* Main content */}
       <h2 className="
@@ -28,12 +19,10 @@ const PromoBanner: React.FC = () => {
         font-bold
         mb-2
       ">
-        שני אימוני ניסיון חינם
+        אין לחץ בואו תכירו אותנו
       </h2>
       
-      <div className="text-lg sm:text-xl mb-4 text-orange-100">
-        +
-      </div>
+   
 
       <h3 className="
         text-xl sm:text-2xl lg:text-3xl

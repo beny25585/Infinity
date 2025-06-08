@@ -1,90 +1,72 @@
+import { Target } from "lucide-react";
+
+const features = [
+  {
+    id: 1,
+    title: "חזון אינפיניטי",
+    desc: "לגדל דור חזק – מנטלית, פיזית וערכית.",
+    icon: <Target className="w-6 h-6 text-white" />,
+  },
+];
+
 export default function About() {
   return (
-    <section className="relative py-5 bg-gradient-to-br from-blue-50 via-white to-blue-100 overflow-hidden text-gray-800">
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 pointer-events-none"></div>
-
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-10">
       <div className="relative container mx-auto px-6 max-w-7xl z-10">
-        <div className="flex flex-col md:flex-row items-center gap-20">
-          <div className="md:w-1/2 w-full flex justify-center relative group perspective-1000">
-            <div className="w-full h-64 md:h-[450px] max-w-md rounded-2xl overflow-hidden shadow-2xl transform transition-transform duration-700 group-hover:rotate-y-6 group-hover:scale-105">
+        <div className="flex flex-col md:flex-row items-center gap-16">
+          {/* תמונה של יונתן */}
+          <div className="md:w-1/2 w-full flex justify-center">
+            <div className="w-full h-64 md:h-[450px] max-w-sm rounded-2xl overflow-hidden shadow-2xl border border-green-600">
               <img
-                src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&q=80&w=1000"
-                alt="אימון כושר קרבי"
+                src="/images/yonatan-profile.jpg"
+                alt="יונתן בן שבת"
                 className="w-full h-full object-cover"
               />
             </div>
-
-            <div className="hidden md:flex absolute -bottom-14 -right-14 w-56 h-56 bg-gradient-to-tr from-blue-400 to-blue-600 rounded-3xl shadow-lg items-center justify-center animate-pulse">
-              <div className="bg-white bg-opacity-90 rounded-3xl w-52 h-52 flex flex-col items-center justify-center text-center text-blue-800">
-                <span className="text-6xl font-extrabold tracking-tight drop-shadow-lg">
-                  10+
-                </span>
-                <span className="text-xl mt-1 font-semibold">שנות ניסיון</span>
-              </div>
-            </div>
           </div>
 
-          <div className="md:w-1/2 space-y-10">
-            <h2 className="text-5xl font-extrabold leading-tight tracking-wide select-none">
-              <span className="bg-gradient-to-r from-blue-600 via-sky-500 to-teal-400 bg-clip-text text-transparent animate-gradient-x">
-                אינפיניטי פיטנס
-              </span>{" "}
-              - מי אנחנו?
+          {/* טקסט אודות */}
+          <div className="md:w-1/2 space-y-8">
+            <h2 className="text-4xl font-extrabold leading-tight tracking-wide select-none text-white">
+              מי זה יונתן בן שבת?
             </h2>
 
-            <p className="text-gray-700 text-lg leading-relaxed max-w-xl drop-shadow-sm">
-              אנחנו מאמינים שכל אחד יכול להגיע לרמות ביצוע גבוהות יותר ממה שהוא
-              חושב שהוא מסוגל. בכושר קרבי Infinity, אנחנו שמים דגש על פיתוח
-              מנטלי לצד פיתוח פיזי.
+            <p className="text-lg leading-relaxed text-white">
+              יונתן בן שבת הוא מייסד תוכנית אינפיניטי לחינוך מנטלי וכושר קרבי,
+              לוחם ומפקד לשעבר בסיירת חרוב, מרצה מבוקש ואיש השראה לבני נוער בכל
+              הארץ.
             </p>
-            <p className="text-gray-700 text-lg leading-relaxed max-w-xl drop-shadow-sm">
-              האימונים שלנו נבנו על ידי יוצאי יחידות מובחרות ומשלבים שיטות
-              מתקדמות שמטרתן לדחוף אתכם הרחק מאזור הנוחות. כל אחד מתאמן בקצב
-              שלו, אבל אף אחד לא נשאר במקום.
+            <p className="text-lg leading-relaxed text-white">
+              מהילד שסבל מחוסר ביטחון וקשיי קשב – ועד למנהיג שמעביר תהליכים
+              עוצמתיים של העצמה, משמעת, אמונה עצמית ופריצת גבולות. עם ניסיון של
+              מעל 4 שנים בליווי נוער, יונתן מאמין שכל אחד יכול להשתנות – אם רק
+              יאמין בעצמו.
             </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
-              {[
-                {
-                  id: 1,
-                  title: "מגוון אימונים",
-                  desc: "אימונים מותאמים לכל רמה, מתחילים ועד מתקדמים.",
-                },
-                {
-                  id: 2,
-                  title: "צוות מקצועי",
-                  desc: "מאמנים בעלי ניסיון רב והסמכות מקצועיות.",
-                },
-                {
-                  id: 3,
-                  title: "קהילה תומכת",
-                  desc: "קהילה של מתאמנים שעוזרים אחד לשני להתקדם.",
-                },
-                {
-                  id: 4,
-                  title: "תוצאות מוכחות",
-                  desc: "תוכניות אימון שהוכיחו את עצמן עם תוצאות אמיתיות.",
-                },
-              ].map(({ id, title, desc }) => (
-                <div
-                  key={id}
-                  className="flex flex-col p-6 bg-white bg-opacity-90 rounded-3xl shadow-xl hover:shadow-2xl transition-shadow duration-500 cursor-default group"
-                >
-                  <h3 className="flex items-center gap-4 text-2xl font-bold text-blue-800 mb-3 select-none">
-                    <span className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500 text-white font-extrabold text-xl drop-shadow-lg group-hover:scale-110 transform transition-transform duration-300">
-                      {id}
-                    </span>
-                    {title}
-                  </h3>
-                  <p className="text-gray-600 text-base leading-relaxed drop-shadow-sm">
-                    {desc}
-                  </p>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </div>
-    </section>
+      {features.map(({ id, title, desc, icon }) => (
+        <div
+          key={id}
+          className="relative group flex flex-col px-3 py-4 rounded-3xl bg-white border border-green-300 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden hover:-translate-y-1"
+        >
+          {/* רקע פנימי זז ב-hover */}
+          <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-white to-green-100 opacity-0 group-hover:opacity-30 transition-opacity duration-500 z-0" />
+
+          <div className="relative z-10 ">
+            {/* אייקון + כותרת בשורה */}
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-12 h-12 rounded-full bg-green-600 flex items-center justify-center shadow-lg shadow-green-800/30 transition-transform duration-300 group-hover:scale-110">
+                {icon}
+              </div>
+              <h3 className="text-xl font-bold text-black">{title}</h3>
+            </div>
+
+            {/* תיאור */}
+            <p className="text-gray-700  leading-relaxed">{desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
   );
 }
