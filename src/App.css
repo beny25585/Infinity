@@ -24,8 +24,22 @@
   padding: 2em;
 }
 
-.read-the-docs {
-  color: #888;
+.container-fluid {
+  max-width: 100%;
+  box-sizing: border-box;
+  padding-left: 1rem; 
+  padding-right: 1rem;
+  margin: 0 auto;
+  overflow-x: hidden; 
 }
 
+
+.scrollbar-hide {
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; 
+}
 

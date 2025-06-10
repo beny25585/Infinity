@@ -22,12 +22,12 @@ createRoot(document.getElementById("root")!).render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/Home" element={<Home />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/videos" element={<Videos />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/team" element={<Team />} />
+        <Route path="/Gallery" element={<Gallery />} />
+        <Route path="/Products" element={<Products />} />
+        <Route path="/Videos" element={<Videos />} />
+        <Route path="/Contact" element={<Contact />} />
+        <Route path="/About" element={<About />} />
+        <Route path="/Team" element={<Team />} />
         <Route path="/FAQs" element={<FAOs />} />
       </Routes>
     </Layout>

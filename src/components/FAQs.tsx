@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
 const faqs = [
@@ -42,17 +42,16 @@ const faqs = [
 
 const FAQs = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const toggle = (index: number) => {
     setOpenIndex((prev) => (prev === index ? null : index));
   };
 
   return (
-    <section className="max-w-4xl mx-auto  min-h-screen" dir="rtl">
+    <section className="max-w-4xl mx-auto p-6" dir="rtl">
       {/* Header */}
       <div className="text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 mt-4">
+        <h2 className="text-4xl md:text-5xl font-bold text-black mb-4 mt-4">
           שאלות נפוצות
         </h2>
         <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-green-800 mx-auto rounded-full"></div>
@@ -67,10 +66,11 @@ const FAQs = () => {
             <div
               key={index}
               className={`
-                relative overflow-hidden rounded-2xl transition-all duration-300 ease-out
-                ${isOpen 
-                  ? 'bg-white shadow-xl shadow-green-900/10 border-2 border-green-600' 
-                  : 'bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl border border-gray-200'
+                relative overflow-hidden rounded-2xl transition-all duration-200 ease-in-out
+                ${
+                  isOpen
+                    ? "bg-white shadow-xl shadow-green-900/10 border-2 border-green-600"
+                    : "bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl border border-gray-200"
                 }
               `}
             >
@@ -78,37 +78,38 @@ const FAQs = () => {
               <button
                 onClick={() => toggle(index)}
                 className={`
-                  w-full text-right p-6 font-semibold text-lg transition-all duration-300
+                  w-full text-right p-6 font-semibold text-lg transition-colors duration-200
                   flex items-center justify-start group
-                  ${isOpen 
-                    ? 'text-green-800 bg-gradient-to-r from-green-50 to-transparent' 
-                    : 'text-gray-800 hover:text-green-700 hover:bg-gray-50'
+                  ${
+                    isOpen
+                      ? "text-green-800 bg-gradient-to-r from-green-50 to-transparent"
+                      : "text-gray-800 hover:text-green-700 hover:bg-gray-50"
                   }
                 `}
                 aria-expanded={isOpen}
                 aria-controls={`faq-${index}`}
               >
-                <ChevronDown 
+                <ChevronDown
                   className={`
-                    w-6 h-6 transition-transform duration-300 flex-shrink-0 ml-4
-                    ${isOpen ? 'rotate-180 text-green-600' : 'text-gray-400 group-hover:text-green-500'}
+                    w-6 h-6 transition-transform duration-200 flex-shrink-0 ml-4
+                    ${
+                      isOpen
+                        ? "rotate-180 text-green-600"
+                        : "text-gray-400 group-hover:text-green-500"
+                    }
                   `}
                 />
-                <span className="leading-relaxed flex-1 text-right">{faq.q}</span>
+                <span className="leading-relaxed flex-1 text-right">
+                  {faq.q}
+                </span>
               </button>
 
               {/* Answer Content */}
               <div
-                ref={(el) => {
-                  contentRefs.current[index] = el;
-                }}
-                id={`faq-${index}`}
-                className="transition-all duration-500 ease-in-out overflow-hidden"
-                style={{
-                  maxHeight: isOpen
-                    ? `${contentRefs.current[index]?.scrollHeight}px`
-                    : "0px",
-                }}
+                className={`
+                  transition-all duration-400 ease-in-out overflow-hidden
+                  ${isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}
+                `}
               >
                 <div className="px-6 pb-6">
                   <div className="w-full h-px bg-gradient-to-r from-transparent via-green-200 to-transparent mb-4"></div>
@@ -127,15 +128,6 @@ const FAQs = () => {
             </div>
           );
         })}
-      </div>
-
-      {/* Bottom Decoration */}
-      <div className="mt-12 text-center">
-        <div className="inline-flex items-center space-x-2 text-gray-500">
-          <div className="w-2 h-2 bg-green-600 rounded-full animate-pulse"></div>
-          <div className="w-2 h-2 bg-gray-400 rounded-full animate-pulse delay-100"></div>
-          <div className="w-2 h-2 bg-green-600 rounded-full animate-pulse delay-200"></div>
-        </div>
       </div>
     </section>
   );

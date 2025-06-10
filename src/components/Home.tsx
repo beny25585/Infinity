@@ -2,15 +2,19 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <section className="  pt-8 pb-12  text-black">
+    <section className="pt-8 pb-12  text-black">
       <div className="container  max-w-7xl px-6 lg:px-12"> 
         {/*להוסיף לוגו*/}
+        <div className="flex justify-center items-center">
+  <img src="/logos/logo-without-bg.png" alt="logo" className="mr-7 object-contain" />
+</div>
+
 
 
         {/* כותרת פתיחה */}
         <div className="text-center space-y-6 border-b border-green-600 max-w-xl mx-auto">
           <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight drop-shadow-md">
-            <span className="block text-black">InFinity </span>
+            <span className="block text-black font-serif">InFinity </span>
             <span className="block ">אינפיניטי כושר קרבי מנטלי</span>
             <span className="block text-xl">
               אינפיניטי ! לא רק כושר קרבי גם הכנה לחיים

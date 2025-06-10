@@ -7,56 +7,28 @@ import MotivationVideo from "./components/MotivtionVideo";
 import Home from "./components/Home";
 import Products from "./components/Products";
 import PromoBanner from "./components/PromoBanner";
+import TeamInApp from "./components/TeamInApp";
 
 function App() {
   return (
     <div className="min-h-screen flex flex-col text-black font-hebrew direction-rtl">
-      <main className="mx-auto flex-grow">
+      <main className="mx-auto ">
         <MotivationVideo />
-        <div className="container-fluid">
-          {/* logo/home */}
-          <section className=" p-4 sm:p-6 lg:p-10 ">
-            <Home />
-          </section>
-        </div>
-
+        <Home />
         <PromoBanner />
-
-
-        {/* סרטון מוטיבציה */}
-
-        <section className="pt-8 shadow-lg p-6 sm:p-8 lg:p-10">
-          <Products />
-        </section>
-
-
-        <div className="container-fluid">
-          {/* המלצות */}
-          <section className=" p-6 sm:p-8 lg:p-10">
-            <Recommendations />
-          </section>
+        
+        <div className="max-w-screen">
+        <Products />
         </div>
-
-        <div className="container-fluid">
-          {/* שאלות נפוצות */}
-          <section className=" mt-2 sm:p-8 lg:p-10">
-            <FAQs />
-          </section>
+        
+        <TeamInApp />
+        <div className="max-w-screen">
+        <Recommendations />
         </div>
-
-        <div className="container-fluid">
-          {/* אודות */}
-          <section className=" p-6 sm:p-8 lg:p-10">
-            <About />
-          </section>
-        </div>
-
-        <div className="container-fluid">
-          {/* צור קשר */}
-          <section className="bg-green-900 p-6 sm:p-8 lg:p-10">
-            <Contact />
-          </section>
-        </div>
+        <FAQs />
+        
+        <About />
+        <Contact />
       </main>
     </div>
   );
