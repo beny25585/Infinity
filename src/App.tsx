@@ -1,4 +1,3 @@
-import "./index.css";
 import Recommendations from "./components/Recommendations";
 import FAQs from "./components/FAQs";
 import Contact from "./components/Contact";
@@ -16,17 +15,17 @@ function App() {
         <MotivationVideo />
         <Home />
         <PromoBanner />
-        
+
         <div className="max-w-screen">
-        <Products />
+          <Products />
         </div>
-        
+
         <TeamInApp />
         <div className="max-w-screen">
-        <Recommendations />
+          <Recommendations />
         </div>
         <FAQs />
-        
+
         <About />
         <Contact />
       </main>
