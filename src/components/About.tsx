@@ -115,21 +115,7 @@ export default function About() {
             </div>
           </div>
         </div>
-        <div className="text-center bg-gray-800 rounded-2xl p-12 text-white">
-          <h3 className="text-3xl font-bold mb-4">מוכנים להתחיל את המסע?</h3>
-          <p className="text-xl mb-8 text-gray-300">
-            הצטרפו אלינו ותגלו את הפוטנציאל האמיתי שלכם
-          </p>
-          <div className="space-x-4 rtl:space-x-reverse">
-            <a
-              href="#contact"
-              className="inline-block bg-white text-black px-8 py-4 rounded-xl text-lg font-semibold hover:bg-gray-100 transition-colors duration-300"
-            >
-              צרו קשר
-            </a>
-          
-          </div>
-        </div>
+      
       </div>
     </section>
   );

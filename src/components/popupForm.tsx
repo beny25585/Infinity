@@ -123,7 +123,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
       className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
       dir="rtl"
     >
-      <div className="bg-white rounded-lg shadow-xl max-w-md w-full max-h-screen overflow-y-auto relative">
+      <div className="bg-white rounded-lg shadow-xl max-w-ms w-full max-h-screen overflow-y-auto relative">
         {/* Header */}
         <div className="border-b border-gray-200 p-4 flex items-center justify-between">
           <div className="flex items-center gap-3">

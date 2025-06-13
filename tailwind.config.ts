@@ -8,7 +8,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Alef"', 'sans-serif',],
+        sans: ['"Alef"',],
       },
     },
   },

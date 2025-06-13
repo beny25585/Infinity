@@ -7,7 +7,7 @@ import Gallery from "./pages/Gallery";
 import Videos from "./pages/Videos";
 import About from "./components/About";
 import Contact from "./components/Contact";
-import Team from "./components/Team";
+import Team from "./pages/Team";
 import FAOs from "./components/FAQs";
 import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";

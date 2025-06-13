@@ -1,12 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Assistant|Rubik+Doodle+Shadow&display=swap');
 
-main {
-  text-align: center;
-  margin: 0;
-  font-family: 'Assistant', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+
 
 #root {
   max-width: 1280px;

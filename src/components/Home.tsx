@@ -2,26 +2,25 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <section className="pt-8 pb-12  text-black">
-      <div className="container  max-w-7xl px-6 lg:px-12">
-        <div className="flex justify-center items-center">
+    <section className="pt-8 pb-12 text-black">
+      <div className="container max-w-7xl px-6 lg:px-12">
+        <div className="flex justify-center items-center mb-8 ">
           <img
             src="/logos/logo-without-bg.png"
-            alt="logo"
-            className="mr-7 object-contain"
+            alt="InFinity Logo"
+            className="h-60 sm:h-50 lg:h-40 w-auto object-cover  -translate-x-6 "
           />
         </div>
 
         <div className="text-center space-y-6 border-b border-green-600 max-w-xl mx-auto">
           <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight drop-shadow-md">
             <span className="block text-black font-serif">InFinity </span>
-            <span className="block"
-            style={{ color: "green", fontFamily: "Alef" }}>אינפיניטי כושר קרבי מנטלי</span>
+            <span className="block font-sans">אינפיניטי כושר קרבי מנטלי</span>
             <span className="block text-xl">
-              אינפיניטי ! לא רק כושר קרבי גם הכנה לחיים
+              אינפיניטי ! לא רק כושר קרבי גם הכנה לחיים
             </span>
           </h1>
-          <p className="text-lg sm:text-xl  max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
             כאן תוכלו למצוא את כל המידע על האימונים שלנו, המאמנים, והפעילויות
             המיוחדות. זה המקום להתחיל בו את השינוי שלכם.
           </p>
@@ -32,7 +31,7 @@ const Home = () => {
             to="/Contact"
             className="px-8 py-4 bg-green-800 text-center text-white font-semibold rounded-lg shadow-lg hover:bg-gray-800 hover:scale-105 transition-transform duration-300"
           >
-            להצטרפות למשפחת אינפיניטי{" "}
+            להצטרפות למשפחת אינפיניטי{" "}
           </Link>
         </div>
       </div>
