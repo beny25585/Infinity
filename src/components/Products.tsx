@@ -62,7 +62,7 @@ const Products = () => {
   ];
 
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [_currentIndex, setCurrentIndex] = useState(0);
   const [currentVisibleId, setCurrentVisibleId] = useState(1);
 
   // Simple function to detect which ID is most visible
