@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {  User, MessageSquare, Send, Phone, X, MapPin } from "lucide-react";
+import { User, MessageSquare, Send, Phone, X, MapPin } from "lucide-react";
 
 interface PopupFormProps {
   onPopupOpen: () => void;
@@ -43,6 +43,12 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
     return () => clearTimeout(timer);
   }, []);
 
+  const validatePhone = (phone: string): boolean => {
+    // Updated regex that includes all Israeli mobile numbers and landlines
+    const israeliPhoneRegex = /^(?:\+972|0)(?:[23489]|5[0-9]|77)[0-9]{7}$/;
+    return israeliPhoneRegex.test(phone.replace(/[-\s]/g, ""));
+  };
+
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
@@ -56,10 +62,8 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
 
     if (!formData.phone.trim()) {
       newErrors.phone = "מספר טלפון הוא שדה חובה";
-    } else if (
-      !/^[\+]?[\d\s\-\(\)]{10,}$/.test(formData.phone.replace(/\s/g, ""))
-    ) {
-      newErrors.phone = "אנא הכנס מספר טלפון תקין";
+    } else if (!validatePhone(formData.phone)) {
+      newErrors.phone = "אנא הכנס מספר טלפון ישראלי תקין";
     }
 
     if (!formData.message.trim()) {
@@ -98,14 +102,6 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
     console.log("Form submitted:", formData);
     setIsSubmitted(true);
     setIsSubmitting(false);
-
-    setTimeout(() => {
-      onPopupClose();
-      setIsOpen(false);
-      setIsSubmitted(false);
-      setSeenPopup(false);
-      setFormData({ name: "", city: "", phone: "", message: "" });
-    }, 3000);
   };
 
   const closeModal = () => {
@@ -123,27 +119,26 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
       className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
       dir="rtl"
     >
-      <div className="bg-white rounded-lg shadow-xl max-w-ms w-full max-h-screen overflow-y-auto relative">
-        {/* Header */}
-        <div className="border-b border-gray-200 p-4 flex items-center justify-between">
-          <div className="p-6 text-center border-b-2 border-blue-100 bg-white rounded-t-xl shadow-sm">
-            <h5 className="text-xl font-bold text-black mb-3 tracking-wide">
-              אינפיניטי מחכה לך!
-            </h5>
-            <p className="text-sm text-gray-700 leading-relaxed px-3 font-medium">
-              השאר פרטים וכבר היום נציג מטעמנו יחזור אליך בהקדם האפשרי!
-            </p>
-          </div>
+      <div className="bg-white rounded-lg shadow-xl max-w-md w-full max-h-screen overflow-y-auto relative">
+        {/* Header  */}
+        <div className="relative bg-green-800 text-white p-6 text-center rounded-t-lg">
           <button
             onClick={closeModal}
-            className="p-1 hover:bg-gray-100 rounded-full transition-colors"
+            className="absolute top-4 left-4 p-1 hover:bg-white/20 rounded-full transition-colors"
           >
-            <X className="w-6 h-6 text-gray-400 hover:text-gray-600" />
+            <X className="w-6 h-6 text-white" />
           </button>
+
+          <h5 className="text-xl font-bold mb-3 tracking-wide">
+            אינפיניטי מחכה לך!
+          </h5>
+          <p className="text-sm opacity-90 leading-relaxed">
+            השאר פרטים וכבר היום נציג מטעמנו יחזור אליך בהקדם האפשרי!
+          </p>
         </div>
 
         {/* Content */}
-        <div className="p-4">
+        <div className="p-6">
           {isSubmitted ? (
             <div className="text-center py-8">
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -162,7 +157,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium text-gray-700 mb-2 text-right"
+                  className="block text-sm font-medium text-black mb-2 text-right   "
                 >
                   <User className="w-4 h-4 inline ml-1" />
                   שם מלא
@@ -173,7 +168,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className={`w-full px-3 py-2 text-sm border rounded-md  focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-right text-black ${
+                  className={`w-full px-3 py-2 text-sm border rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-right text-black ${
                     errors.name ? "border-red-300 bg-red-50" : "border-gray-300"
                   }`}
                   placeholder="הכנס את שמך המלא"
@@ -189,7 +184,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
               <div>
                 <label
                   htmlFor="city"
-                  className="block text-sm font-medium text-gray-700 mb-2 text-right"
+                  className="block text-sm font-medium text-black mb-2 text-right "
                 >
                   <MapPin className="w-4 h-4 inline ml-1" />
                   עיר
@@ -200,7 +195,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
                   name="city"
                   value={formData.city}
                   onChange={handleInputChange}
-                  className={`w-full px-3 py-2 text-sm  text-black border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-right ${
+                  className={`w-full px-3 py-2 text-sm text-black border rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-right ${
                     errors.city ? "border-red-300 bg-red-50" : "border-gray-300"
                   }`}
                   placeholder="מאיפה אתה?"
@@ -216,7 +211,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
               <div>
                 <label
                   htmlFor="phone"
-                  className="block text-sm font-medium text-gray-700 mb-2 text-right"
+                  className="block text-sm font-medium text-black mb-2 text-right"
                 >
                   <Phone className="w-4 h-4 inline ml-1" />
                   טלפון
@@ -227,7 +222,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  className={`w-full px-3 py-2 text-sm  text-black border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-right ${
+                  className={`w-full px-3 py-2 text-sm text-black border rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-right ${
                     errors.phone
                       ? "border-red-300 bg-red-50"
                       : "border-gray-300"
@@ -245,7 +240,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium text-black mb-2 text-right"
+                  className="block text-sm font-medium text-black mb-2 text-right "
                 >
                   <MessageSquare className="w-4 h-4 inline ml-1" />
                   הודעה
@@ -256,7 +251,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
                   value={formData.message}
                   onChange={handleInputChange}
                   rows={3}
-                  className={`w-full px-3 py-2 text-sm   border text-black rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none text-right ${
+                  className={`w-full px-3 py-2 text-sm border text-black rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all resize-none text-right ${
                     errors.message
                       ? "border-red-300 bg-red-50"
                       : "border-gray-300"
@@ -278,11 +273,11 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
                 </p>
               </div>
 
-              {/* Submit Button */}
+              {/* Submit Button - Olive Green */}
               <button
                 onClick={handleSubmit}
                 disabled={isSubmitting}
-                className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-medium py-3 px-4 rounded-md transition-colors flex items-center justify-center gap-2"
+                className="w-full bg-green-700 hover:bg-green-800 disabled:bg-green-400 text-white font-medium py-3 px-4 rounded-md transition-colors flex items-center justify-center gap-2"
               >
                 {isSubmitting ? (
                   <>

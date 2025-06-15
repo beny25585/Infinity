@@ -8,7 +8,7 @@ import Videos from "./pages/Videos";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Team from "./pages/Team";
-import FAOs from "./components/FAQs";
+import FAQs from "./components/FAQs";
 import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Layout from "./components/Layout";
@@ -28,7 +28,7 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/Contact" element={<Contact />} />
         <Route path="/About" element={<About />} />
         <Route path="/Team" element={<Team />} />
-        <Route path="/FAQs" element={<FAOs />} />
+        <Route path="/FAQs" element={<FAQs />} />
       </Routes>
     </Layout>
     <Footer />

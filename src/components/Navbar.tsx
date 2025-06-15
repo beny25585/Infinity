@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FiHome, FiUsers, FiInfo, FiMail, } from "react-icons/fi";
+import { FiHome, FiUsers, FiInfo, FiMail } from "react-icons/fi";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
@@ -97,7 +97,7 @@ function CustomNavbar() {
                 href="https://www.tiktok.com/@infinitykosherkravi?_t=ZN-8wOaMspnRLi&_r=1"
                 target="_blank"
                 rel="noreferrer"
-                className="text-transparent bg-clip-text bg-gradient-to-r from-[#FE2C55] via-[#25F4EE] to-[#000000] font-bold transition-transform hover:scale-110"
+                className="text-transparent text-black font-bold transition-transform hover:scale-110"
                 title="TikTok"
               >
                 <FontAwesomeIcon icon={faTiktok} />
@@ -181,7 +181,9 @@ function NavLink({
     <Link
       to={to}
       className={`flex items-center gap-2 text-lg font-semibold ${
-        active ? " !text-black visited:!text-black hover:!text-black " : " !text-green-800 visited:!text-green-800 hover:!text-green-800 "
+        active
+          ? " !text-black visited:!text-black hover:!text-black "
+          : " !text-green-800 visited:!text-green-800 hover:!text-green-800 "
       }`}
     >
       <span className="text-xl">{icon}</span>

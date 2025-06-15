@@ -2,7 +2,7 @@ import Recommendations from "./components/Recommendations";
 import FAQs from "./components/FAQs";
 import Contact from "./components/Contact";
 import About from "./components/About";
-import MotivationVideo from "./components/MotivtionVideo";
+import MotivationVideo from "./components/MotivationVideo";
 import Home from "./components/Home";
 import Products from "./components/Products";
 import PromoBanner from "./components/PromoBanner";

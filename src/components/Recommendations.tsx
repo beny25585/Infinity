@@ -2,6 +2,7 @@ import { ArrowLeft, ArrowRight, Star } from "lucide-react";
 import { useRef, useState } from "react";
 
 const Recommendations = () => {
+  // Only 8 recommendations as requested
   const recommendations = [
     {
       id: 1,
@@ -42,16 +43,6 @@ const Recommendations = () => {
       id: 8,
       name: "ק׳ מחיפה",
       text: "הפכתי להיות מנהיג אמיתי, היום אני בקומנדו הימי.",
-    },
-    {
-      id: 9,
-      name: "ד׳ מראשון לציון",
-      text: "עזרתם לי להפוך כל פחד לאנרגיה. התקבלתי ליחידת מודיעין מיוחדת.",
-    },
-    {
-      id: 10,
-      name: "ע׳ מתל אביב",
-      text: "הגעתי רק בשביל כושר ויצאתי עם משפחה. תודה!",
     },
   ];
 
@@ -120,8 +111,6 @@ const Recommendations = () => {
         setCurrentIndex(newIndex);
         setCurrentVisibleId(targetId);
       }
-    } else {
-      console.log(`❌ Element not found: recommendation-${targetId}`);
     }
   };
 
@@ -131,8 +120,6 @@ const Recommendations = () => {
 
     if (nextId <= recommendations.length) {
       scrollToId(nextId);
-    } else {
-      console.log(`🚫 Cannot go right - already at last item`);
     }
   };
 
@@ -142,35 +129,34 @@ const Recommendations = () => {
 
     if (prevId >= 1) {
       scrollToId(prevId);
-    } else {
-      console.log(`🚫 Cannot go left - already at first item`);
     }
   };
 
   return (
     <section className="text-white">
       <div className="max-w-6xl mx-auto px-4 py-12">
+        {/* Updated title as requested */}
         <h2 className="text-center text-4xl font-bold mb-8 text-black">
-          המלצות חניכים
+          מה החניכים שבתכנית מספרים עלינו
         </h2>
 
         <div className="relative">
-          {/* Left arrow - check by current ID */}
+          {/* Left arrow - black without background */}
           {currentVisibleId > 1 && (
             <button
               onClick={scrollLeft}
-              className="absolute right-4 top-1/4 -translate-y-1/2 translate-x-1/2 bg-white/70 z-10 text-black p-1 w-10 h-10 flex items-center justify-center"
+              className="absolute bg-white right-4 top-1/4 -translate-y-1/2 translate-x-1/2 z-10 text-black p-1 w-10 h-10 flex items-center justify-center"
               style={{ borderRadius: "50%" }}
             >
               <ArrowRight className="w-5 h-5" />
             </button>
           )}
 
-          {/* Right arrow - check by current ID */}
+          {/* Right arrow - black without background */}
           {currentVisibleId < recommendations.length && (
             <button
               onClick={scrollRight}
-              className="absolute left-4 top-1/4 -translate-y-1/2 -translate-x-1/2 z-10 bg-white/70 text-black p-1 w-10 h-10 flex items-center justify-center"
+              className="absolute bg-white left-4 top-1/4 -translate-y-1/2 -translate-x-1/2 z-10 text-black p-1 w-10 h-10 flex items-center justify-center"
               style={{ borderRadius: "50%" }}
             >
               <ArrowLeft className="w-5 h-5" />
@@ -182,10 +168,10 @@ const Recommendations = () => {
             className="overflow-x-auto snap-x snap-mandatory flex space-x-6 px-4 pb-6 scrollbar-hide"
             onScroll={detectCurrentId}
           >
-            {recommendations.map((rec, index) => (
+            {recommendations.map((rec) => (
               <div
-                key={index}
-                id={`recommendation-${rec.id}`} // הוספת ID לאלמנט
+                key={rec.id}
+                id={`recommendation-${rec.id}`}
                 className="snap-center snap-always shrink-0 w-full max-w-md h-auto bg-black/80 backdrop-blur-sm border border-gray-600 rounded-2xl p-6 shadow-2xl flex flex-col justify-between"
               >
                 <div>
@@ -209,15 +195,16 @@ const Recommendations = () => {
             ))}
           </div>
 
+          {/* Call to Action */}
           <div className="mt-16 text-center max-w-4xl mx-auto px-4">
-            <div className="bg-gradient-to-r from-green-500 to-green-700 text-white rounded-2xl p-8 shadow-xl border border-green-400">
-              <h3 className="text-2xl font-bold mb-4">רוצה להיות הבא?</h3>
-              <p className="text-green-100 mb-6">
+            <div className="bg-gradient-to-r from-green-700 to-green-800 text-white rounded-2xl p-8 shadow-xl">
+              <h3 className="text-3xl font-bold mb-4">רוצה להיות הבא?</h3>
+              <p className="text-green-100 mb-6 text-lg">
                 הצטרף אלינו וקבל את הכלים להגשים את החלום שלך
               </p>
               <div className="flex justify-center items-center space-x-4">
                 <div className="w-3 h-3 bg-white rounded-full animate-bounce"></div>
-                <div className="w-3 h-3 bg-gray-200 rounded-full animate-bounce delay-100"></div>
+                <div className="w-3 h-3 bg-green-200 rounded-full animate-bounce delay-100"></div>
                 <div className="w-3 h-3 bg-white rounded-full animate-bounce delay-200"></div>
               </div>
             </div>

@@ -44,7 +44,7 @@ const Footer = () => {
           href="https://www.tiktok.com/@infinitykosherkravi?_t=ZN-8wOaMspnRLi&_r=1"
           target="_blank"
           rel="noreferrer"
-          className="text-transparent bg-clip-text bg-gradient-to-r from-[#FE2C55] via-[#25F4EE] to-[#000000] font-bold"
+          className="text-transparent text-black font-bold"
         >
           <FontAwesomeIcon icon={faTiktok} />
         </a>
@@ -58,7 +58,9 @@ const Footer = () => {
           <FontAwesomeIcon icon={faYoutube} />
         </a>
       </div>
-      <p className="text-sm text-black">&copy; 2025 כושר קרבי | כל הזכויות שמורות</p>
+      <p className="text-sm text-black">
+        &copy; 2025 כושר קרבי | כל הזכויות שמורות
+      </p>
     </footer>
   );
 };

@@ -1,69 +1,84 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 const Products = () => {
   const items = [
     {
       id: 1,
-      title: "אימוני חוף",
-      description: "פיתוח כישורים פיזיים וביטחון עצמי דרך היאבקות מקצועית.",
-      image: "/images/beach-training.jpg",
+      title: 'הכנה לכלל היחידות בצה"ל',
+      description: "סיוע והכנה ליחידות: טיס, שייטת, סיירות ועוד.",
+      image: "/images/special_units.jpg",
     },
     {
       id: 2,
-      title: "אימוני אגרוף, היאבקות וקרב מגע",
-      description: "לוחם אמיתי שולט בגוף ובנפש, עם ובלי נשק",
-      image: "/images/krav-maga.jpg",
-    },
-    {
-      id: 3,
       title: "תכנית דיבור בפני קהל",
       description: "נלמד אותך איך לדבר נכון מול קהל ולהפוך למרצה מקצועי",
       image: "/images/public-speaking.jpg",
     },
     {
+      id: 3,
+      title: "אימוני אגרוף, היאבקות וקרב מגע",
+      description: "לוחם אמיתי שולט בגוף ובנפש, עם ובלי נשק",
+      image: "/images/krav-maga.jpg",
+    },
+    {
       id: 4,
       title: "שפת גוף נכונה והכנה לראיונות מקיפים",
-      description: "הכנה לראיונות ושפת גוף מנצחת.",
+      description: "הכנה לראיונות ושפת גוף מנצחת - כולל תוכנית קצינים",
       image: "/images/public-speaking2.jpg",
     },
     {
       id: 5,
-      title: "ערבי גיבוש",
-      description: "חוויות קבוצתיות שמגבשות ובונות אופי.",
-      image: "/images/team-building.jpg",
-    },
-    {
-      id: 6,
       title: "סימולציות ימי סיירות וימי גיבוש",
       description: "לימוד טכניקות הגנה עצמית מתקדמות.",
       image: "/images/krav-maga.jpg",
     },
     {
-      id: 7,
+      id: 6,
       title: "אימון מנטלי עם יונתן בן שבת של שעה",
       description:
         "יונתן מאמן מנטלי מוסמך מבית וואן לייף בית ספר להכשרת מאמנים מנטליים, פגישה זאת מכינה אותך מנטלית לכל מבחן או כל אירוע משמעותי בחיים, וככלל מאפסת אותך ובונה לך מסלול ייחודי להמשך",
       image: "/images/leadership.jpg",
-    },
-    {
-      id: 8,
-      title: "ניסיון בהדרכה והובלה אישית",
-      description: "ליווי אישי ממדריכים מנוסים – בלי דיסטנס.",
-      image: "/images/support.jpg",
-    },
-    {
-      id: 9,
-      title: 'הכנה לכלל היחידות בצה"ל',
-      description: "סיוע והכנה ליחידות: טיס, שייטת, סיירות ועוד.",
-      image: "/images/special_units.jpg",
     },
   ];
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const [_currentIndex, setCurrentIndex] = useState(0);
   const [currentVisibleId, setCurrentVisibleId] = useState(1);
+  // Track loaded images for lazy loading
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set([1])); // Load first image immediately
+
+  // Preload images when they come into view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = parseInt(entry.target.id.replace("program-", ""));
+            if (!loadedImages.has(id)) {
+              setLoadedImages((prev) => new Set([...prev, id]));
+            }
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: "100px", // Start loading 100px before element is visible
+        threshold: 0.1,
+      }
+    );
+
+    // Observe all program elements
+    items.forEach((item) => {
+      const element = document.getElementById(`program-${item.id}`);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, [items]);
 
   // Simple function to detect which ID is most visible
   const detectCurrentId = () => {
@@ -157,7 +172,7 @@ const Products = () => {
         {currentVisibleId > 1 && (
           <button
             onClick={scrollLeft}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10  text-white p-3 rounded-full"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 text-white p-3 rounded-full"
           >
             <ArrowRight className="w-6 h-6" />
           </button>
@@ -167,7 +182,7 @@ const Products = () => {
         {currentVisibleId < items.length && (
           <button
             onClick={scrollRight}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10  text-white p-3 rounded-full"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 text-white p-3 rounded-full"
           >
             <ArrowLeft className="w-6 h-6" />
           </button>
@@ -176,16 +191,30 @@ const Products = () => {
         {/* Gallery */}
         <div
           ref={scrollRef}
-          className="overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory"
+          className="overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory touch-pan-x"
         >
           <div className="flex space-x-6 w-max px-4">
             {items.map((item) => (
               <div
                 key={item.id}
                 id={`program-${item.id}`}
-                className="snap-center snap-always flex-shrink-0 w-screen bg-cover bg-center  overflow-hidden relative h-96"
-                style={{ backgroundImage: `url(${item.image})` }}
+                className="snap-center snap-always flex-shrink-0 w-screen bg-cover bg-center overflow-hidden relative h-96 transition-all duration-500"
+                style={{
+                  backgroundImage: loadedImages.has(item.id)
+                    ? `url(${item.image})`
+                    : "linear-gradient(135deg, #667eea 0%, #764ba2 100%)", // Gradient placeholder
+                  backgroundColor: loadedImages.has(item.id)
+                    ? "transparent"
+                    : "#f3f4f6",
+                }}
               >
+                {/* Loading placeholder */}
+                {!loadedImages.has(item.id) && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-4 border-white border-t-transparent"></div>
+                  </div>
+                )}
+
                 <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4 text-white text-right">
                   <h3 className="text-2xl font-bold mb-2">{item.title}</h3>
                   <p className="text-sm">{item.description}</p>
@@ -210,7 +239,7 @@ const Products = () => {
           </div>
 
           {/* Stats Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 ">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {/* Stat 1 */}
             <div className="group relative overflow-hidden">
               <div className="bg-green-800 rounded-3xl p-8 text-center transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
