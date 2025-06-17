@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 
@@ -164,41 +163,44 @@ const Products = () => {
   };
 
   return (
-    <section className="text-center mb-4">
-      <h2 className="text-4xl font-bold text-black mb-6">התכניות שלנו</h2>
+    <section className="text-center">
+      {/* Main title - responsive */}
+      <h2 className="text-2xl md:text-4xl font-bold text-black mb-4 md:mb-6 px-4">
+        התכניות שלנו
+      </h2>
 
       <div className="relative">
-        {/* Left arrow - check by current ID */}
+        {/* Left arrow - smaller on mobile */}
         {currentVisibleId > 1 && (
           <button
             onClick={scrollLeft}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 text-white p-3 rounded-full"
+            className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-10 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-2 md:p-3 rounded-full transition-all duration-300"
           >
-            <ArrowRight className="w-6 h-6" />
+            <ArrowRight className="w-4 h-4 md:w-6 md:h-6" />
           </button>
         )}
 
-        {/* Right arrow - check by current ID */}
+        {/* Right arrow - smaller on mobile */}
         {currentVisibleId < items.length && (
           <button
             onClick={scrollRight}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 text-white p-3 rounded-full"
+            className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-10 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-2 md:p-3 rounded-full transition-all duration-300"
           >
-            <ArrowLeft className="w-6 h-6" />
+            <ArrowLeft className="w-4 h-4 md:w-6 md:h-6" />
           </button>
         )}
 
-        {/* Gallery */}
+        {/* Gallery - adjusted height for mobile */}
         <div
           ref={scrollRef}
-          className="overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory touch-pan-x"
+          className="overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory"
         >
-          <div className="flex space-x-6 w-max px-4">
+          <div className="flex space-x-3 md:space-x-6 w-max px-2 md:px-4">
             {items.map((item) => (
               <div
                 key={item.id}
                 id={`program-${item.id}`}
-                className="snap-center snap-always flex-shrink-0 w-screen bg-cover bg-center overflow-hidden relative h-96 transition-all duration-500"
+                className="snap-center snap-always flex-shrink-0 w-screen bg-cover bg-center relative h-80 sm:h-96 md:h-[500px] transition-all duration-500"
                 style={{
                   backgroundImage: loadedImages.has(item.id)
                     ? `url(${item.image})`
@@ -211,13 +213,29 @@ const Products = () => {
                 {/* Loading placeholder */}
                 {!loadedImages.has(item.id) && (
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-4 border-white border-t-transparent"></div>
+                    <div className="animate-spin rounded-full h-8 w-8 md:h-12 md:w-12 border-4 border-white border-t-transparent"></div>
                   </div>
                 )}
 
-                <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4 text-white text-right">
-                  <h3 className="text-2xl font-bold mb-2">{item.title}</h3>
-                  <p className="text-sm">{item.description}</p>
+                <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4 md:p-6 text-white text-right">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 md:mb-3 leading-tight">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed">
+                    {/* Shorter description on mobile for long items */}
+                    {item.id === 6 ? (
+                      <>
+                        <span className="md:hidden">
+                          פגישה אישית עם יונתן למיפוי מנטלי ובניית מסלול אישי
+                        </span>
+                        <span className="hidden md:block">
+                          {item.description}
+                        </span>
+                      </>
+                    ) : (
+                      item.description
+                    )}
+                  </p>
                 </div>
               </div>
             ))}
@@ -225,34 +243,33 @@ const Products = () => {
         </div>
       </div>
 
-      {/* Statistics - Alternative Design */}
-      <div className="py-16 bg-gradient-to-br from-gray-900 via-black to-gray-800 mb-2">
+      {/* Statistics - Better sized section */}
+      <div className="py-8 md:py-12 bg-gradient-to-br from-gray-900 via-black to-gray-800">
         <div className="container mx-auto px-4">
           {/* Header */}
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-black text-white mb-4">
+          <div className="text-center mb-8 md:mb-10">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-3 md:mb-4">
               למה לבחור ב<span className="text-green-400">InFiniTy</span>?
             </h2>
-            <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-              המספרים מדברים בעד עצמם - אנחנו לא רק מכינים, אנחנו מובילים להצלחה
+            <p className="text-gray-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-2">
+              המספרים מדברים בעד עצמם - אנחנו מובילים להצלחה
             </p>
           </div>
 
-          {/* Stats Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {/* Stats Cards - Better proportions */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-10 max-w-5xl mx-auto">
             {/* Stat 1 */}
-            <div className="group relative overflow-hidden">
-              <div className="bg-green-800 rounded-3xl p-8 text-center transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-                <div className="absolute top-0 right-0 w-20 h-20 bg-green-600 rounded-full -mr-10 -mt-10 opacity-20"></div>
+            <div className="group relative ">
+              <div className="bg-green-800 rounded-2xl md:rounded-3xl p-6 md:p-8 text-center transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
                 <div className="relative z-10">
-                  <div className="text-6xl font-black text-white mb-2">
-                    500+
+                  <div className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-2">
+                    120+
                   </div>
-                  <div className="text-green-100 font-bold text-xl mb-2">
+                  <div className="text-green-100 font-bold text-sm sm:text-base md:text-lg mb-1">
                     חניכים מוצלחים
                   </div>
-                  <div className="text-green-200 text-sm">
-                    שהתקבלו ליחידות מובחרות
+                  <div className="text-green-200 text-xs sm:text-sm md:text-base leading-tight">
+                    התקבלו ליחידות מובחרות
                   </div>
                 </div>
               </div>
@@ -260,16 +277,15 @@ const Products = () => {
 
             {/* Stat 2 */}
             <div className="group relative overflow-hidden">
-              <div className="bg-white rounded-3xl p-8 text-center transform transition-all duration-300 hover:scale-105 hover:shadow-2xl border-2 border-green-800">
-                <div className="absolute top-0 right-0 w-20 h-20 bg-green-100 rounded-full -mr-10 -mt-10 opacity-30"></div>
+              <div className="bg-white rounded-2xl md:rounded-3xl p-6 md:p-8 text-center transform transition-all duration-300 hover:scale-105 hover:shadow-xl border-2 border-green-800">
                 <div className="relative z-10">
-                  <div className="text-6xl font-black text-green-800 mb-2">
+                  <div className="text-3xl sm:text-4xl md:text-5xl font-black text-green-800 mb-2">
                     88%
                   </div>
-                  <div className="text-gray-800 font-bold text-xl mb-2">
+                  <div className="text-gray-800 font-bold text-sm sm:text-base md:text-lg mb-1">
                     שיעור הצלחה
                   </div>
-                  <div className="text-gray-600 text-sm">
+                  <div className="text-gray-600 text-xs sm:text-sm md:text-base leading-tight">
                     בקבלה ליחידות מיוחדות
                   </div>
                 </div>
@@ -278,78 +294,19 @@ const Products = () => {
 
             {/* Stat 3 */}
             <div className="group relative overflow-hidden">
-              <div className="bg-gray-800 rounded-3xl p-8 text-center transform transition-all duration-300 hover:scale-105 hover:shadow-2xl border border-green-500">
-                <div className="absolute top-0 right-0 w-20 h-20 bg-green-500 rounded-full -mr-10 -mt-10 opacity-20"></div>
+              <div className="bg-gray-800 rounded-2xl md:rounded-3xl p-6 md:p-8 text-center transform transition-all duration-300 hover:scale-105 hover:shadow-xl border border-green-500">
                 <div className="relative z-10">
-                  <div className="text-6xl font-black text-white mb-2">3+</div>
-                  <div className="text-green-400 font-bold text-xl mb-2">
+                  <div className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-2">
+                    3+
+                  </div>
+                  <div className="text-green-400 font-bold text-sm sm:text-base md:text-lg mb-1">
                     שנות ניסיון
                   </div>
-                  <div className="text-gray-300 text-sm">בהדרכה מקצועית</div>
+                  <div className="text-gray-300 text-xs sm:text-sm md:text-base leading-tight">
+                    בהדרכה מקצועית
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Call to Action Section */}
-      <div className="py-16 bg-black">
-        <div className="container mx-auto px-4 text-center">
-          {/* Header */}
-          <div className="mb-8">
-            <h3 className="text-3xl md:text-4xl font-black text-white mb-4">
-              מוכן להפוך ל<span className="text-green-400">לוחם</span>?
-            </h3>
-            <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-              הזמן שלך להתחיל את המסע. צור קשר עכשיו וקבל ייעוץ חינם ואישי
-            </p>
-          </div>
-
-          {/* Main CTA Button */}
-          <div className="mb-8">
-            <Link
-              to="/contact"
-              className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-green-700 to-green-600 hover:from-green-600 hover:to-green-500 text-white font-bold py-5 px-10 rounded-2xl text-xl shadow-2xl hover:shadow-green-500/30 transition-all duration-300 transform hover:scale-105 overflow-hidden"
-            >
-              {/* Background effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-
-              {/* Content */}
-              <div className="relative flex items-center gap-3">
-                <span>התחל את המסע שלך היום</span>
-                <ArrowLeft className="w-5 h-5 transition-transform duration-300 group-hover:-translate-x-1" />
-              </div>
-            </Link>
-          </div>
-
-          {/* Secondary Actions */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link
-              to="/about"
-              className="text-green-400 hover:text-green-300 font-semibold underline decoration-2 underline-offset-4 transition-colors duration-300"
-            >
-              קרא עוד על InFiniTy
-            </Link>
-
-            <div className="hidden sm:block w-px h-6 bg-gray-600"></div>
-
-            <a
-              href="tel:+972555555555"
-              className="text-white hover:text-green-400 font-semibold transition-colors duration-300"
-            >
-              📞 התקשר עכשיו: 055-555-5555
-            </a>
-          </div>
-
-          {/* Trust indicators */}
-          <div className="mt-12 pt-8 border-t border-gray-800">
-            <p className="text-gray-500 text-sm mb-4">מה מחכה לך:</p>
-            <div className="flex flex-wrap justify-center gap-6 text-sm">
-              <div className="text-green-400">✓ ייעוץ חינם</div>
-              <div className="text-green-400">✓ תכנית אישית</div>
-              <div className="text-green-400">✓ ליווי מקצועי</div>
-              <div className="text-green-400">✓ תוצאות מוכחות</div>
             </div>
           </div>
         </div>

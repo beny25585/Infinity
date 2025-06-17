@@ -14,9 +14,11 @@ import Footer from "./components/Footer";
 import Layout from "./components/Layout";
 import Home from "./components/Home";
 import Products from "./components/Products";
+import ScrollToTop from "./components/ScrollToTop";
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
+    <ScrollToTop />
     <NavBar />
     <Layout>
       <Routes>

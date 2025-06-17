@@ -116,29 +116,37 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2  "
       dir="rtl"
     >
-      <div className="bg-white rounded-lg shadow-xl max-w-md w-full max-h-screen overflow-y-auto relative">
+      <div
+        className=" mt-5
+      bg-white rounded-lg shadow-xl 
+      max-w-md w-full relative
+      h-fit max-h-[95vh] overflow-y-auto
+      sm:w-80 sm:p-0 sm:max-h-[95vh]    
+      md:w-96 md:max-h-[95vh]        
+    "
+      >
         {/* Header  */}
-        <div className="relative bg-green-800 text-white p-6 text-center rounded-t-lg">
+        <div className="relative bg-green-800 text-white p-4 text-center rounded-t-lg">
           <button
             onClick={closeModal}
-            className="absolute top-4 left-4 p-1 hover:bg-white/20 rounded-full transition-colors"
+            className="absolute top-2 left-2 p-1 hover:bg-white/20 rounded-full transition-colors"
           >
-            <X className="w-6 h-6 text-white" />
+            <X className="w-5 h-5 text-white" />
           </button>
 
-          <h5 className="text-xl font-bold mb-3 tracking-wide">
+          <h5 className="text-lg font-bold mb-2 tracking-wide">
             אינפיניטי מחכה לך!
           </h5>
-          <p className="text-sm opacity-90 leading-relaxed">
+          <p className="text-xs opacity-90 leading-relaxed">
             השאר פרטים וכבר היום נציג מטעמנו יחזור אליך בהקדם האפשרי!
           </p>
         </div>
 
         {/* Content */}
-        <div className="p-6">
+        <div className="p-4">
           {isSubmitted ? (
             <div className="text-center py-8">
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -152,7 +160,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
               </p>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-3">
               {/* Name Field */}
               <div>
                 <label
@@ -250,7 +258,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  rows={3}
+                  rows={2}
                   className={`w-full px-3 py-2 text-sm border text-black rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all resize-none text-right ${
                     errors.message
                       ? "border-red-300 bg-red-50"

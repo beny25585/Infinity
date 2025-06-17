@@ -178,7 +178,7 @@ const Contact: React.FC = () => {
 
   return (
     <section
-      className="flex flex-col items-center justify-center py-12 mx-auto max-w-7xl min-h-screen px-4 sm:px-6 lg:px-8"
+      className="flex flex-col items-center justify-center py-4 md:py-8 mx-auto max-w-7xl min-h-screen px-4 sm:px-6 lg:px-8"
       dir="rtl"
       style={{
         backgroundImage: "url('/images/soldier3.jpeg')",
@@ -187,31 +187,33 @@ const Contact: React.FC = () => {
         backgroundPosition: "center",
       }}
     >
-      <div className="bg-black/30  rounded-2xl shadow-2xl p-8 mt-8 flex flex-col items-center max-w-2xl w-full">
-        <h2 className="text-4xl font-extrabold text-center text-white mb-2">
+      <div className="bg-black/30 rounded-xl md:rounded-2xl shadow-2xl p-4 md:p-6 mt-2 flex flex-col items-center w-full max-w-sm md:max-w-xl">
+        <h2 className="text-xl md:text-3xl font-extrabold text-center text-white mb-1">
           צרו קשר
         </h2>
-        <ChevronsDown className="animate-bounce w-8 h-8 mt-4 mb-8 text-white" />
+        <ChevronsDown className="animate-bounce w-5 h-5 md:w-6 md:h-6 mt-1 mb-3 md:mb-4 text-white" />
 
         {isSubmitted ? (
-          <div className="text-center py-8 w-full max-w-2xl mx-auto">
-            <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 bg-green-700">
-              <Send className="w-8 h-8 text-white" />
+          <div className="text-center py-4 w-full">
+            <div className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center mx-auto mb-2 bg-green-700">
+              <Send className="w-5 h-5 md:w-6 md:h-6 text-white" />
             </div>
-            <h3 className="text-lg font-semibold text-white mb-2">
+            <h3 className="text-base md:text-lg font-semibold text-white mb-1">
               ההודעה נשלחה!
             </h3>
-            <p className="text-gray-300">תודה רבה! נחזור אליכם בהקדם.</p>
+            <p className="text-gray-300 text-sm">
+              תודה רבה! נחזור אליכם בהקדם.
+            </p>
           </div>
         ) : (
-          <div className="w-full flex flex-col gap-6">
+          <div className="w-full flex flex-col gap-3 md:gap-4">
             {/* Name Field */}
             <div>
               <label
                 htmlFor="name"
-                className="block text-sm text-white font-medium mb-2 text-right"
+                className="block text-sm text-white font-medium mb-1 text-right"
               >
-                <User className="w-4 h-4 inline ml-2" />
+                <User className="w-4 h-4 inline ml-1" />
                 שם מלא
               </label>
               <input
@@ -220,7 +222,7 @@ const Contact: React.FC = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleInputChange}
-                className={`w-full px-4 py-3 bg-white/10 backdrop-blur-sm border text-white placeholder-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-right ${
+                className={`w-full px-3 py-2.5 md:py-3 bg-white/10 backdrop-blur-sm border text-white placeholder-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-right ${
                   errors.name
                     ? "border-red-500 bg-red-500/20"
                     : "border-white/30"
@@ -228,7 +230,7 @@ const Contact: React.FC = () => {
                 placeholder="הכנס את שמך המלא"
               />
               {errors.name && (
-                <p className="mt-1 text-sm text-red-300 text-right">
+                <p className="mt-1 text-xs text-red-300 text-right">
                   {errors.name}
                 </p>
               )}
@@ -238,9 +240,9 @@ const Contact: React.FC = () => {
             <div>
               <label
                 htmlFor="city"
-                className="block text-sm text-white font-medium mb-2 text-right"
+                className="block text-sm text-white font-medium mb-1 text-right"
               >
-                <MapPin className="w-4 h-4 inline ml-2" />
+                <MapPin className="w-4 h-4 inline ml-1" />
                 עיר
               </label>
               <input
@@ -249,7 +251,7 @@ const Contact: React.FC = () => {
                 name="city"
                 value={formData.city}
                 onChange={handleInputChange}
-                className={`w-full px-4 py-3 bg-white/10 backdrop-blur-sm border text-white placeholder-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-right ${
+                className={`w-full px-3 py-2.5 md:py-3 bg-white/10 backdrop-blur-sm border text-white placeholder-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-right ${
                   errors.city
                     ? "border-red-500 bg-red-500/20"
                     : "border-white/30"
@@ -267,9 +269,9 @@ const Contact: React.FC = () => {
             <div>
               <label
                 htmlFor="phone"
-                className="block text-sm font-medium text-white mb-2 text-right"
+                className="block text-sm font-medium text-white mb-1 text-right"
               >
-                <Phone className="w-4 h-4 inline ml-2" />
+                <Phone className="w-4 h-4 inline ml-1" />
                 טלפון
               </label>
               <input
@@ -278,7 +280,7 @@ const Contact: React.FC = () => {
                 name="phone"
                 value={formData.phone}
                 onChange={handleInputChange}
-                className={`w-full px-4 py-3 bg-white/10 backdrop-blur-sm border text-white placeholder-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-right ${
+                className={`w-full px-3 py-2.5 md:py-3 bg-white/10 backdrop-blur-sm border text-white placeholder-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-right ${
                   errors.phone
                     ? "border-red-500 bg-red-500/20"
                     : "border-white/30"
@@ -286,7 +288,7 @@ const Contact: React.FC = () => {
                 placeholder="הכנס את מספר הטלפון שלך"
               />
               {errors.phone && (
-                <p className="mt-1 text-sm text-red-300 text-right">
+                <p className="mt-1 text-xs text-red-300 text-right">
                   {errors.phone}
                 </p>
               )}
@@ -296,9 +298,9 @@ const Contact: React.FC = () => {
             <div>
               <label
                 htmlFor="message"
-                className="block text-sm font-medium text-white mb-2 text-right"
+                className="block text-sm font-medium text-white mb-1 text-right"
               >
-                <MessageSquare className="w-4 h-4 inline ml-2" />
+                <MessageSquare className="w-4 h-4 inline ml-1" />
                 הודעה
               </label>
               <textarea
@@ -306,8 +308,8 @@ const Contact: React.FC = () => {
                 name="message"
                 value={formData.message}
                 onChange={handleInputChange}
-                rows={5}
-                className={`w-full px-4 py-3 border rounded-xl bg-white/10 backdrop-blur-sm focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all resize-none text-right text-white placeholder-gray-300 ${
+                rows={3}
+                className={`w-full px-3 py-2.5 border rounded-lg bg-white/10 backdrop-blur-sm focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all resize-none text-right text-white placeholder-gray-300 ${
                   errors.message
                     ? "border-red-500 bg-red-500/20"
                     : "border-white/30"
@@ -315,16 +317,16 @@ const Contact: React.FC = () => {
                 placeholder="איך נוכל לעזור לכם?"
               />
               {errors.message && (
-                <p className="mt-1 text-sm text-red-300 text-right">
+                <p className="mt-1 text-xs text-red-300 text-right">
                   {errors.message}
                 </p>
               )}
             </div>
 
             {/* Info Text */}
-            <div className="bg-green-700/80 border border-green-500 rounded-xl p-4">
-              <p className="text-sm text-white text-center">
-                <Phone className="w-4 h-4 inline ml-2" />
+            <div className="bg-green-700/80 border border-green-500 rounded-lg p-2.5">
+              <p className="text-xs md:text-sm text-white text-center">
+                <Phone className="w-3 h-3 md:w-4 md:h-4 inline ml-1" />
                 מתחייבים לחזור אליכם עד 24 שעות!
               </p>
             </div>
@@ -333,16 +335,16 @@ const Contact: React.FC = () => {
               type="button"
               onClick={handleSubmit}
               disabled={isSubmitting}
-              className="flex items-center justify-center w-full px-4 py-4 text-lg font-semibold text-white bg-green-700 hover:bg-green-800 disabled:bg-gray-600 rounded-xl transition duration-300 ease-in-out shadow-lg"
+              className="flex items-center justify-center w-full px-4 py-3 md:py-3.5 text-base md:text-lg font-semibold text-white bg-green-700 hover:bg-green-800 disabled:bg-gray-600 rounded-lg transition duration-300 ease-in-out shadow-lg"
             >
               {isSubmitting ? (
                 <>
-                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
                   <span>שולח...</span>
                 </>
               ) : (
                 <>
-                  <Send className="w-5 h-5 mr-2" />
+                  <Send className="w-4 h-4 mr-2" />
                   <span>שלח</span>
                 </>
               )}
