@@ -3,8 +3,8 @@ export default function About() {
     <section className="bg-white py-8 md:py-16 min-h-screen">
       <div className="container mx-auto px-4 md:px-6 max-w-6xl">
         {/* Main title */}
-        <div className="text-center mb-12 md:mb-20">
-          <h2 className="text-3xl md:text-5xl font-bold text-black mb-4 md:mb-6">
+        <div className="text-center mb-4 md:mb-5">
+          <h2 className="text-3xl md:text-5xl font-bold text-black ">
             קצת עלינו
           </h2>
           <div className="w-20 h-1 bg-green-700 mx-auto"></div>
@@ -62,16 +62,13 @@ export default function About() {
           </div>
         </div>
 
-        {/* Vision and Stats section - simplified as you wanted */}
         <div className="bg-black text-white rounded-lg p-6 md:p-16 shadow-xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center">
-            {/* Content first on mobile */}
             <div className="space-y-4 md:space-y-6 lg:order-1">
               <h4 className="text-xl md:text-2xl font-bold text-green-400">
                 החזון של אינפיניטי
               </h4>
 
-              {/* Mobile: shorter text */}
               <div className="space-y-3 md:space-y-4">
                 <p className="text-sm md:text-lg leading-relaxed opacity-90">
                   יונתן בן שבת הקים את InFiniTy מתוך חזון ברור: לחנך דור של
@@ -83,39 +80,6 @@ export default function About() {
                   ויחידות מובחרות, יונתן זיהה את הצורך בגישה שונה - גישה שמשלבת
                   אימון פיזי מתקדם עם חיזוק מנטלי ופיתוח אישיות.
                 </p>
-              </div>
-
-              {/* Stats */}
-              <div className="bg-gray-900 p-4 md:p-6 rounded-lg shadow-inner">
-                <h5 className="text-lg md:text-xl font-semibold text-green-400 mb-3 md:mb-4">
-                  הישגי InFiniTy
-                </h5>
-                <div className="grid grid-cols-2 gap-3 md:gap-4 text-center">
-                  <div className="hover:scale-105 transition-transform duration-200">
-                    <div className="text-xl md:text-2xl font-bold text-green-400">
-                      120+
-                    </div>
-                    <div className="text-xs md:text-sm opacity-75">
-                      חניכים ליחידות מובחרות
-                    </div>
-                  </div>
-                  <div className="hover:scale-105 transition-transform duration-200">
-                    <div className="text-xl md:text-2xl font-bold text-green-400">
-                      88%
-                    </div>
-                    <div className="text-xs md:text-sm opacity-75">
-                      שיעור הצלחה
-                    </div>
-                  </div>
-                  <div className="hover:scale-105 transition-transform duration-200">
-                    <div className="text-xl md:text-2xl font-bold text-green-400">
-                      3
-                    </div>
-                    <div className="text-xs md:text-sm opacity-75">
-                      שנות פעילות
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

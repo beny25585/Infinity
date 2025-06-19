@@ -11,9 +11,11 @@ import TeamInApp from "./components/TeamInApp";
 function App() {
   return (
     <div className="min-h-screen flex flex-col text-black font-hebrew direction-rtl">
-      <main className="mx-auto ">
+      <main className=" ">
         <MotivationVideo />
-        <Home />
+        <div className="max-w-screen">
+          <Home />
+          </div>
         <PromoBanner />
 
         <div className="max-w-screen">

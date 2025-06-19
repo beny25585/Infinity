@@ -1,50 +1,56 @@
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
+import "../App.css";
 
 const Products = () => {
   const items = [
     {
       id: 1,
-      title: 'הכנה לכלל היחידות בצה"ל',
-      description: "סיוע והכנה ליחידות: טיס, שייטת, סיירות ועוד.",
-      image: "/images/special_units.jpg",
+      title: 'הכנה ייעודית לכלל יחידות העלית בצה"ל',
+      description:
+        "לוחמה, טיס, שייטות, סיירות ויחידות מיוחדות – הכנה פיזית ומנטלית שמייצרת מצוינות ומובילה להישגים שישארו אצלך כל החיים",
+      image: "/images/public-speaking2.jpg",
     },
     {
       id: 2,
-      title: "תכנית דיבור בפני קהל",
-      description: "נלמד אותך איך לדבר נכון מול קהל ולהפוך למרצה מקצועי",
+      title: "תכנית דיבור בפני קהל והנהגת צוות",
+      description:
+        "נלמד אותך כיצד לדבר בביטחון מול קהל, להוביל ולהדריך צוות, ולהפוך למנהיג מקצועי שמניע ומסעיר",
       image: "/images/public-speaking.jpg",
     },
     {
       id: 3,
-      title: "אימוני אגרוף, היאבקות וקרב מגע",
-      description: "לוחם אמיתי שולט בגוף ובנפש, עם ובלי נשק",
+      title: "אימוני לחימה משולבים",
+      description:
+        "שילוב של אגרוף, היאבקות וקרב מגע – כלים פיזיים ומנטליים שישפרו את היכולת שלך בשטח ובחיים",
       image: "/images/krav-maga.jpg",
     },
     {
       id: 4,
-      title: "שפת גוף נכונה והכנה לראיונות מקיפים",
-      description: "הכנה לראיונות ושפת גוף מנצחת - כולל תוכנית קצינים",
+      title: "שפת גוף נכונה והכנה מקצועית לראיונות ומיונים",
+      description:
+        "התהליך כולל את בחינת שפת הגוף שלך לשיפור ממוקד ואישי עבורך, עם כלים שיגדילו משמעותית את ההצלחה שלך במיונים, בראיונות ובקורס קצינים",
       image: "/images/public-speaking2.jpg",
     },
     {
       id: 5,
       title: "סימולציות ימי סיירות וימי גיבוש",
-      description: "לימוד טכניקות הגנה עצמית מתקדמות.",
+      description:
+        'מספר ימים אינטנסיביים בשטח עם כלל החניכים. סימולציות קרביות וטכניקות הגנה עצמית מתקדמות. הכנה מרחבית מקיפה לגיבוש, פיתוח עבודת צוות ומובילות. בהובלת מגבשים לשעבר מיחידות העלית של צה"ל',
       image: "/images/krav-maga.jpg",
     },
     {
       id: 6,
-      title: "אימון מנטלי עם יונתן בן שבת של שעה",
+      title: "תכנית בונוס לחניכים מצטיינים",
       description:
-        "יונתן מאמן מנטלי מוסמך מבית וואן לייף בית ספר להכשרת מאמנים מנטליים, פגישה זאת מכינה אותך מנטלית לכל מבחן או כל אירוע משמעותי בחיים, וככלל מאפסת אותך ובונה לך מסלול ייחודי להמשך",
-      image: "/images/leadership.jpg",
+        "אימון מנטלי אישי וממוקד עם יונתן בן שבת (שעה מלאה), שכולל מפגש אישי לליווי מנטלי מקצועי, מיפוי מדויק של היכולות והאתגרים שלך, ובניית מסלול אישי מותאם שיקדם אותך לשיא הביצועים וההצלחה. (ניתן גם לקבל את התכנית בנפרד בתיאום מראש מול הנציג, שיחזור אליך להרשמה)",
+      image: "/images/public-speaking2.jpg",
     },
   ];
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const [_currentIndex, setCurrentIndex] = useState(0);
-  const [currentVisibleId, setCurrentVisibleId] = useState(1);
+  const [_currentVisibleId, setCurrentVisibleId] = useState(1);
   // Track loaded images for lazy loading
   const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set([1])); // Load first image immediately
 
@@ -147,7 +153,7 @@ const Products = () => {
     if (nextId <= items.length) {
       scrollToId(nextId);
     } else {
-      console.log(`🚫 Cannot go right - already at last item`);
+      scrollToId(items[1].id);
     }
   };
 
@@ -158,49 +164,56 @@ const Products = () => {
     if (prevId >= 1) {
       scrollToId(prevId);
     } else {
-      console.log(`🚫 Cannot go left - already at first item`);
+      scrollToId(items[items.length - 1].id);
     }
   };
 
   return (
     <section className="text-center">
-      {/* Main title - responsive */}
-      <h2 className="text-2xl md:text-4xl font-bold text-black mb-4 md:mb-6 px-4">
-        התכניות שלנו
-      </h2>
+      {/* Main title - beautiful styled title */}
+      <div className="bg-green-800 py-4 lg:py-6">
+        <h2 className="text-white text-2xl md:text-4xl lg:text-5xl font-bold">
+          מה מחכה לך אצלנו בתכנית?
+        </h2>
+        <p
+          className="text-white text-sm md:text-base lg:text-lg max-w-2xl lg:max-w-4xl mx-auto px-4 mt-2"
+          style={{
+            fontFamily: "Heebo, sans-serif",
+            fontWeight: "400",
+          }}
+        >
+          מגוון תכניות מותאמות אישית להכנה מקצועית ומובחרת
+        </p>
+      </div>
 
       <div className="relative">
-        {/* Left arrow - smaller on mobile */}
-        {currentVisibleId > 1 && (
-          <button
-            onClick={scrollLeft}
-            className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-10 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-2 md:p-3 rounded-full transition-all duration-300"
-          >
-            <ArrowRight className="w-4 h-4 md:w-6 md:h-6" />
-          </button>
-        )}
+        {/* Left arrow - עם שיפור קל למסכים גדולים */}
+        <button
+          onClick={scrollLeft}
+          className="absolute right-2 md:right-4 lg:right-6 top-1/2 -translate-y-1/2 z-10 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-2 md:p-3 lg:p-4 rounded-full transition-all duration-300"
+        >
+          <ArrowRight className="w-4 h-4 md:w-6 md:h-6 lg:w-7 lg:h-7" />
+        </button>
 
-        {/* Right arrow - smaller on mobile */}
-        {currentVisibleId < items.length && (
-          <button
-            onClick={scrollRight}
-            className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-10 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-2 md:p-3 rounded-full transition-all duration-300"
-          >
-            <ArrowLeft className="w-4 h-4 md:w-6 md:h-6" />
-          </button>
-        )}
+        {/* Right arrow - עם שיפור קל למסכים גדולים */}
+        <button
+          onClick={scrollRight}
+          className="absolute left-2 md:left-4 lg:left-6 top-1/2 -translate-y-1/2 z-10 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-2 md:p-3 lg:p-4 rounded-full transition-all duration-300"
+        >
+          <ArrowLeft className="w-4 h-4 md:w-6 md:h-6 lg:w-7 lg:h-7" />
+        </button>
 
-        {/* Gallery - adjusted height for mobile */}
+        {/* Gallery - שיפור קל למסכים גדולים */}
         <div
           ref={scrollRef}
           className="overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory"
         >
-          <div className="flex space-x-3 md:space-x-6 w-max px-2 md:px-4">
+          <div className="flex space-x-3 md:space-x-6 lg:space-x-8 w-max px-2 md:px-4 lg:px-8">
             {items.map((item) => (
               <div
                 key={item.id}
                 id={`program-${item.id}`}
-                className="snap-center snap-always flex-shrink-0 w-screen bg-cover bg-center relative h-80 sm:h-96 md:h-[500px] transition-all duration-500"
+                className="snap-center snap-always flex-shrink-0 w-screen lg:w-[85vw] xl:w-[80vw] 2xl:w-[75vw] bg-cover bg-center relative h-80 sm:h-96 md:h-[500px] lg:h-[600px] xl:h-[650px] transition-all duration-500 max-w-7xl"
                 style={{
                   backgroundImage: loadedImages.has(item.id)
                     ? `url(${item.image})`
@@ -213,29 +226,43 @@ const Products = () => {
                 {/* Loading placeholder */}
                 {!loadedImages.has(item.id) && (
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="animate-spin rounded-full h-8 w-8 md:h-12 md:w-12 border-4 border-white border-t-transparent"></div>
+                    <div className="animate-spin rounded-full h-8 w-8 md:h-12 md:w-12 lg:h-16 lg:w-16 border-4 border-white border-t-transparent"></div>
                   </div>
                 )}
-
-                <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4 md:p-6 text-white text-right">
-                  <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 md:mb-3 leading-tight">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed">
-                    {/* Shorter description on mobile for long items */}
-                    {item.id === 6 ? (
-                      <>
-                        <span className="md:hidden">
-                          פגישה אישית עם יונתן למיפוי מנטלי ובניית מסלול אישי
-                        </span>
-                        <span className="hidden md:block">
-                          {item.description}
-                        </span>
-                      </>
-                    ) : (
-                      item.description
-                    )}
-                  </p>
+                <div className="absolute inset-0 flex flex-col justify-end p-2 md:p-4 lg:p-6 xl:p-8 text-white text-center">
+                  <div className="bg-black/50 p-1 md:p-4 lg:p-6 xl:p-8 rounded-lg lg:rounded-xl">
+                    <h3
+                      className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mb-2 md:mb-3 lg:mb-4 leading-tight"
+                      style={{
+                        fontFamily: "Heebo, sans-serif",
+                        fontWeight: "600",
+                      }}
+                    >
+                      {item.title}
+                    </h3>
+                    <p
+                      className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed"
+                      style={{
+                        fontFamily: "Heebo, sans-serif",
+                        fontWeight: "400",
+                      }}
+                    >
+                      {/* Shorter description on mobile for long items */}
+                      {item.id === 6 ? (
+                        <>
+                          <span className="md:hidden">
+                            אימון מנטלי אישי עם יונתן בן שבת - מיפוי יכולות
+                            ובניית מסלול אישי להצלחה
+                          </span>
+                          <span className="hidden md:block">
+                            {item.description}
+                          </span>
+                        </>
+                      ) : (
+                        item.description
+                      )}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
@@ -244,31 +271,61 @@ const Products = () => {
       </div>
 
       {/* Statistics - Better sized section */}
-      <div className="py-8 md:py-12 bg-gradient-to-br from-gray-900 via-black to-gray-800">
+      <div className="py-8 md:py-12 lg:py-16 bg-gradient-to-br from-gray-900 via-black to-gray-800">
         <div className="container mx-auto px-4">
           {/* Header */}
-          <div className="text-center mb-8 md:mb-10">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-3 md:mb-4">
+          <div className="text-center mb-8 md:mb-10 lg:mb-12">
+            <h2
+              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-white mb-3 md:mb-4 lg:mb-6"
+              style={{
+                fontFamily: "Heebo, sans-serif",
+                fontWeight: "800",
+              }}
+            >
               למה לבחור ב<span className="text-green-400">InFiniTy</span>?
             </h2>
-            <p className="text-gray-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-2">
+            <p
+              className="text-gray-300 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl max-w-2xl lg:max-w-4xl mx-auto px-2"
+              style={{
+                fontFamily: "Heebo, sans-serif",
+                fontWeight: "400",
+              }}
+            >
               המספרים מדברים בעד עצמם - אנחנו מובילים להצלחה
             </p>
           </div>
 
           {/* Stats Cards - Better proportions */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-10 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 lg:gap-8 xl:gap-10 mb-8 md:mb-10 max-w-5xl lg:max-w-6xl xl:max-w-7xl mx-auto">
             {/* Stat 1 */}
-            <div className="group relative ">
-              <div className="bg-green-800 rounded-2xl md:rounded-3xl p-6 md:p-8 text-center transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+            <div className="group relative">
+              <div className="bg-green-800 rounded-2xl md:rounded-3xl lg:rounded-[2rem] p-6 md:p-8 lg:p-10 xl:p-12 text-center transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
                 <div className="relative z-10">
-                  <div className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-2">
+                  <div
+                    className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-white mb-2 lg:mb-4"
+                    style={{
+                      fontFamily: "Heebo, sans-serif",
+                      fontWeight: "900",
+                    }}
+                  >
                     120+
                   </div>
-                  <div className="text-green-100 font-bold text-sm sm:text-base md:text-lg mb-1">
+                  <div
+                    className="text-green-100 font-bold text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-1 lg:mb-2"
+                    style={{
+                      fontFamily: "Heebo, sans-serif",
+                      fontWeight: "600",
+                    }}
+                  >
                     חניכים מוצלחים
                   </div>
-                  <div className="text-green-200 text-xs sm:text-sm md:text-base leading-tight">
+                  <div
+                    className="text-green-200 text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl leading-tight"
+                    style={{
+                      fontFamily: "Heebo, sans-serif",
+                      fontWeight: "400",
+                    }}
+                  >
                     התקבלו ליחידות מובחרות
                   </div>
                 </div>
@@ -277,15 +334,33 @@ const Products = () => {
 
             {/* Stat 2 */}
             <div className="group relative overflow-hidden">
-              <div className="bg-white rounded-2xl md:rounded-3xl p-6 md:p-8 text-center transform transition-all duration-300 hover:scale-105 hover:shadow-xl border-2 border-green-800">
+              <div className="bg-white rounded-2xl md:rounded-3xl lg:rounded-[2rem] p-6 md:p-8 lg:p-10 xl:p-12 text-center transform transition-all duration-300 hover:scale-105 hover:shadow-xl border-2 border-green-800">
                 <div className="relative z-10">
-                  <div className="text-3xl sm:text-4xl md:text-5xl font-black text-green-800 mb-2">
+                  <div
+                    className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-green-800 mb-2 lg:mb-4"
+                    style={{
+                      fontFamily: "Heebo, sans-serif",
+                      fontWeight: "900",
+                    }}
+                  >
                     88%
                   </div>
-                  <div className="text-gray-800 font-bold text-sm sm:text-base md:text-lg mb-1">
+                  <div
+                    className="text-gray-800 font-bold text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-1 lg:mb-2"
+                    style={{
+                      fontFamily: "Heebo, sans-serif",
+                      fontWeight: "600",
+                    }}
+                  >
                     שיעור הצלחה
                   </div>
-                  <div className="text-gray-600 text-xs sm:text-sm md:text-base leading-tight">
+                  <div
+                    className="text-gray-600 text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl leading-tight"
+                    style={{
+                      fontFamily: "Heebo, sans-serif",
+                      fontWeight: "400",
+                    }}
+                  >
                     בקבלה ליחידות מיוחדות
                   </div>
                 </div>
@@ -294,15 +369,33 @@ const Products = () => {
 
             {/* Stat 3 */}
             <div className="group relative overflow-hidden">
-              <div className="bg-gray-800 rounded-2xl md:rounded-3xl p-6 md:p-8 text-center transform transition-all duration-300 hover:scale-105 hover:shadow-xl border border-green-500">
+              <div className="bg-gray-800 rounded-2xl md:rounded-3xl lg:rounded-[2rem] p-6 md:p-8 lg:p-10 xl:p-12 text-center transform transition-all duration-300 hover:scale-105 hover:shadow-xl border border-green-500">
                 <div className="relative z-10">
-                  <div className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-2">
+                  <div
+                    className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-white mb-2 lg:mb-4"
+                    style={{
+                      fontFamily: "Heebo, sans-serif",
+                      fontWeight: "900",
+                    }}
+                  >
                     3+
                   </div>
-                  <div className="text-green-400 font-bold text-sm sm:text-base md:text-lg mb-1">
+                  <div
+                    className="text-green-400 font-bold text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-1 lg:mb-2"
+                    style={{
+                      fontFamily: "Heebo, sans-serif",
+                      fontWeight: "600",
+                    }}
+                  >
                     שנות ניסיון
                   </div>
-                  <div className="text-gray-300 text-xs sm:text-sm md:text-base leading-tight">
+                  <div
+                    className="text-gray-300 text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl leading-tight"
+                    style={{
+                      fontFamily: "Heebo, sans-serif",
+                      fontWeight: "400",
+                    }}
+                  >
                     בהדרכה מקצועית
                   </div>
                 </div>
@@ -311,6 +404,16 @@ const Products = () => {
           </div>
         </div>
       </div>
+
+      <style>{`
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </section>
   );
 };

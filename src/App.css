@@ -47,3 +47,45 @@
   display: none; 
 }
 
+
+.main-title {
+  background:white ;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+}
+
+.main-title::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #ffffff);
+  margin-right: 20px;
+  transform: translateY(-50%);
+}
+
+.main-title::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #ffffff, transparent);
+  margin-left: 20px;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 768px) {
+
+  .main-title::before,
+  .main-title::after {
+    width: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+}

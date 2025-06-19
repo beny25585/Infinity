@@ -48,7 +48,7 @@ const Recommendations = () => {
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const [_currentIndex, setCurrentIndex] = useState(0);
-  const [currentVisibleId, setCurrentVisibleId] = useState(1);
+  const [_currentVisibleId, setCurrentVisibleId] = useState(1);
 
   // Simple function to detect which ID is most visible
   const detectCurrentId = () => {
@@ -121,6 +121,9 @@ const Recommendations = () => {
     if (nextId <= recommendations.length) {
       scrollToId(nextId);
     }
+    else {
+      scrollToId(recommendations[0].id);
+    }
   };
 
   const scrollLeft = () => {
@@ -130,6 +133,9 @@ const Recommendations = () => {
     if (prevId >= 1) {
       scrollToId(prevId);
     }
+    else {
+      scrollToId(recommendations[recommendations.length - 1].id);
+    }
   };
 
   return (
@@ -138,33 +144,29 @@ const Recommendations = () => {
         {/* Updated title as requested */}
 
         <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white bg-green-800 py-6 px-10 rounded-2xl shadow-2xl hover:shadow-green-800/50 transition-shadow duration-300 inline-block border border-green-600">
+          <h2 className="  text-slate-900 mb-6 text-4xl md:text-4xl lg:text-5xl font-bold  bg-green-800 py-6 px-10 rounded-2xl shadow-2xl inline-block border border-green-600">
             מה החניכים שבתכנית מספרים עלינו
           </h2>
         </div>
 
         <div className="relative">
           {/* Left arrow - black without background */}
-          {currentVisibleId > 1 && (
-            <button
-              onClick={scrollLeft}
-              className="absolute bg-white right-4 top-2/4 -translate-y-1/2 translate-x-1/3 z-10 text-black p-2 md:p-3 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center hover:bg-gray-100 transition-colors duration-300"
-              style={{ borderRadius: "50%" }}
-            >
-              <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
-            </button>
-          )}
+          <button
+            onClick={scrollLeft}
+            className="absolute bg-white right-4 top-2/4 -translate-y-1/2 translate-x-1/3 z-10 text-black p-2 md:p-3 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center hover:bg-gray-100 transition-colors duration-300"
+            style={{ borderRadius: "50%" }}
+          >
+            <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
+          </button>
 
           {/* Right arrow - black without background */}
-          {currentVisibleId < recommendations.length && (
-            <button
-              onClick={scrollRight}
-              className="absolute bg-white left-4 top-2/4 -translate-y-1/2 -translate-x-1/3 z-10 text-black p-2 md:p-3 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center hover:bg-gray-100 transition-colors duration-300"
-              style={{ borderRadius: "50%" }}
-            >
-              <ArrowLeft className="w-5 h-5 md:w-6 md:h-6" />
-            </button>
-          )}
+          <button
+            onClick={scrollRight}
+            className="absolute bg-white left-4 top-2/4 -translate-y-1/2 -translate-x-1/3 z-10 text-black p-2 md:p-3 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center hover:bg-gray-100 transition-colors duration-300"
+            style={{ borderRadius: "50%" }}
+          >
+            <ArrowLeft className="w-5 h-5 md:w-6 md:h-6" />
+          </button>
 
           <div
             ref={scrollRef}

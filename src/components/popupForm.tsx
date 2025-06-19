@@ -63,7 +63,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
     if (!formData.phone.trim()) {
       newErrors.phone = "מספר טלפון הוא שדה חובה";
     } else if (!validatePhone(formData.phone)) {
-      newErrors.phone = "אנא הכנס מספר טלפון ישראלי תקין";
+      newErrors.phone = "אנא הכנס מספר טלפון תקין";
     }
 
     if (!formData.message.trim()) {
@@ -141,7 +141,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
             אינפיניטי מחכה לך!
           </h5>
           <p className="text-xs opacity-90 leading-relaxed">
-            השאר פרטים וכבר היום נציג מטעמנו יחזור אליך בהקדם האפשרי!
+            השאר פרטים נציג מטעם אינפיניטי יחזור אליך בהקדם האפשרי
           </p>
         </div>
 
@@ -264,7 +264,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
                       ? "border-red-300 bg-red-50"
                       : "border-gray-300"
                   }`}
-                  placeholder="איך נוכל לעזור לכם?"
+                  placeholder="למה אינפיניטי כושר קרבי?"
                 />
                 {errors.message && (
                   <p className="mt-1 text-xs text-red-600 text-right">
@@ -276,8 +276,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
               {/* Info Text */}
               <div className="bg-green-50 border border-green-200 rounded-md p-3">
                 <p className="text-sm text-green-700 text-center">
-                  הירשם לאימון ניסיון בחינם לגמרי לעיר המתאימה לך ויקיר רכז
-                  הקבוצות יחזור אליך בהקדם
+                  מגיע לך מאיתנו 2 אימוני ניסיון ללא עלות
                 </p>
               </div>
 

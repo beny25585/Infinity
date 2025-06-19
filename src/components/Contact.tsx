@@ -62,7 +62,7 @@ const Contact: React.FC = () => {
     if (!formData.phone.trim()) {
       newErrors.phone = "מספר טלפון הוא שדה חובה";
     } else if (!validatePhone(formData.phone)) {
-      newErrors.phone = "אנא הכנס מספר טלפון ישראלי תקין";
+      newErrors.phone = "אנא הכנס מספר טלפון תקין";
     }
 
     if (!formData.message.trim()) {
@@ -314,7 +314,7 @@ const Contact: React.FC = () => {
                     ? "border-red-500 bg-red-500/20"
                     : "border-white/30"
                 }`}
-                placeholder="איך נוכל לעזור לכם?"
+                placeholder="למה אינפיניטי כושר קרבי?"
               />
               {errors.message && (
                 <p className="mt-1 text-xs text-red-300 text-right">
@@ -326,8 +326,9 @@ const Contact: React.FC = () => {
             {/* Info Text */}
             <div className="bg-green-700/80 border border-green-500 rounded-lg p-2.5">
               <p className="text-xs md:text-sm text-white text-center">
-                <Phone className="w-3 h-3 md:w-4 md:h-4 inline ml-1" />
-                מתחייבים לחזור אליכם עד 24 שעות!
+                גיל 14 עד 18?
+                <br />
+                מגיע לך מאיתנו חודש ראשון ב50 ש״ח בלבד ו2 אימונים ללא עלות!
               </p>
             </div>
 

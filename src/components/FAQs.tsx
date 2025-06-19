@@ -46,8 +46,8 @@ const FAQs = () => {
   return (
     <section className="max-w-4xl mx-auto p-6" dir="rtl">
       {/* Header */}
-      <div className="text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-bold text-black mb-4 mt-4">
+      <div className="text-center mb-2">
+        <h2 className="text-6xl md:text-7xl font-bold text-black ">
           שאלות נפוצות
         </h2>
         <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-green-800 mx-auto rounded-full"></div>

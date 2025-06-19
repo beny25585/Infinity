@@ -137,7 +137,7 @@ function CustomNavbar() {
           <NavLink
             icon={<FiUsers />}
             to="/Products"
-            label="מוצרים"
+            label="תכניות אינפיניטי"
             active={location.pathname === "/Products"}
           />
           <NavLink
