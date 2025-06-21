@@ -9,7 +9,7 @@ const Products = () => {
       title: 'הכנה ייעודית לכלל יחידות העלית בצה"ל',
       description:
         "לוחמה, טיס, שייטות, סיירות ויחידות מיוחדות – הכנה פיזית ומנטלית שמייצרת מצוינות ומובילה להישגים שישארו אצלך כל החיים",
-      image: "/images/public-speaking2.jpg",
+      image: "/images/beach-training.jpg",
     },
     {
       id: 2,
@@ -37,7 +37,7 @@ const Products = () => {
       title: "סימולציות ימי סיירות וימי גיבוש",
       description:
         'מספר ימים אינטנסיביים בשטח עם כלל החניכים. סימולציות קרביות וטכניקות הגנה עצמית מתקדמות. הכנה מרחבית מקיפה לגיבוש, פיתוח עבודת צוות ומובילות. בהובלת מגבשים לשעבר מיחידות העלית של צה"ל',
-      image: "/images/krav-maga.jpg",
+      image: "/images/infinity_image1.jpg",
     },
     {
       id: 6,
@@ -153,7 +153,7 @@ const Products = () => {
     if (nextId <= items.length) {
       scrollToId(nextId);
     } else {
-      scrollToId(items[1].id);
+      scrollToId(items[0].id);
     }
   };
 

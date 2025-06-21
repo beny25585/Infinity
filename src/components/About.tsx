@@ -16,7 +16,7 @@ export default function About() {
           <div className="flex justify-center lg:order-2">
             <div className="w-64 h-64 md:w-80 md:h-80 rounded-lg overflow-hidden shadow-lg transition-transform hover:scale-105 duration-300">
               <img
-                src="/images/yonatan-profile.jpg"
+                src="/images/yoni-about.jpg"
                 alt="יונתן בן שבת"
                 loading="lazy"
                 className="w-full h-full object-cover"

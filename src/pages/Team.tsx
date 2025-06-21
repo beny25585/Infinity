@@ -22,9 +22,9 @@ const Team = () => {
               {/* Image */}
               <div className="relative h-48 md:h-64">
                 <img
-                  src="https://images.unsplash.com/photo-1628935291759-bbaf33a66dc6?w=500&auto=format&fit=crop&q=60"
+                  src="/images/מדרך אגרוף.jpg"
                   alt="דניאל חסון"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-[50%_20%]"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
@@ -36,7 +36,7 @@ const Team = () => {
                   דניאל חסון
                 </h3>
                 <div className="text-green-400 text-sm md:text-base font-semibold mb-3 md:mb-4">
-                  מאמן ראשי
+                  מאמן אגרוף
                 </div>
 
                 <p className="text-gray-300 mb-3 md:mb-4 leading-relaxed text-sm md:text-base">
@@ -51,9 +51,9 @@ const Team = () => {
               {/* Image */}
               <div className="relative h-48 md:h-64">
                 <img
-                  src="https://images.unsplash.com/photo-1667890786327-d28da55b0e57?w=500&auto=format&fit=crop&q=60"
+                  src="/images/trainer2.jpg"
                   alt="יובל עילם"
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-full object-cover object-[30%_20%]"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
