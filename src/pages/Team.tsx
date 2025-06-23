@@ -14,11 +14,11 @@ const Team = () => {
             ניסיון בהכנה פיזית ומנטלית ליחידות מובחרות בצה"ל.
           </p>
         </div>
-        <div className="container mx-auto px-4">
+        <div className=" mx-auto px-4">
           {/* Team Grid - Mobile optimized */}
-          <div className="space-y-6 md:space-y-8">
+          <div className="md:flex space-y-6 md:space-y-8">
             {/* Team Member 1 */}
-            <div className="bg-black rounded-xl md:rounded-2xl shadow-xl overflow-hidden">
+            <div className="bg-black w-300px h-full rounded-xl md:rounded-2xl shadow-xl overflow-hidden">
               {/* Image */}
               <div className="relative h-48 md:h-64">
                 <img
@@ -47,7 +47,7 @@ const Team = () => {
             </div>
 
             {/* Team Member 2 */}
-            <div className="bg-black rounded-xl md:rounded-2xl shadow-xl overflow-hidden">
+            <div className="bg-black w-300px h-full rounded-xl md:rounded-2xl shadow-xl overflow-hidden">
               {/* Image */}
               <div className="relative h-48 md:h-64">
                 <img
@@ -76,7 +76,7 @@ const Team = () => {
             </div>
 
             {/* Team Member 3 */}
-            <div className="bg-black rounded-xl md:rounded-2xl shadow-xl overflow-hidden">
+            <div className="bg-black w-300px h-full  rounded-xl md:rounded-2xl shadow-xl overflow-hidden">
               {/* Image */}
               <div className="relative h-48 md:h-64">
                 <img
