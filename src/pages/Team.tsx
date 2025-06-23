@@ -52,7 +52,7 @@ const Team = () => {
               <div className="relative h-48 md:h-64">
                 <img
                   src="/images/trainer2.jpg"
-                  alt="יובל עילם"
+                  alt="יורן חמיאס"
                   className="w-full h-full object-cover object-[30%_20%]"
                   loading="lazy"
                 />
