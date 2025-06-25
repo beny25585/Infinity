@@ -1,60 +1,17 @@
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 import "../App.css";
+import { productsData } from "../data/productsData";
 
-const Products = () => {
-  const items = [
-    {
-      id: 1,
-      title: 'הכנה ייעודית לכלל יחידות העלית בצה"ל',
-      description:
-        "לוחמה, טיס, שייטות, סיירות ויחידות מיוחדות – הכנה פיזית ומנטלית שמייצרת מצוינות ומובילה להישגים שישארו אצלך כל החיים",
-      image: "/images/beach-training.jpg",
-    },
-    {
-      id: 2,
-      title: "תכנית דיבור בפני קהל והנהגת צוות",
-      description:
-        "נלמד אותך כיצד לדבר בביטחון מול קהל, להוביל ולהדריך צוות, ולהפוך למנהיג מקצועי שמניע ומסעיר",
-      image: "/images/public-speaking.jpg",
-    },
-    {
-      id: 3,
-      title: "אימוני לחימה משולבים",
-      description:
-        "שילוב של אגרוף, היאבקות וקרב מגע – כלים פיזיים ומנטליים שישפרו את היכולת שלך בשטח ובחיים",
-      image: "/images/krav-maga.jpg",
-    },
-    {
-      id: 4,
-      title: "שפת גוף נכונה והכנה מקצועית לראיונות ומיונים",
-      description:
-        "התהליך כולל את בחינת שפת הגוף שלך לשיפור ממוקד ואישי עבורך, עם כלים שיגדילו משמעותית את ההצלחה שלך במיונים, בראיונות ובקורס קצינים",
-      image: "/images/public-speaking2.jpg",
-    },
-    {
-      id: 5,
-      title: "סימולציות ימי סיירות וימי גיבוש",
-      description:
-        'מספר ימים אינטנסיביים בשטח עם כלל החניכים. סימולציות קרביות וטכניקות הגנה עצמית מתקדמות. הכנה מרחבית מקיפה לגיבוש, פיתוח עבודת צוות ומובילות. בהובלת מגבשים לשעבר מיחידות העלית של צה"ל',
-      image: "/images/infinity_image1.jpg",
-    },
-    {
-      id: 6,
-      title: "תכנית בונוס לחניכים מצטיינים",
-      description:
-        "אימון מנטלי אישי וממוקד עם יונתן בן שבת (שעה מלאה), שכולל מפגש אישי לליווי מנטלי מקצועי, מיפוי מדויק של היכולות והאתגרים שלך, ובניית מסלול אישי מותאם שיקדם אותך לשיא הביצועים וההצלחה. (ניתן גם לקבל את התכנית בנפרד בתיאום מראש מול הנציג, שיחזור אליך להרשמה)",
-      image: "/images/public-speaking2.jpg",
-    },
-  ];
-
+const ProductsHome = () => {
+  const items = productsData;
+  
+      
   const scrollRef = useRef<HTMLDivElement>(null);
   const [_currentIndex, setCurrentIndex] = useState(0);
   const [_currentVisibleId, setCurrentVisibleId] = useState(1);
-  // Track loaded images for lazy loading
   const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set([1])); // Load first image immediately
 
-  // Preload images when they come into view
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -171,7 +128,7 @@ const Products = () => {
   return (
     <section className="text-center">
       {/* Main title - beautiful styled title */}
-      <div className="bg-green-800 py-4 lg:py-6">
+      <div className="bg-gray-800 py-4 lg:py-6">
         <h2 className="text-white text-2xl md:text-4xl lg:text-5xl font-bold">
           מה מחכה לך אצלנו בתכנית?
         </h2>
@@ -418,4 +375,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default ProductsHome;

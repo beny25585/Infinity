@@ -4,7 +4,7 @@ import Contact from "./components/Contact";
 import About from "./components/About";
 import MotivationVideo from "./components/MotivationVideo";
 import Home from "./components/Home";
-import Products from "./components/Products";
+import ProductsHome from "./components/ProductsHome";
 import PromoBanner from "./components/PromoBanner";
 import TeamInApp from "./components/TeamInApp";
 
@@ -15,11 +15,11 @@ function App() {
         <MotivationVideo />
         <div className="max-w-screen">
           <Home />
-          </div>
+        </div>
         <PromoBanner />
 
         <div className="max-w-screen">
-          <Products />
+          <ProductsHome />
         </div>
 
         <TeamInApp />

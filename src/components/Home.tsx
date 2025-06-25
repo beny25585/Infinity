@@ -21,7 +21,7 @@ const Home = () => {
           {/* Logo section */}
           <div className="flex justify-center items-center mb-6 md:mb-8">
             <img
-              src="/logos/logo-without-bg.png"
+              src="/logos/IMG-20250516-WA0003-Photoroom.png"
               alt="InFinity Logo"
               className="h-32  sm:h-40 md:h-50 lg:h-60 w-auto object-cover -translate-x-2 md:-translate-x-6 transition-transform hover:scale-105 duration-300"
             />

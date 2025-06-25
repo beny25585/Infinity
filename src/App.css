@@ -88,4 +88,28 @@
     margin-right: 10px;
     margin-left: 10px;
   }
+
 }
+.products-grid {
+  display: grid !important;
+}
+
+@media (max-width: 639px) {
+  .products-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+

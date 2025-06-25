@@ -264,7 +264,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
                       ? "border-red-300 bg-red-50"
                       : "border-gray-300"
                   }`}
-                  placeholder="למה אינפיניטי כושר קרבי?"
+                  placeholder="למה בחרת אינפיניטי כושר קרבי מנטלי?"
                 />
                 {errors.message && (
                   <p className="mt-1 text-xs text-red-600 text-right">
