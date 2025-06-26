@@ -1,4 +1,3 @@
-import Recommendations from "./components/Recommendations";
 import FAQs from "./components/FAQs";
 import Contact from "./components/Contact";
 import About from "./components/About";
@@ -7,6 +6,7 @@ import Home from "./components/Home";
 import ProductsHome from "./components/ProductsHome";
 import PromoBanner from "./components/PromoBanner";
 import TeamInApp from "./components/TeamInApp";
+import TestimonialsHome from "./components/TestimonialsHome"; 
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
 
         <TeamInApp />
         <div className="max-w-screen">
-          <Recommendations />
+          <TestimonialsHome />
         </div>
         <FAQs />
 

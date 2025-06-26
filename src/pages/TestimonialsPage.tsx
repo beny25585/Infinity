@@ -35,71 +35,6 @@ const TestimonialsPage = () => {
         </div>
       </div>
 
-      {/* Testimonials Grid */}
-      <div className="container mx-auto px-4 py-12 md:py-16 lg:py-20">
-        {/* Introduction */}
-        <div className="text-center mb-12 md:mb-16">
-          <h2
-            className="text-black text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4"
-            style={{
-              fontFamily: "Heebo, sans-serif",
-              fontWeight: "700",
-            }}
-          >
-            מה החניכים שלנו אומרים?
-          </h2>
-          <p
-            className="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto"
-            style={{
-              fontFamily: "Heebo, sans-serif",
-              fontWeight: "400",
-            }}
-          >
-            חוות דעת מחניכים שהתקבלו ליחידות המובחרות בצה"ל
-          </p>
-        </div>
-
-        {/* Testimonials Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16">
-          {testimonials.map((testimonial) => (
-            <div
-              key={testimonial.id}
-              className="bg-white rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300"
-            >
-              <div className="relative h-64 md:h-72 lg:h-80">
-                <img
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  className={`w-full h-full ${testimonial.image_style}`}
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-              </div>
-
-              <div className="p-4">
-                <h3
-                  className="text-black text-lg md:text-xl font-bold text-gray-900 mb-2"
-                  style={{ fontFamily: "Heebo, sans-serif" }}
-                >
-                  {testimonial.name}
-                </h3>
-                <p
-                  className="text-green-600 font-semibold text-sm mb-2"
-                  style={{ fontFamily: "Heebo, sans-serif" }}
-                >
-                  {testimonial.unit}
-                </p>
-                <p
-                  className="text-gray-600 text-sm leading-relaxed"
-                  style={{ fontFamily: "Heebo, sans-serif" }}
-                >
-                  "{testimonial.text}"
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
       {/* Images Gallery Section */}
       <div className="bg-gray-200 py-12 md:py-16">
         <div className="relative w-full">
@@ -169,6 +104,67 @@ const TestimonialsPage = () => {
               </div>
             ))}
           </div>
+        </div>
+      </div>
+
+      {/* Testimonials Grid */}
+      <div className="container mx-auto px-4 py-12 md:py-16 lg:py-20">
+        {/* Introduction */}
+        <div className="text-center mb-12 md:mb-16">
+          <h2
+            className="text-black text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4"
+            style={{
+              fontFamily: "Heebo, sans-serif",
+              fontWeight: "700",
+            }}
+          >
+            מה החניכים שלנו אומרים?
+          </h2>
+          <p
+            className="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto"
+            style={{
+              fontFamily: "Heebo, sans-serif",
+              fontWeight: "400",
+            }}
+          >
+            חוות דעת מחניכים שהתקבלו ליחידות המובחרות בצה"ל
+          </p>
+        </div>
+
+        {/* Testimonials Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16">
+          {testimonials.map((testimonial) => (
+            <div
+              key={testimonial.id}
+              className="bg-white rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300"
+            >
+              <div className="relative h-64 md:h-72 lg:h-80">
+                <img
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  className={`w-full h-full ${testimonial.image_style}`}
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+              </div>
+
+              <div className="p-4">
+                <h3
+                  className="text-black text-lg md:text-xl font-bold text-gray-900 mb-2"
+                  style={{ fontFamily: "Heebo, sans-serif" }}
+                >
+                  {testimonial.name}
+                </h3>
+                
+                <p
+                  className="text-gray-600 text-sm leading-relaxed"
+                  style={{ fontFamily: "Heebo, sans-serif" }}
+                >
+                  "{testimonial.text}"
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 

@@ -29,6 +29,6 @@ export const teamData = [
       title: "רכז הקבוצות",
       description: "מנהל את כל מערך הקבוצות בפריסה ארצית, מערך לוגיסטי",
       image: "/images/yakir.jpg",
-      imageStyle: "object-cover object-[0%_50%]"
+      imageStyle: "object-cover object-[50%_65%]"
     }
   ];

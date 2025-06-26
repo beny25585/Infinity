@@ -24,25 +24,25 @@ const Team = () => {
           {teamData.map((member) => (
             <div
               key={member.id}
-              className="bg-black rounded-xl md:rounded-2xl shadow-xl overflow-hidden h-full"
+              className="bg-black rounded-xl md:rounded-2xl shadow-xl overflow-hidden"
             >
               {/* Image */}
-              <div className="relative h-48 md:h-56 lg:h-48">
+              <div className="relative h-56 md:h-64 lg:h-56">
                 <img
                   src={member.image}
                   alt={member.name}
                   className={`w-full h-full ${member.imageStyle}`}
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                <div className="absolute inset-0 "></div>
               </div>
 
               {/* Content */}
-              <div className="p-4 md:p-5 text-white">
+              <div className="p-2 md:p-3 text-white">
                 <h3 className="text-lg md:text-xl font-bold mb-1 text-white">
                   {member.name}
                 </h3>
-                <div className="text-green-400 text-sm font-semibold mb-3">
+                <div className="text-green-400 text-sm font-semibold mb-2">
                   {member.title}
                 </div>
                 <p className="text-gray-300 leading-relaxed text-sm">
