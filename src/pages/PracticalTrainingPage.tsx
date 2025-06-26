@@ -1,7 +1,6 @@
 import "../App.css";
 import { Link } from "react-router-dom";
 
-
 const PracticalTrainingPage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
@@ -74,7 +73,7 @@ const PracticalTrainingPage = () => {
             >
               אוקיי אינפיניטי הרשמתם אותי
               <br />
-              מה בתכלס המעטפת הכל כך מדוברת שאני מקבל אצליכם בתוך חניך?
+              מה בתכלס המעטפת מדוברת שאני מקבל אצליכם בתוך חניך?
             </h2>
           </div>
 
