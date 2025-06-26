@@ -1,50 +1,10 @@
 import { ArrowLeft, ArrowRight, Star } from "lucide-react";
 import { useRef, useState } from "react";
+import { recommendationsData } from "../data/recommendationData";
 
 const Recommendations = () => {
-  // Only 8 recommendations as requested
-  const recommendations = [
-    {
-      id: 1,
-      name: "מ׳ מראש העין",
-      text: "התקבל לשייטת אחרי שנה בתוכנית. התמיכה פה זה משהו שלא רואים בשום מקום.",
-    },
-    {
-      id: 2,
-      name: "י׳ מצוות אשדוד",
-      text: "עבר תהליך עוצמתי והתקבל לדובדבן – תודה על הכול!",
-    },
-    {
-      id: 3,
-      name: "א׳ מאשקלון",
-      text: "התקבל לסיירת חרוב עם ביטחון עצמי שלא היה לי קודם.",
-    },
-    {
-      id: 4,
-      name: "ל׳ מבאר שבע",
-      text: "עבר הכנה לראיונות והתקבל לטיס. פשוט מקצוענים.",
-    },
-    {
-      id: 5,
-      name: "ר׳ מהרצליה",
-      text: "עברתי מאפס כושר לתותח תוך 4 חודשים. עכשיו בדרך לעוקץ.",
-    },
-    {
-      id: 6,
-      name: "ת׳ מקריית שמונה",
-      text: "הגעתי בלי כיוון והיום אני מפקד בקורס לוחמה בטרור.",
-    },
-    {
-      id: 7,
-      name: "ש׳ מנתניה",
-      text: "עשיתי שינוי אמיתי – קיבלתי ביטחון, כלים, והתקבלתי לשייטת.",
-    },
-    {
-      id: 8,
-      name: "ק׳ מחיפה",
-      text: "הפכתי להיות מנהיג אמיתי, היום אני בקומנדו הימי.",
-    },
-  ];
+  const recommendations = recommendationsData;
+  
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const [_currentIndex, setCurrentIndex] = useState(0);

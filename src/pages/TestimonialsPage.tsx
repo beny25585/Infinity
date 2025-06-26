@@ -1,6 +1,7 @@
 import "../App.css";
 import { testimonialsData } from "../data/testimonialsData";
 import { Link } from "react-router-dom";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const TestimonialsPage = () => {
   const testimonials = testimonialsData;
@@ -97,6 +98,77 @@ const TestimonialsPage = () => {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+      {/* Images Gallery Section */}
+      <div className="bg-gray-200 py-12 md:py-16">
+        <div className="relative w-full">
+          {/* Left arrow */}
+          <button
+            onClick={() => {
+              const container = document.getElementById("images-container");
+              if (container) {
+                container.scrollBy({
+                  left: window.innerWidth,
+                  behavior: "smooth",
+                });
+              }
+            }}
+            className="absolute bg-white right-4 bottom-0 translate-y-9 -translate-y-1/2 z-10 text-black p-2 md:p-3 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center hover:bg-gray-100 transition-colors duration-300"
+            style={{ borderRadius: "50%" }}
+          >
+            <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
+          </button>
+
+          {/* Right arrow */}
+          <button
+            onClick={() => {
+              const container = document.getElementById("images-container");
+              if (container) {
+                container.scrollBy({
+                  left: -window.innerWidth,
+                  behavior: "smooth",
+                });
+              }
+            }}
+            className="absolute bg-white left-4 bottom-0 translate-y-9  -translate-y-1/2 z-10 text-black p-2 md:p-3 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center hover:bg-gray-100 transition-colors duration-300"
+            style={{ borderRadius: "50%" }}
+          >
+            <ArrowLeft className="w-5 h-5 md:w-6 md:h-6" />
+          </button>
+
+          <div
+            id="images-container"
+            className="overflow-x-auto snap-x snap-mandatory flex scrollbar-hide"
+            style={{ scrollBehavior: "smooth" }}
+          >
+            {[
+              "/images-for-testimonal/photo1.jpg",
+              "/images-for-testimonal/photo2.jpg",
+              "/images-for-testimonal/photo3.jpg",
+              "/images-for-testimonal/photo4.jpg",
+              "/images-for-testimonal/photo5.jpg",
+              "/images-for-testimonal/photo6.jpg",
+              "/images-for-testimonal/photo7.jpg",
+              "/images-for-testimonal/photo8.jpg",
+              "/images-for-testimonal/photo9.jpg",
+              "/images-for-testimonal/photo10.jpg",
+              "/images-for-testimonal/photo11.jpg",
+              "/images-for-testimonal/photo12.jpg",
+            ].map((imageSrc, index) => (
+              <div
+                key={index}
+                className="snap-center flex-shrink-0 w-screen h-64 md:h-80 lg:h-96 flex items-center justify-center"
+              >
+                <img
+                  src={imageSrc}
+                  alt={`תמונה מהתכנית ${index + 1}`}
+                  className="max-w-full max-h-full object-contain rounded-2xl md:rounded-3xl shadow-xl"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
