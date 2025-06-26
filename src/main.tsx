@@ -14,7 +14,9 @@ import Footer from "./components/Footer";
 import Layout from "./components/Layout";
 import Home from "./components/Home";
 import ProductsPage from "./pages/ProductsPage";
-import ScrollToTop from "./components/ScrollToTop";
+import ScrollToTop from "./components/ScrollToTop"; 
+import PracticalTrainingPage from "./pages/PracticalTrainingPage";
+import TestimonialsPage from "./pages/TestimonialsPage";
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
@@ -27,6 +29,8 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/Gallery" element={<Gallery />} />
         <Route path="/ProductsPage" element={<ProductsPage />} />
         <Route path="/Videos" element={<Videos />} />
+        <Route path="/PracticalTrainingPage" element={<PracticalTrainingPage />} />
+        <Route path="/TestimonialsPage" element={<TestimonialsPage />} />
         <Route path="/Contact" element={<Contact />} />
         <Route path="/About" element={<About />} />
         <Route path="/Team" element={<Team />} />

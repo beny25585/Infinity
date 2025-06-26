@@ -59,7 +59,7 @@ const Footer = () => {
         </a>
       </div>
       <p className="text-sm text-black">
-        &copy; 2025 כושר קרבי | כל הזכויות שמורות
+        &copy; 2025 כושר קרבי | כל הזכויות שמורות לInFinity כושר קרבי מנטלי
       </p>
     </footer>
   );

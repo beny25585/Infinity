@@ -1,122 +1,131 @@
 const Team = () => {
   return (
     <section className="bg-gray-300 py-6 md:py-8 min-h-screen">
-      <div>
+      <div className="container mx-auto px-4">
         {/* Header with styled title */}
         <div className="text-center mb-8 md:mb-12">
           <div className="text-center mb-6 md:mb-8">
-            <h2 className="text-xl md:text-3xl lg:text-4xl w-full font-bold text-white bg-green-800 py-4 md:py-6 px-6 md:px-10 rounded-2xl  inline-block border border-white">
+            <h2 className="text-xl md:text-3xl lg:text-4xl font-bold text-white bg-green-800 py-4 md:py-6 px-6 md:px-10 rounded-2xl inline-block border border-white">
               הצוות שלנו
             </h2>
           </div>
           <p className="text-base md:text-lg text-gray-700 leading-relaxed px-2 max-w-3xl mx-auto">
-            הצוות שלנו מורכב ממדריכים מנוסים עם רקע צבאי עשיר, שמביאים איתם שנות
-            ניסיון בהכנה פיזית ומנטלית ליחידות מובחרות בצה"ל.
+            הצוות שלנו כולל מדריכים מנוסים, בעלי רקע קרבי עשיר ושנות ניסיון רבות
+            בהכנה מקצועית ליחידות המובחרות בצה״ל, תוך שילוב בין אימון פיזי מתקדם
+            לפיתוח חוסן מנטלי, יכולות מנטליות מתקדמות, ועמידה באתגרים תחת לחץ –
+            כבסיס להצלחה בשירות הקרבי ובחיים בכלל{" "}
           </p>
         </div>
-        <div className=" mx-auto px-4">
-          {/* Team Grid - Mobile optimized */}
-          <div className="md:flex space-y-6 md:space-y-8">
-            {/* Team Member 1 */}
-            <div className="bg-black w-300px h-full rounded-xl md:rounded-2xl shadow-xl overflow-hidden">
-              {/* Image */}
-              <div className="relative h-48 md:h-64">
-                <img
-                  src="/images/מדרך אגרוף.jpg"
-                  alt="דניאל חסון"
-                  className="w-full h-full object-cover object-[50%_20%]"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
-              </div>
 
-              {/* Content */}
-              <div className="p-4 md:p-6 text-white">
-                <h3 className="text-xl md:text-2xl font-bold mb-1 text-white">
-                  דניאל חסון
-                </h3>
-                <div className="text-green-400 text-sm md:text-base font-semibold mb-3 md:mb-4">
-                  מאמן אגרוף
-                </div>
-
-                <p className="text-gray-300 mb-3 md:mb-4 leading-relaxed text-sm md:text-base">
-                  מאמן ותיק בתחום הכושר הקרבי, מנהל מרכזים להכנה לגיבושים ויוצא
-                  יחידה קרבית. מתמחה בהכנה פיזית ומנטלית מתקדמת.
-                </p>
-              </div>
+        {/* Team Grid - Responsive layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-8 md:mb-12">
+          {/* Team Member 1 - יונתן */}
+          <div className="bg-black rounded-xl md:rounded-2xl shadow-xl overflow-hidden h-full">
+            {/* Image */}
+            <div className="relative h-48 md:h-56 lg:h-48">
+              <img
+                src="/images/yoni-about.jpg"
+                alt="יונתן"
+                className="w-full h-full object-cover "
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
             </div>
 
-            {/* Team Member 2 */}
-            <div className="bg-black w-300px h-full rounded-xl md:rounded-2xl shadow-xl overflow-hidden">
-              {/* Image */}
-              <div className="relative h-48 md:h-64">
-                <img
-                  src="/images/trainer2.jpg"
-                  alt="יורן חמיאס"
-                  className="w-full h-full object-cover object-[30%_20%]"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+            {/* Content */}
+            <div className="p-4 md:p-5 text-white">
+              <h3 className="text-lg md:text-xl font-bold mb-1 text-white">
+                יונתן
+              </h3>
+              <div className="text-green-400 text-sm font-semibold mb-3">
+                מייסד אינפיניטי
               </div>
-
-              {/* Content */}
-              <div className="p-4 md:p-6 text-white">
-                <h3 className="text-xl md:text-2xl font-bold mb-1 text-white">
-                  יובל עילם
-                </h3>
-                <div className="text-green-400 text-sm md:text-base font-semibold mb-3 md:mb-4">
-                  מאמן בכיר • חלוץ בתחום
-                </div>
-
-                <p className="text-gray-300 mb-3 md:mb-4 leading-relaxed text-sm md:text-base">
-                  מראשוני התחום בארץ, הכין מאות צעירים ליחידות עילית, עם גישה
-                  מנטלית ופיזית ייחודית. מתמחה בפיתוח חוסן נפשי וכושר גופני.
-                </p>
-              </div>
+              <p className="text-gray-300 leading-relaxed text-sm">
+                בוגר סיירת חרוב, מפקד ולוחם במילואים פעיל, יזם מאמן מנטלי, מנחה
+                סדנאות והרצאות על פיתוח חוסן והצלחה בשיטת הרגלים "מכווני תוצאה"
+              </p>
+            </div>
+          </div>
+          {/* Team Member 2 - נתנאל */}
+          <div className="bg-black rounded-xl md:rounded-2xl shadow-xl overflow-hidden h-full">
+            {/* Image */}
+            <div className="relative h-48 md:h-56 lg:h-48">
+              <img
+                src="/images/מדרך אגרוף.jpg"
+                alt="נתנאל"
+                className="w-full h-full object-cover object-[50%_20%]"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
             </div>
 
-            {/* Team Member 3 */}
-            <div className="bg-black w-300px h-full  rounded-xl md:rounded-2xl shadow-xl overflow-hidden">
-              {/* Image */}
-              <div className="relative h-48 md:h-64">
-                <img
-                  src="https://images.unsplash.com/photo-1518609571773-39b7d303a87b?w=500&auto=format&fit=crop&q=60"
-                  alt="נועה דביר"
-                  className="w-full h-full object-cover object-top"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+            {/* Content */}
+            <div className="p-4 md:p-5 text-white">
+              <h3 className="text-lg md:text-xl font-bold mb-1 text-white">
+                נתנאל
+              </h3>
+              <div className="text-green-400 text-sm font-semibold mb-3">
+                מדריך ומנהל מערך מדריכים איגרוף / קרב מגע
               </div>
-
-              {/* Content */}
-              <div className="p-4 md:p-6 text-white">
-                <h3 className="text-xl md:text-2xl font-bold mb-1 text-white">
-                  נועה דביר
-                </h3>
-                <div className="text-green-400 text-sm md:text-base font-semibold mb-3 md:mb-4">
-                  מאמנת כושר קרבי
-                </div>
-
-                <p className="text-gray-300 mb-3 md:mb-4 leading-relaxed text-sm md:text-base">
-                  מאמנת כושר קרבי עם ניסיון של מעל 8 שנים בהכנה לגיבושים ויחידות
-                  מיוחדות. מוסמכת באימון פונקציונלי ואימון מנטלי ללחץ.
-                </p>
-              </div>
+              <p className="text-gray-300 leading-relaxed text-sm">
+                לוחם במילואים פעיל + מדריך לוטר לשעבר, יחידת אם סיירת חרוב
+              </p>
             </div>
           </div>
 
-          {/* CTA Section */}
-          <div className="mt-8 md:mt-12 text-center bg-black rounded-xl md:rounded-2xl p-5 md:p-6 shadow-xl">
-            <h3 className="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">
-              מוכנים להצטרף למשפחת
-              <span className="text-green-400"> InFiniTy</span>?
-            </h3>
-            <p className="text-sm md:text-base text-gray-300 mb-4 md:mb-6 leading-relaxed">
-              הצוות שלנו כאן כדי להוביל אותך למסע של גדילה, חוזק ופריצת גבולות.
-            </p>
-            <button className="w-full bg-green-800 hover:bg-green-700 text-white font-bold py-3 md:py-4 px-4 md:px-6 rounded-lg text-sm md:text-base transition-colors duration-300">
-              בואו נתחיל
-            </button>
+          {/* Team Member 3 - יקיר */}
+          <div className="bg-black rounded-xl md:rounded-2xl shadow-xl overflow-hidden h-full">
+            {/* Image */}
+            <div className="relative h-48 md:h-56 lg:h-48">
+              <img
+                src="https://images.unsplash.com/photo-1518609571773-39b7d303a87b?w=500&auto=format&fit=crop&q=60"
+                alt="יקיר"
+                className="w-full h-full object-cover object-top"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+            </div>
+
+            {/* Content */}
+            <div className="p-4 md:p-5 text-white">
+              <h3 className="text-lg md:text-xl font-bold mb-1 text-white">
+                יקיר
+              </h3>
+              <div className="text-green-400 text-sm font-semibold mb-3">
+                רכז הקבוצות
+              </div>
+              <p className="text-gray-300 leading-relaxed text-sm">
+                מנהל את כל מערך הקבוצות בפריסה ארצית, מערך לוגיסטי
+              </p>
+            </div>
+          </div>
+
+          {/* Team Member 4 - יורן */}
+          <div className="bg-black rounded-xl md:rounded-2xl shadow-xl overflow-hidden h-full">
+            {/* Image */}
+            <div className="relative h-48 md:h-56 lg:h-48">
+              <img
+                src="/images/trainer2.jpg"
+                alt="יורן"
+                className="w-full h-full object-cover object-[30%_20%]"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+            </div>
+
+            {/* Content */}
+            <div className="p-4 md:p-5 text-white">
+              <h3 className="text-lg md:text-xl font-bold mb-1 text-white">
+                יורן
+              </h3>
+              <div className="text-green-400 text-sm font-semibold mb-3">
+                מדריך בכיר מתמחה בהכנת נערים לגיבושים וימי סיירות
+              </div>
+              <p className="text-gray-300 leading-relaxed text-sm">
+                לוחם מילואים פעיל, עם גישה מנטלית פיזית ייחודית, מתמחה בפיתוח
+                חוסן נפשי וכושר גופני
+              </p>
+            </div>
           </div>
         </div>
       </div>

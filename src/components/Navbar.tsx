@@ -1,6 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FiHome, FiUsers, FiInfo, FiMail } from "react-icons/fi";
+import {
+  FiHome,
+  FiUsers,
+  FiInfo,
+  FiMail,
+  FiTarget,
+  FiStar,
+  FiBookOpen,
+} from "react-icons/fi";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
@@ -135,10 +143,22 @@ function CustomNavbar() {
             active={location.pathname === "/"}
           />
           <NavLink
-            icon={<FiUsers />}
+            icon={<FiTarget />}
             to="/ProductsPage"
             label="תכניות אינפיניטי"
             active={location.pathname === "/ProductsPage"}
+          />
+          <NavLink
+            icon={<FiBookOpen />}
+            to="/PracticalTrainingPage"
+            label="הדרכה פרקטית"
+            active={location.pathname === "/PracticalTrainingPage"}
+          />
+          <NavLink
+            icon={<FiStar />}
+            to="/TestimonialsPage"
+            label="חניכים מספרים"
+            active={location.pathname === "/TestimonialsPage"}
           />
           <NavLink
             icon={<FiUsers />}
