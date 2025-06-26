@@ -1,5 +1,5 @@
 import "../App.css";
-import { testimonialsData } from "../data/TestimonialsData";
+import { testimonialsData } from "../data/testimonialsData";
 import { Link } from "react-router-dom";
 
 const TestimonialsPage = () => {
