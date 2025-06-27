@@ -7,7 +7,7 @@ const TestimonialsPage = () => {
   const testimonials = testimonialsData;
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-100 ">
       {/* Header Section */}
       <div className="bg-gradient-to-br from-gray-900 via-black to-gray-800 py-12 md:py-16 lg:py-20">
         <div className="container mx-auto px-4">
@@ -33,6 +33,28 @@ const TestimonialsPage = () => {
             </p>
           </div>
         </div>
+      </div>
+      {/* Testimonials Grid */}
+      {/* Introduction */}
+      <div className="text-center mt-5 mb-12 md:mb-16">
+        <h2
+          className="text-black text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4"
+          style={{
+            fontFamily: "Heebo, sans-serif",
+            fontWeight: "700",
+          }}
+        >
+          מה החניכים שלנו אומרים?
+        </h2>
+        <p
+          className="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto"
+          style={{
+            fontFamily: "Heebo, sans-serif",
+            fontWeight: "400",
+          }}
+        >
+          חוות דעת מחניכים שהתקבלו ליחידות המובחרות בצה"ל
+        </p>
       </div>
 
       {/* Images Gallery Section */}
@@ -107,31 +129,8 @@ const TestimonialsPage = () => {
         </div>
       </div>
 
-      {/* Testimonials Grid */}
+      {/* Testimonials Cards */}
       <div className="container mx-auto px-4 py-12 md:py-16 lg:py-20">
-        {/* Introduction */}
-        <div className="text-center mb-12 md:mb-16">
-          <h2
-            className="text-black text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4"
-            style={{
-              fontFamily: "Heebo, sans-serif",
-              fontWeight: "700",
-            }}
-          >
-            מה החניכים שלנו אומרים?
-          </h2>
-          <p
-            className="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto"
-            style={{
-              fontFamily: "Heebo, sans-serif",
-              fontWeight: "400",
-            }}
-          >
-            חוות דעת מחניכים שהתקבלו ליחידות המובחרות בצה"ל
-          </p>
-        </div>
-
-        {/* Testimonials Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16">
           {testimonials.map((testimonial) => (
             <div
@@ -155,7 +154,7 @@ const TestimonialsPage = () => {
                 >
                   {testimonial.name}
                 </h3>
-                
+
                 <p
                   className="text-gray-600 text-sm leading-relaxed"
                   style={{ fontFamily: "Heebo, sans-serif" }}
