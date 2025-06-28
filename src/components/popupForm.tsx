@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { User, MessageSquare, Send, Phone, X, MapPin } from "lucide-react";
+import {
+  User,
+  MessageSquare,
+  Send,
+  Phone,
+  X,
+  MapPin,
+  CheckCircle,
+} from "lucide-react";
 
 interface PopupFormProps {
   onPopupOpen: () => void;
@@ -41,10 +49,9 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
     }, 15000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [onPopupOpen, seenPopup]);
 
   const validatePhone = (phone: string): boolean => {
-    // Updated regex that includes all Israeli mobile numbers and landlines
     const israeliPhoneRegex = /^(?:\+972|0)(?:[23489]|5[0-9]|77)[0-9]{7}$/;
     return israeliPhoneRegex.test(phone.replace(/[-\s]/g, ""));
   };
@@ -74,13 +81,20 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
     return Object.keys(newErrors).length === 0;
   };
 
+  // Sanitize user input to prevent XSS attacks
+  const sanitizeInput = (input: string): string => {
+    return input.replace(/[<>]/g, "");
+  };
+
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
+    const sanitizedValue = sanitizeInput(value);
+
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: sanitizedValue,
     }));
 
     // Clear error when user starts typing
@@ -92,16 +106,58 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
     }
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
     if (!validateForm()) return;
 
     setIsSubmitting(true);
 
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    // Create FormData for formsubmit.co
+    const form = new FormData();
+    form.append("name", formData.name);
+    form.append("phone", formData.phone);
+    form.append("city", formData.city);
+    form.append("message", formData.message);
+    form.append("_subject", " פנייה חדשה אינפיניטי כושר קרבי הודעה קופצת");
+    form.append("_captcha", "false");
+    form.append("_template", "table");
 
-    console.log("Form submitted:", formData);
-    setIsSubmitted(true);
-    setIsSubmitting(false);
+    try {
+      const response = await fetch(
+        "https://formsubmit.co/Infinitykosherkravi@gmail.com",
+        {
+          method: "POST",
+          body: form,
+        }
+      );
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setIsSubmitting(false);
+
+        // Track form submission for Google Analytics if available
+        if (window.gtag) {
+          window.gtag("event", "popup_form_submit", {
+            event_category: "engagement",
+            event_label: "popup_contact_form",
+          });
+        }
+
+        // Reset form after 3 seconds and close popup
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setFormData({ name: "", city: "", phone: "", message: "" });
+          closeModal();
+        }, 30000);
+      } else {
+        throw new Error("Form submission failed");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      alert("אירעה שגיאה בשליחת הטופס. אנא נסה שוב.");
+      setIsSubmitting(false);
+    }
   };
 
   const closeModal = () => {
@@ -116,19 +172,11 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2  "
+      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2"
       dir="rtl"
     >
-      <div
-        className=" mt-5
-      bg-white rounded-lg shadow-xl 
-      max-w-md w-full relative
-      h-fit max-h-[95vh] overflow-y-auto
-      sm:w-80 sm:p-0 sm:max-h-[95vh]    
-      md:w-96 md:max-h-[95vh]        
-    "
-      >
-        {/* Header  */}
+      <div className="mt-5 bg-white rounded-lg shadow-xl max-w-md w-full relative h-fit max-h-[95vh] overflow-y-auto sm:w-80 sm:p-0 sm:max-h-[95vh] md:w-96 md:max-h-[95vh]">
+        {/* Header */}
         <div className="relative bg-green-800 text-white p-4 text-center rounded-t-lg">
           <button
             onClick={closeModal}
@@ -149,31 +197,38 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
         <div className="p-4">
           {isSubmitted ? (
             <div className="text-center py-8">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Send className="w-8 h-8 text-green-600" />
+              <div className="reletive">
+                <button
+                  onClick={closeModal}
+                  className="absolute -top-4 left-4 p-1 "
+                />
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle className="w-8 h-8 text-green-600" />
+                </div>
+                <h3 className="text-lg text-black font-semibold text-gray-900 mb-2">
+                  ההודעה נשלחה!
+                </h3>
+                <p className="text-sm text-gray-600">
+                  תודה רבה! נחזור אליכם בהקדם.
+                </p>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                ההודעה נשלחה!
-              </h3>
-              <p className="text-sm text-gray-600">
-                תודה רבה! נחזור אליכם בהקדם.
-              </p>
             </div>
           ) : (
-            <div className="space-y-3">
+            <form onSubmit={handleSubmit} className="space-y-3">
               {/* Name Field */}
               <div>
                 <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-black mb-2 text-right   "
+                  htmlFor="popup-name"
+                  className="block text-sm font-medium text-black mb-2 text-right"
                 >
                   <User className="w-4 h-4 inline ml-1" />
                   שם מלא
                 </label>
                 <input
                   type="text"
-                  id="name"
+                  id="popup-name"
                   name="name"
+                  required
                   value={formData.name}
                   onChange={handleInputChange}
                   className={`w-full px-3 py-2 text-sm border rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-right text-black ${
@@ -191,16 +246,17 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
               {/* City Field */}
               <div>
                 <label
-                  htmlFor="city"
-                  className="block text-sm font-medium text-black mb-2 text-right "
+                  htmlFor="popup-city"
+                  className="block text-sm font-medium text-black mb-2 text-right"
                 >
                   <MapPin className="w-4 h-4 inline ml-1" />
                   עיר
                 </label>
                 <input
                   type="text"
-                  id="city"
+                  id="popup-city"
                   name="city"
+                  required
                   value={formData.city}
                   onChange={handleInputChange}
                   className={`w-full px-3 py-2 text-sm text-black border rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-right ${
@@ -218,7 +274,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
               {/* Phone Field */}
               <div>
                 <label
-                  htmlFor="phone"
+                  htmlFor="popup-phone"
                   className="block text-sm font-medium text-black mb-2 text-right"
                 >
                   <Phone className="w-4 h-4 inline ml-1" />
@@ -226,8 +282,9 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
                 </label>
                 <input
                   type="tel"
-                  id="phone"
+                  id="popup-phone"
                   name="phone"
+                  required
                   value={formData.phone}
                   onChange={handleInputChange}
                   className={`w-full px-3 py-2 text-sm text-black border rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-right ${
@@ -247,15 +304,16 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
               {/* Message Field */}
               <div>
                 <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-black mb-2 text-right "
+                  htmlFor="popup-message"
+                  className="block text-sm font-medium text-black mb-2 text-right"
                 >
                   <MessageSquare className="w-4 h-4 inline ml-1" />
                   הודעה
                 </label>
                 <textarea
-                  id="message"
+                  id="popup-message"
                   name="message"
+                  required
                   value={formData.message}
                   onChange={handleInputChange}
                   rows={2}
@@ -280,9 +338,9 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
                 </p>
               </div>
 
-              {/* Submit Button - Olive Green */}
+              {/* Submit Button */}
               <button
-                onClick={handleSubmit}
+                type="submit"
                 disabled={isSubmitting}
                 className="w-full bg-green-700 hover:bg-green-800 disabled:bg-green-400 text-white font-medium py-3 px-4 rounded-md transition-colors flex items-center justify-center gap-2"
               >
@@ -298,12 +356,19 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
                   </>
                 )}
               </button>
-            </div>
+            </form>
           )}
         </div>
       </div>
     </div>
   );
 };
+
+// Add type declaration for gtag
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
 
 export default PopupForm;

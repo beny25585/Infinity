@@ -6,14 +6,8 @@ import {
   Send,
   Phone,
   ChevronsDown,
+  CheckCircle,
 } from "lucide-react";
-
-// Add type declaration for gtag
-declare global {
-  interface Window {
-    gtag?: (...args: any[]) => void;
-  }
-}
 
 interface FormData {
   name: string;
@@ -39,11 +33,9 @@ const Contact: React.FC = () => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [lastSubmission, setLastSubmission] = useState<number>(0); // Rate limiting
 
-  // Israeli phone number validation - supports all mobile (050-059) and landline numbers
+  // Israeli phone number validation
   const validatePhone = (phone: string): boolean => {
-    // Updated regex that includes all Israeli mobile numbers and landlines
     const israeliPhoneRegex = /^(?:\+972|0)(?:[23489]|5[0-9]|77)[0-9]{7}$/;
     return israeliPhoneRegex.test(phone.replace(/[-\s]/g, ""));
   };
@@ -75,28 +67,7 @@ const Contact: React.FC = () => {
 
   // Sanitize user input to prevent XSS attacks
   const sanitizeInput = (input: string): string => {
-    return input.trim().replace(/[<>]/g, "");
-  };
-
-  // Track form submission for Google Analytics
-  const trackFormSubmission = () => {
-    if (window.gtag) {
-      window.gtag("event", "form_submit", {
-        event_category: "engagement",
-        event_label: "contact_form",
-      });
-    }
-  };
-
-  // Format phone number for API submission (convert to international format)
-  const formatPhone = (e: string) => {
-    let cleaned = e.replace(/\D/g, "");
-
-    if (cleaned.startsWith("0")) {
-      return "+972" + cleaned.slice(1);
-    }
-
-    return cleaned;
+    return input.replace(/[<>]/g, "");
   };
 
   // Handle form input changes with real-time validation
@@ -104,7 +75,6 @@ const Contact: React.FC = () => {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    // Apply sanitization to all inputs
     const sanitizedValue = sanitizeInput(value);
 
     setFormData((prev) => ({
@@ -121,57 +91,55 @@ const Contact: React.FC = () => {
     }
   };
 
-  // Submit form with rate limiting and error handling
-  const handleSubmit = async () => {
-    // Rate limiting: prevent multiple submissions within 10 seconds
-    const now = Date.now();
-    if (now - lastSubmission < 10000) {
-      alert("אנא המתן 10 שניות בין שליחות");
-      return;
-    }
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
     if (!validateForm()) return;
 
     setIsSubmitting(true);
-    setLastSubmission(now);
+
+    // Create FormData for formsubmit.co
+    const form = new FormData();
+    form.append("name", formData.name);
+    form.append("phone", formData.phone);
+    form.append("city", formData.city);
+    form.append("message", formData.message);
+    form.append("_subject", "פנייה חדשה מאתר אינפיניטי כושר קרבי");
+    form.append("_captcha", "false");
+    form.append("_template", "table");
 
     try {
-      const body = JSON.stringify({
-        name: sanitizeInput(formData.name),
-        phone: formatPhone(formData.phone),
-        city: sanitizeInput(formData.city),
-        message: sanitizeInput(formData.message),
-        message_type: "submission_success",
-        api_key: "0548898564",
-      });
+      const response = await fetch(
+        "https://formsubmit.co/Infinitykosherkravi@gmail.com",
+        {
+          method: "POST",
+          body: form,
+        }
+      );
 
-      const res = await fetch("http://127.0.0.1:8000/api/send-message/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: body,
-      });
-
-      const result = await res.json();
-
-      if (res.ok) {
+      if (response.ok) {
         setIsSubmitted(true);
         setIsSubmitting(false);
-        trackFormSubmission(); // Track successful submission
 
-        // Auto-reset form after success message
+        // Track form submission for Google Analytics if available
+        if (window.gtag) {
+          window.gtag("event", "form_submit", {
+            event_category: "engagement",
+            event_label: "contact_form",
+          });
+        }
+
+        // Reset form after 3 seconds
         setTimeout(() => {
           setIsSubmitted(false);
           setFormData({ name: "", city: "", phone: "", message: "" });
         }, 3000);
       } else {
-        alert("אירעה שגיאה בשליחת הטופס: " + JSON.stringify(result));
-        setIsSubmitting(false);
+        throw new Error("Form submission failed");
       }
     } catch (error) {
-      alert("שגיאה ברשת, אנא נסה שוב.");
-      console.error(error);
+      console.error("Form submission error:", error);
+      alert("אירעה שגיאה בשליחת הטופס. אנא נסה שוב.");
       setIsSubmitting(false);
     }
   };
@@ -196,7 +164,7 @@ const Contact: React.FC = () => {
         {isSubmitted ? (
           <div className="text-center py-4 w-full">
             <div className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center mx-auto mb-2 bg-green-700">
-              <Send className="w-5 h-5 md:w-6 md:h-6 text-white" />
+              <CheckCircle className="w-5 h-5 md:w-6 md:h-6 text-white" />
             </div>
             <h3 className="text-base md:text-lg font-semibold text-white mb-1">
               ההודעה נשלחה!
@@ -206,7 +174,10 @@ const Contact: React.FC = () => {
             </p>
           </div>
         ) : (
-          <div className="w-full flex flex-col gap-3 md:gap-4">
+          <form
+            onSubmit={handleSubmit}
+            className="w-full flex flex-col gap-3 md:gap-4"
+          >
             {/* Name Field */}
             <div>
               <label
@@ -220,6 +191,7 @@ const Contact: React.FC = () => {
                 type="text"
                 id="name"
                 name="name"
+                required
                 value={formData.name}
                 onChange={handleInputChange}
                 className={`w-full px-3 py-2.5 md:py-3 bg-white/10 backdrop-blur-sm border text-white placeholder-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-right ${
@@ -249,6 +221,7 @@ const Contact: React.FC = () => {
                 type="text"
                 id="city"
                 name="city"
+                required
                 value={formData.city}
                 onChange={handleInputChange}
                 className={`w-full px-3 py-2.5 md:py-3 bg-white/10 backdrop-blur-sm border text-white placeholder-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-right ${
@@ -278,6 +251,7 @@ const Contact: React.FC = () => {
                 type="tel"
                 id="phone"
                 name="phone"
+                required
                 value={formData.phone}
                 onChange={handleInputChange}
                 className={`w-full px-3 py-2.5 md:py-3 bg-white/10 backdrop-blur-sm border text-white placeholder-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-right ${
@@ -306,15 +280,17 @@ const Contact: React.FC = () => {
               <textarea
                 id="message"
                 name="message"
+                required
                 value={formData.message}
                 onChange={handleInputChange}
                 rows={3}
-                className={`w-full px-3 py-2.5 border rounded-lg bg-white/10 backdrop-blur-sm focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all resize-none text-right text-white placeholder-gray-300 ${
+                className={`w-full px-3 py-2.5 border rounded-lg bg-white/10 backdrop-blur-sm focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all resize-y text-right text-white placeholder-gray-300 ${
                   errors.message
                     ? "border-red-500 bg-red-500/20"
                     : "border-white/30"
                 }`}
                 placeholder="למה אינפיניטי כושר קרבי?"
+                style={{ whiteSpace: "pre-wrap" }}
               />
               {errors.message && (
                 <p className="mt-1 text-xs text-red-300 text-right">
@@ -333,8 +309,7 @@ const Contact: React.FC = () => {
             </div>
 
             <button
-              type="button"
-              onClick={handleSubmit}
+              type="submit"
               disabled={isSubmitting}
               className="flex items-center justify-center w-full px-4 py-3 md:py-3.5 text-base md:text-lg font-semibold text-white bg-green-700 hover:bg-green-800 disabled:bg-gray-600 rounded-lg transition duration-300 ease-in-out shadow-lg"
             >
@@ -350,11 +325,18 @@ const Contact: React.FC = () => {
                 </>
               )}
             </button>
-          </div>
+          </form>
         )}
       </div>
     </section>
   );
 };
+
+// Add type declaration for gtag
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
 
 export default Contact;
