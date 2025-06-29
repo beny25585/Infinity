@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+
+# in development
+Disallow: /Gallery
+Disallow: /Videos
+
+Sitemap: https://infinitykosherkravi.co.il/sitemap.xml
