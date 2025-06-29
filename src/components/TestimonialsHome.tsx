@@ -140,7 +140,7 @@ const TestimonialsHome = () => {
             fontWeight: "400",
           }}
         >
-          חוות דעת מחניכים שהתקבלו ליחידות המובחרות בצה"ל
+          חוות דעת מחניכים בתכנית אינפיניטי
         </p>
       </div>
 
@@ -177,8 +177,8 @@ const TestimonialsHome = () => {
                     ? `url(${testimonial.image})`
                     : "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
                   backgroundSize: "contain",
-                    backgroundPosition: "center center",
-                    backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center center",
+                  backgroundRepeat: "no-repeat",
                 }}
               >
                 {/* Loading placeholder */}
