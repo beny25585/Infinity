@@ -22,7 +22,7 @@ const Footer = () => {
           <FontAwesomeIcon icon={faWhatsapp} />
         </a>
         <a
-          href="https://instagram.com/your_account"
+          href="https://www.instagram.com/infinitykosherkravi?igsh=NGM3dmg0YW52ejgy"
           target="_blank"
           rel="noreferrer"
           className="transition-transform hover:scale-110"
