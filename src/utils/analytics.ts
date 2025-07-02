@@ -8,7 +8,7 @@ declare global {
   }
   
   // Your Google Analytics 4 Measurement ID
-  export const GA_MEASUREMENT_ID = 'G-PLJ4H2XPM';
+  export const GA_MEASUREMENT_ID = 'G-PLJH4H2XPM';
   
   // Initialize Google Analytics 4
   export const initGA = () => {

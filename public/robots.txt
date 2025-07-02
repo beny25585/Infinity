@@ -1,9 +1,18 @@
 User-agent: *
 Allow: /
 
-
-# in development
-Disallow: /Gallery
-Disallow: /Videos
-
 Sitemap: https://infinitykosherkravi.co.il/sitemap.xml
+
+Disallow: /admin/
+Disallow: /api/
+Disallow: /*.json$
+
+Allow: /
+Allow: /ProductsPage
+Allow: /Team
+Allow: /About
+Allow: /Contact
+Allow: /TestimonialsPage
+Allow: /PracticalTrainingPage
+
+Crawl-delay: 1

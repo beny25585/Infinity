@@ -1,0 +1,61 @@
+{
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://infinitykosherkravi.co.il/#organization",
+        "name": "InFiniTy כושר קרבי מנטלי",
+        "alternateName": "אינפיניטי כושר קרבי",
+        "url": "https://infinitykosherkravi.co.il",
+        "logo": "https://infinitykosherkravi.co.il/logos/IMG-20250516-WA0003.jpg",
+        "description": "מרכז מקצועי להכנה ליחידות מובחרות בצה״ל. הכנה פיזית ומנטלית עם 88% שיעור הצלחה",
+        "founder": {
+          "@type": "Person",
+          "name": "יונתן בן שבת",
+          "description": "בוגר סיירת חרוב, מאמן מנטלי מוסמך עם מעל 600 ימי מילואים"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+972-55-969-6929",
+          "contactType": "customer service",
+          "availableLanguage": "Hebrew"
+        },
+        "sameAs": [
+          "https://www.instagram.com/infinitykosherkravi",
+          "https://www.facebook.com/share/15Q4Ue6CT8",
+          "https://www.tiktok.com/@infinitykosherkravi",
+          "https://www.youtube.com/@InFinityKosherKravi"
+        ]
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://infinitykosherkravi.co.il/#localbusiness",
+        "name": "InFiniTy כושר קרבי מנטלי",
+        "image": "https://infinitykosherkravi.co.il/logos/IMG-20250516-WA0003.jpg",
+        "priceRange": "₪₪",
+        "telephone": "+972-55-969-6929",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "IL",
+          "addressRegion": "ישראל"
+        },
+        "openingHours": "Mo-Su 06:00-22:00",
+        "serviceArea": {
+          "@type": "Country",
+          "name": "ישראל"
+        }
+      },
+      {
+        "@type": "Course",
+        "@id": "https://infinitykosherkravi.co.il/#course",
+        "name": "תכנית הכנה ליחידות מובחרות",
+        "description": "תכנית מקיפה המשלבת אימון פיזי, מנטלי והכנה לגיבושים",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "120",
+          "bestRating": "5"
+        }
+      }
+    ]
+  }

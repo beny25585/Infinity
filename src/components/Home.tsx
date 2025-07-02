@@ -34,7 +34,7 @@ const Home = () => {
                 InFinity
               </span>
               <span className="block font-sans text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl mt-1 md:mt-2">
-                אינפיניטי כושר קרבי מנטלי
+                מרכז כושר קרבי מנטלי להכנה ליחידות מובחרות בצה״ל
               </span>
               <span className="block text-white text-sm sm:text-base md:text-lg lg:text-xl mt-2 md:mt-3 font-medium opacity-90">
                 אינפיניטי ! לא רק כושר קרבי גם הכנה לחיים!
