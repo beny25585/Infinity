@@ -1,4 +1,6 @@
 import { teamData } from "../data/teamData";
+import CTASection from "../components/CTASection";
+
 
 const Team = () => {
   return (
@@ -52,6 +54,11 @@ const Team = () => {
             </div>
           ))}
         </div>
+        <CTASection
+          title="רוצה לפגוש את הצוות?"
+          subtitle="בוא לאימון ניסיון ותכיר את המאמנים שלנו"
+          bgColor="dark"
+        />
       </div>
     </section>
   );

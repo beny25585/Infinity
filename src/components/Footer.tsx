@@ -41,7 +41,7 @@ const Footer = () => {
         </a>
 
         <a
-          href="https://www.tiktok.com/@infinitykosherkravi?_t=ZN-8wOaMspnRLi&_r=1"
+          href="https://www.tiktok.com/@infinity.kosherkravi?_t=ZN-8xiVr8iNWNy&_r=1"
           target="_blank"
           rel="noreferrer"
           className="text-transparent text-black font-bold"

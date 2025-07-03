@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "../App.css";
+import CTAButton from "../components/CTAButton";
 import { productsData } from "../data/productsData";
 
 const ProductsPage = () => {
@@ -115,6 +116,15 @@ const ProductsPage = () => {
                 >
                   {item.description}
                 </p>
+                <div className="flex justify-center">
+                  <CTAButton
+                    variant="primary"
+                    size="medium"
+                    text="להשארת פרטים"
+                    className="block md:hidden"
+                    action="contact"
+                  />
+                </div>
               </div>
 
               {/* Hover effect overlay */}
