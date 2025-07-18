@@ -80,7 +80,7 @@ function CustomNavbar() {
               </a>
 
               <a
-                href="https://www.instagram.com/infinitykosherkravi?igsh=NGM3dmg0YW52ejgy "
+                href="https://www.instagram.com/infinity.kosherkravi?igsh=NGM3dmg0YW52ejgy"
                 target="_blank"
                 rel="noreferrer"
                 className="transition-transform hover:scale-110"
