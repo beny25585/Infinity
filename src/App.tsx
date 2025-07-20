@@ -7,6 +7,7 @@ import ProductsHome from "./components/ProductsHome";
 import PromoBanner from "./components/PromoBanner";
 import TeamInApp from "./components/TeamInApp";
 import TestimonialsHome from "./components/TestimonialsHome"; 
+import GroupsOfTenBanner from "./components/GroupsOfTenBanner";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Home />
         </div>
         <PromoBanner />
+        <GroupsOfTenBanner/>
 
         <div className="max-w-screen">
           <ProductsHome />
