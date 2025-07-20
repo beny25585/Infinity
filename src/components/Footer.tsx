@@ -50,7 +50,7 @@ const Footer = () => {
         </a>
 
         <a
-          href="https://www.youtube.com/@InFinityKosherKravi"
+          href="https://www.youtube.com/@InFinity.KosherKravi"
           target="_blank"
           rel="noreferrer"
           style={{ color: "#FF0000" }}

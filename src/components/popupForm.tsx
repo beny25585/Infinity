@@ -46,7 +46,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
     const timer = setTimeout(() => {
       onPopupOpen();
       setIsOpen(true);
-    }, 15000);
+    }, 30000);
 
     return () => clearTimeout(timer);
   }, [onPopupOpen, seenPopup]);

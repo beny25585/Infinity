@@ -112,7 +112,7 @@ function CustomNavbar() {
               </a>
 
               <a
-                href="https://www.youtube.com/@InFinityKosherKravi"
+                href="https://www.youtube.com/@InFinity.KosherKravi"
                 target="_blank"
                 rel="noreferrer"
                 className="transition-transform hover:scale-110"
