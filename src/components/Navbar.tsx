@@ -151,7 +151,7 @@ function CustomNavbar() {
           <NavLink
             icon={<FiBookOpen />}
             to="/PracticalTrainingPage"
-            label="הדרכה פרקטית"
+            label="סרטון לגיוס"
             active={location.pathname === "/PracticalTrainingPage"}
           />
           <NavLink

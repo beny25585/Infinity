@@ -19,6 +19,8 @@ import PracticalTrainingPage from "./pages/PracticalTrainingPage";
 import TestimonialsPage from "./pages/TestimonialsPage";
 import { initGA } from "./utils/analytics";
 import { usePageTracking, useScrollTracking } from "./hooks/useAnalyticts";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfUse from "./pages/TermsOfUse";
 
 const AnalyticsWrapper = ({ children }: { children: React.ReactNode }) => {
   usePageTracking();
@@ -40,10 +42,9 @@ createRoot(document.getElementById("root")!).render(
           <Route path="/Gallery" element={<Gallery />} />
           <Route path="/ProductsPage" element={<ProductsPage />} />
           <Route path="/Videos" element={<Videos />} />
-          <Route
-            path="/PracticalTrainingPage"
-            element={<PracticalTrainingPage />}
-          />
+          <Route path="/PracticalTrainingPage"element={<PracticalTrainingPage />}/>
+          <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
+          <Route path="/TermsOfUse" element={<TermsOfUse />} />
           <Route path="/TestimonialsPage" element={<TestimonialsPage />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/About" element={<About />} />

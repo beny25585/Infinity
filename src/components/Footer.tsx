@@ -9,7 +9,8 @@ import {
 
 const Footer = () => {
   return (
-    <footer className=" text-white text-center py-8 shadow-lg ">
+    <footer className="text-white text-center py-8 shadow-lg bg-gray-100">
+      {/* אייקוני רשתות חברתיות */}
       <div className="flex justify-center gap-6 mb-4 text-2xl">
         <a
           href="https://wa.me/972559696929"
@@ -36,30 +37,50 @@ const Footer = () => {
           target="_blank"
           rel="noreferrer"
           style={{ color: "#1877F2" }}
+          title="Facebook"
         >
           <FontAwesomeIcon icon={faFacebook} />
         </a>
-
         <a
           href="https://www.tiktok.com/@infinity.kosherkravi?_t=ZN-8xiVr8iNWNy&_r=1"
           target="_blank"
           rel="noreferrer"
-          className="text-transparent text-black font-bold"
+          title="TikTok"
+          style={{ color: "#000000" }}
         >
           <FontAwesomeIcon icon={faTiktok} />
         </a>
-
         <a
           href="https://www.youtube.com/@InFinity.KosherKravi"
           target="_blank"
           rel="noreferrer"
           style={{ color: "#FF0000" }}
+          title="YouTube"
         >
           <FontAwesomeIcon icon={faYoutube} />
         </a>
       </div>
+
+      {/* קישורים משפטיים */}
+      <div className="mb-3">
+        <a
+          href="/PrivacyPolicy"
+          className="text-sm text-blue-700 hover:underline mx-2"
+        >
+          מדיניות פרטיות
+        </a>
+        |
+        <a
+          href="/TermsOfUse"
+          className="text-sm text-blue-700 hover:underline mx-2"
+        >
+          תנאי שימוש
+        </a>
+      </div>
+
+      {/* זכויות יוצרים */}
       <p className="text-sm text-black">
-        &copy; 2025 כושר קרבי | כל הזכויות שמורות לInFinity כושר קרבי מנטלי
+        &copy; 2025 כושר קרבי | כל הזכויות שמורות ל-InFinity כושר קרבי מנטלי
       </p>
     </footer>
   );
