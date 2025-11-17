@@ -63,29 +63,40 @@ export default function About() {
           </div>
         </div>
 
-        <div className="bg-black text-white rounded-lg p-6 md:p-16 shadow-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center">
-            <div className="space-y-4 md:space-y-6 lg:order-1">
-              <h4 className="text-xl md:text-2xl font-bold text-green-400">
-                החזון של אינפיניטי
-              </h4>
+       <div className="bg-gradient-to-r from-black via-gray-900 to-black text-white rounded-2xl p-6 md:p-16 shadow-2xl">
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+    
+    {/* טקסט בצד שמאל במסך גדול */}
+    <div className="space-y-6 order-2 lg:order-1">
+      <h4 className="text-2xl md:text-3xl font-bold text-green-400">
+        החזון של אינפיניטי
+      </h4>
 
-              <div className="space-y-3 md:space-y-4">
-                <p className="text-sm md:text-lg leading-relaxed opacity-90">
-                  יונתן בן שבת הקים את InFiniTy מתוך חזון ברור: לחנך דור של
-                  לוחמים שמצוינים לא רק פיזית, אלא גם מנטלית ורוחנית.
-                </p>
+      <p className="text-base md:text-lg leading-relaxed opacity-95">
+        יונתן בן שבת הקים את InFiniTy מתוך חזון ברור: לחנך דור של לוחמים
+        שמצוינים לא רק פיזית, אלא גם מנטלית ורוחנית.
+      </p>
 
-                <p className="text-sm md:text-lg leading-relaxed opacity-90 hidden md:block">
-                  לאחר שירותו בסיירת חרוב והצטברות של שנות ניסיון בהכנה לגיבושים
-                  ויחידות מובחרות, יונתן זיהה את הצורך בגישה שונה - גישה שמשלבת
-                  אימון פיזי מתקדם עם חיזוק מנטלי ופיתוח אישיות.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <p className="text-base md:text-lg leading-relaxed opacity-80 hidden md:block">
+        לאחר שירותו בסיירת חרוב והצטברות של שנות ניסיון בהכנה לגיבושים
+        ויחידות מובחרות, יונתן זיהה את הצורך בגישה שונה – גישה שמשלבת
+        אימון פיזי מתקדם עם חיזוק מנטלי ופיתוח אישיות.
+      </p>
+    </div>
+
+    {/* תמונה בצד ימין במסך גדול */}
+    <div className="order-1 lg:order-2">
+      <img
+        className="w-full h-52 md:h-72 object-cover rounded-xl shadow-lg hover:scale-105 transition-transform duration-500"
+        src="/images/vision.jpg"
+        alt="חזון אינפיניטי"
+      />
+    </div>
+  </div>
+</div>
+
+
+    </div>
     </section>
   );
 }
