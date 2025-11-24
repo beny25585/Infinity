@@ -5,8 +5,7 @@ import { productsData } from "../data/productsData";
 
 const ProductsHome = () => {
   const items = productsData;
-  
-      
+
   const scrollRef = useRef<HTMLDivElement>(null);
   const [_currentIndex, setCurrentIndex] = useState(0);
   const [_currentVisibleId, setCurrentVisibleId] = useState(1);
@@ -170,11 +169,11 @@ const ProductsHome = () => {
               <div
                 key={item.id}
                 id={`program-${item.id}`}
-                className="snap-center snap-always flex-shrink-0 w-screen lg:w-[85vw] xl:w-[80vw] 2xl:w-[75vw] bg-cover bg-center relative h-80 sm:h-96 md:h-[500px] lg:h-[600px] xl:h-[650px] transition-all duration-500 max-w-7xl"
+                className="snap-center snap-always flex-shrink-0 w-screen bg-cover bg-center relative h-80 sm:h-96 md:h-[500px] lg:h-[600px] xl:h-[650px] transition-all duration-500"
                 style={{
                   backgroundImage: loadedImages.has(item.id)
                     ? `url(${item.image})`
-                    : "linear-gradient(135deg, #667eea 0%, #764ba2 100%)", // Gradient placeholder
+                    : "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
                   backgroundColor: loadedImages.has(item.id)
                     ? "transparent"
                     : "#f3f4f6",
