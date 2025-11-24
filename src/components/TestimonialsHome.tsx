@@ -9,7 +9,7 @@ const TestimonialsHome = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [_currentIndex, setCurrentIndex] = useState(0);
   const [_currentVisibleId, setCurrentVisibleId] = useState(1);
-  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set([1])); // Load first image immediately
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set([1]));
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -25,12 +25,11 @@ const TestimonialsHome = () => {
       },
       {
         root: null,
-        rootMargin: "100px", // Start loading 100px before element is visible
+        rootMargin: "100px",
         threshold: 0.1,
       }
     );
 
-    // Observe all testimonial elements
     testimonials.forEach((testimonial) => {
       const element = document.getElementById(`testimonial-${testimonial.id}`);
       if (element) {
@@ -39,9 +38,8 @@ const TestimonialsHome = () => {
     });
 
     return () => observer.disconnect();
-  }, [testimonials]);
+  }, [testimonials, loadedImages]);
 
-  // Simple function to detect which ID is most visible
   const detectCurrentId = () => {
     const elements = testimonials
       .map((testimonial) =>
@@ -60,14 +58,12 @@ const TestimonialsHome = () => {
         const containerRect = scrollRef.current?.getBoundingClientRect();
 
         if (containerRect) {
-          // Calculate how much of the element is visible
           const left = Math.max(rect.left, containerRect.left);
           const right = Math.min(rect.right, containerRect.right);
           const visibleWidth = Math.max(0, right - left);
           const elementWidth = rect.width;
           const visibilityRatio = visibleWidth / elementWidth;
 
-          // Update the most visible element
           if (visibilityRatio > maxVisibility) {
             maxVisibility = visibilityRatio;
             mostVisibleElement = element;
@@ -83,7 +79,6 @@ const TestimonialsHome = () => {
     return detectedId;
   };
 
-  // Function to scroll to specific ID
   const scrollToId = (targetId: number) => {
     const element = document.getElementById(`testimonial-${targetId}`);
     if (element) {
@@ -93,7 +88,6 @@ const TestimonialsHome = () => {
         inline: "center",
       });
 
-      // Update both states immediately
       const newIndex = testimonials.findIndex(
         (testimonial) => testimonial.id === targetId
       );
@@ -140,7 +134,7 @@ const TestimonialsHome = () => {
             fontWeight: "400",
           }}
         >
-          חוות דעת מחניכים בתכנית אינפיניטי
+          חוות דעת מחניכים בתכנית אינפיניטי
         </p>
       </div>
 
@@ -161,17 +155,17 @@ const TestimonialsHome = () => {
           <ArrowLeft className="w-4 h-4 md:w-6 md:h-6 lg:w-7 lg:h-7" />
         </button>
 
-        {/* Gallery */}
+        {/* Gallery - תמונה אחת בכל פעם */}
         <div
           ref={scrollRef}
           className="overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory"
         >
-          <div className="flex space-x-3 md:space-x-6 lg:space-x-8 w-max px-2 md:px-4 lg:px-8">
+          <div className="flex w-max">
             {testimonials.map((testimonial) => (
               <div
                 key={testimonial.id}
                 id={`testimonial-${testimonial.id}`}
-                className="snap-center snap-always flex-shrink-0 w-screen lg:w-[85vw] xl:w-[80vw] 2xl:w-[75vw] bg-cover bg-center relative h-80 sm:h-96 md:h-[500px] lg:h-[600px] xl:h-[650px] transition-all duration-500 max-w-7xl"
+                className="snap-center snap-always flex-shrink-0 w-screen bg-center relative h-80 sm:h-96 md:h-[500px] lg:h-[600px] xl:h-[650px] transition-all duration-500 flex items-center justify-center"
                 style={{
                   backgroundImage: loadedImages.has(testimonial.id)
                     ? `url(${testimonial.image})`
@@ -179,6 +173,7 @@ const TestimonialsHome = () => {
                   backgroundSize: "contain",
                   backgroundPosition: "center center",
                   backgroundRepeat: "no-repeat",
+                  backgroundColor: "#1f2937", // רקע אפור כהה
                 }}
               >
                 {/* Loading placeholder */}
@@ -187,8 +182,13 @@ const TestimonialsHome = () => {
                     <div className="animate-spin rounded-full h-8 w-8 md:h-12 md:w-12 lg:h-16 lg:w-16 border-4 border-white border-t-transparent"></div>
                   </div>
                 )}
-                <div className="absolute inset-0 flex flex-col justify-end p-2 md:p-4 lg:p-6 xl:p-8 text-white text-center">
-                  <div className="bg-black/50 p-1 md:p-4 lg:p-6 xl:p-8 rounded-lg lg:rounded-xl">
+
+                {/* שכבת רקע כהה מעל התמונה */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+
+                {/* תוכן הטקסט - ממורכז */}
+                <div className="absolute bottom-0 left-0 right-0 flex flex-col justify-end items-center p-4 md:p-6 lg:p-8 text-white text-center z-10">
+                  <div className="bg-black/60 backdrop-blur-sm p-4 md:p-6 lg:p-8 rounded-t-2xl w-full max-w-5xl mx-auto">
                     <h3
                       className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mb-2 md:mb-3 lg:mb-4 leading-tight"
                       style={{
