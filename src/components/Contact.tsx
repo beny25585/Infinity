@@ -308,12 +308,17 @@ const Contact: React.FC = () => {
               </p>
             </div>
             <div className="text-xs text-white text-right mt-2">
-  הפרטים נמסרים לצורך יצירת קשר בלבד. לא יעברו לצד שלישי.
-  <br />
-  <a href="/PrivacyPolicy" className="text-green-700 underline">
-    למדיניות הפרטיות שלנו
-  </a>
-</div>
+              <label className="flex items-start gap-2 cursor-pointer">
+                <input type="checkbox" className="mt-1" required />
+                <span>
+                  אני מאשר/ת שקראתי את מדיניות הפרטיות.
+                  <br />
+                  <a href="/PrivacyPolicy" className="text-green-700 underline">
+                    למדיניות הפרטיות שלנו
+                  </a>
+                </span>
+              </label>
+            </div>
 
             <button
               type="submit"

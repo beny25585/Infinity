@@ -337,12 +337,20 @@ const PopupForm: React.FC<PopupFormProps> = ({ onPopupOpen, onPopupClose }) => {
                   מגיע לך מאיתנו 2 אימוני ניסיון ללא עלות
                 </p>
               </div>
-              <div className="text-xs text-gray-700 text-right mt-2">
-              הפרטים נמסרים לצורך יצירת קשר בלבד. לא יעברו לצד שלישי.
-                  <br />
-            <a href="/PrivacyPolicy" className="text-green-700 underline">
-             למדיניות הפרטיות שלנו
-              </a>
+              <div className="text-xs text-black text-right mt-2">
+                <label className="flex items-start gap-2 cursor-pointer">
+                  <input type="checkbox" className="mt-1" required />
+                  <span>
+                    אני מאשר/ת שקראתי את מדיניות הפרטיות.
+                    <br />
+                    <a
+                      href="/PrivacyPolicy"
+                      className="text-green-700 underline"
+                    >
+                      למדיניות הפרטיות שלנו
+                    </a>
+                  </span>
+                </label>
               </div>
 
               {/* Submit Button */}
