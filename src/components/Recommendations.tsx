@@ -4,7 +4,6 @@ import { recommendationsData } from "../data/recommendationData";
 
 const Recommendations = () => {
   const recommendations = recommendationsData;
-  
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const [_currentIndex, setCurrentIndex] = useState(0);
@@ -80,8 +79,7 @@ const Recommendations = () => {
 
     if (nextId <= recommendations.length) {
       scrollToId(nextId);
-    }
-    else {
+    } else {
       scrollToId(recommendations[0].id);
     }
   };
@@ -92,8 +90,7 @@ const Recommendations = () => {
 
     if (prevId >= 1) {
       scrollToId(prevId);
-    }
-    else {
+    } else {
       scrollToId(recommendations[recommendations.length - 1].id);
     }
   };
