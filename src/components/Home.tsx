@@ -5,8 +5,8 @@ const bgPattern =
 
 const Home = () => {
   return (
-    <section className=" text-black">
-      <div className="container max-w-7xl px-2 py-4 md:px-6 lg:px-12 bg-gradient-to-br from-slate-900 via-green-900 to-slate-800 relative overflow-hidden ">
+    <section>
+      <div className="  px-2 py-4 md:px-6 lg:px-12 bg-gradient-to-br from-slate-900 via-green-900 to-slate-800 relative overflow-hidden ">
         {/* Animated background overlay */}
         <div
           className="absolute inset-0 opacity-30 "
@@ -30,11 +30,9 @@ const Home = () => {
           {/* Main content */}
           <div className="text-center space-y-4 md:space-y-6 border-b border-green-600 max-w-xl mx-auto pb-6 md:pb-8">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight drop-shadow-md">
-              <span className="block text-black text-white font-serif">
-                InFinity
-              </span>
+              <span className="block text-white font-serif">InFinity</span>
               <span className="block font-sans text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl mt-1 md:mt-2">
-                ארגון נוער בשילוב כושר קרבי מנטלי להכנה ליחידות מובחרות בצה״ל
+                ארגון נוער בשילוב כושר קרבי מנטלי
               </span>
               <span className="block text-white text-sm sm:text-base md:text-lg lg:text-xl mt-2 md:mt-3 font-medium opacity-90">
                 אינפיניטי ! לא רק כושר קרבי גם הכנה לחיים!

@@ -146,7 +146,7 @@ const Contact: React.FC = () => {
 
   return (
     <section
-      className="flex flex-col items-center justify-center py-4 md:py-8 mx-auto max-w-7xl min-h-screen px-4 sm:px-6 lg:px-8"
+      className="flex flex-col items-center justify-center py-4 md:py-8 mx-auto  min-h-screen px-4 sm:px-6 lg:px-8"
       dir="rtl"
       style={{
         backgroundImage: "url('/images/soldier3.jpeg')",

@@ -6,19 +6,19 @@ import Home from "./components/Home";
 import ProductsHome from "./components/ProductsHome";
 import PromoBanner from "./components/PromoBanner";
 import TeamInApp from "./components/TeamInApp";
-import TestimonialsHome from "./components/TestimonialsHome"; 
+import TestimonialsHome from "./components/TestimonialsHome";
 import GroupsOfTenBanner from "./components/GroupsOfTenBanner";
 
 function App() {
   return (
     <div className="min-h-screen flex flex-col text-black font-hebrew direction-rtl">
-      <main className=" ">
+      <main>
         <MotivationVideo />
-        <div className="max-w-screen">
-          <Home />
-        </div>
+
+        <Home />
+
         <PromoBanner />
-        <GroupsOfTenBanner/>
+        <GroupsOfTenBanner />
 
         <div className="max-w-screen">
           <ProductsHome />
