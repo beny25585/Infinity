@@ -14,7 +14,7 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-20 items-center mb-16 md:mb-24">
           {/* Image section */}
           <div className="flex justify-center lg:order-2">
-            <div className="w-64 h-64 md:w-80 md:h-80 rounded-lg overflow-hidden shadow-lg transition-transform hover:scale-105 duration-300">
+            <div className="w-200 h-150  rounded-lg overflow-hidden shadow-lg transition-transform hover:scale-105 duration-300">
               <img
                 src="/images/yoni-about.jpg"
                 alt="יונתן בן שבת"
