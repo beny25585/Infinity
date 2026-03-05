@@ -71,8 +71,9 @@ export default function About() {
               </h4>
 
               <p className="text-base md:text-lg leading-relaxed opacity-95">
-                יונתן בן שבת הקים את InFiniTy מתוך חזון ברור: לחנך דור של לוחמים
-                שמצוינים לא רק פיזית, אלא גם מנטלית ורוחנית.
+                להוביל דור של צעירים חזקים בראש ובגוף, בעלי ביטחון עצמי וערך
+                עמצי גבוה, מוכנים לא רק לצא אלה לחיים, אוהבים את ארץ ישראל
+                ושואפים לחזק ולתרום לחברה הישראלית בעתידם.
               </p>
 
               <p className="text-base md:text-lg leading-relaxed opacity-80 hidden md:block">

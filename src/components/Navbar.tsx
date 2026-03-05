@@ -63,9 +63,14 @@ function CustomNavbar() {
           </div>
 
           <div className="flex flex-col items-center flex-1">
-            <div className="text-black text-3xl font-bold font-serif tracking-wide mb-2">
-              InFinity
-            </div>
+            <header>
+              <div className="text-black text-3xl font-bold font-serif tracking-wide mb-1/2">
+                InFinity
+              </div>
+              <p>
+                <strong> ארגון נוער אינפיניטי</strong>
+              </p>
+            </header>
 
             <div className="flex items-center justify-center gap-4 text-2xl">
               <a
@@ -105,7 +110,7 @@ function CustomNavbar() {
                 href="https://www.tiktok.com/@infinity.kosherkravi?_t=ZN-8xiVr8iNWNy&_r=1"
                 target="_blank"
                 rel="noreferrer"
-                className="text-transparent text-black font-bold transition-transform hover:scale-110"
+                className="text-black font-bold transition-transform hover:scale-110"
                 title="TikTok"
               >
                 <FontAwesomeIcon icon={faTiktok} />

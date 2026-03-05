@@ -72,7 +72,7 @@ const Contact: React.FC = () => {
 
   // Handle form input changes with real-time validation
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     const sanitizedValue = sanitizeInput(value);
@@ -114,7 +114,7 @@ const Contact: React.FC = () => {
         {
           method: "POST",
           body: form,
-        }
+        },
       );
 
       if (response.ok) {
@@ -302,7 +302,7 @@ const Contact: React.FC = () => {
             {/* Info Text */}
             <div className="bg-green-700/80 border border-green-500 rounded-lg p-2.5">
               <p className="text-xs md:text-sm text-white text-center">
-                גיל 14 עד 18?
+                גיל 12 עד 18?
                 <br />
                 מגיע לך מאיתנו חודש ראשון ב50 ש״ח בלבד ו2 אימונים ללא עלות!
               </p>

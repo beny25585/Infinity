@@ -80,7 +80,8 @@ const Footer = () => {
 
       {/* זכויות יוצרים */}
       <p className="text-sm text-black">
-        &copy; 2025 כושר קרבי | כל הזכויות שמורות ל-InFinity כושר קרבי מנטלי
+        &copy; 2026 ארגון אינפיניטי | כל הזכויות שמורות ל-InFinity כושר קרבי
+        מנטלי
       </p>
     </footer>
   );
