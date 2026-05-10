@@ -85,7 +85,7 @@ function CustomNavbar() {
               </a>
 
               <a
-                href="https://www.instagram.com/infinity.kosherkravi?igsh=NGM3dmg0YW52ejgy"
+                href="https://www.instagram.com/infinity.noar?igsh=NGM3dmg0YW52ejgy"
                 target="_blank"
                 rel="noreferrer"
                 className="transition-transform hover:scale-110"
@@ -96,7 +96,7 @@ function CustomNavbar() {
               </a>
 
               <a
-                href="https://www.facebook.com/share/15Q4Ue6CT8/?mibextid=wwXIfr"
+                href="https://www.facebook.com/share/1CcfGSYqAP/?mibextid=wwXIfr"
                 target="_blank"
                 rel="noreferrer"
                 className="transition-transform hover:scale-110"
